@@ -1,117 +1,134 @@
-/* =========================================
-   スマホメニュー
-========================================= */
-
-const menuButton = document.getElementById("menuButton");
-const mobileNav = document.getElementById("mobileNav");
-
-menuButton.addEventListener("click", () => {
-
-    mobileNav.classList.toggle("active");
-
-});
+// =========================================
+// ULTIMA 騎士団ボス攻略
+// Main JavaScript
+// =========================================
 
 
-/* =========================================
-   スマホメニューをクリックしたら閉じる
-========================================= */
+// ページ内リンクをクリックしたときに
+// なめらかに移動する
+document.querySelectorAll('a[href^="#"]').forEach(link => {
 
-const mobileLinks = document.querySelectorAll(".mobile-nav a");
+    link.addEventListener("click", function (event) {
 
-mobileLinks.forEach(link => {
+        const targetId = this.getAttribute("href");
 
-    link.addEventListener("click", () => {
+        const target = document.querySelector(targetId);
 
-        mobileNav.classList.remove("active");
+        if (!target) {
+            return;
+        }
+
+        event.preventDefault();
+
+        target.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
 
     });
 
 });
 
 
-/* =========================================
-   検索機能
-========================================= */
+// =========================================
+// 現在表示しているセクションに合わせて
+// サイドメニューを切り替える
+// =========================================
 
-const searchInput = document.getElementById("searchInput");
-const searchButton = document.getElementById("searchButton");
-const searchMessage = document.getElementById("searchMessage");
+const sections = document.querySelectorAll(
+    "main section[id]"
+);
 
-
-function searchSite() {
-
-    const keyword = searchInput.value.trim();
-
-    if (keyword === "") {
-
-        searchMessage.textContent =
-            "検索したいキーワードを入力してください。";
-
-        return;
-    }
-
-    searchMessage.textContent =
-        `「${keyword}」を検索しました。攻略データベースは順次追加予定です。`;
-
-}
+const menuItems = document.querySelectorAll(
+    ".menu-item"
+);
 
 
-/* ボタン */
+window.addEventListener("scroll", () => {
 
-searchButton.addEventListener("click", searchSite);
+    let currentSection = "";
+
+    sections.forEach(section => {
+
+        const sectionTop = section.offsetTop;
+
+        if (window.scrollY >= sectionTop - 150) {
+            currentSection = section.getAttribute("id");
+        }
+
+    });
 
 
-/* Enterキー */
+    menuItems.forEach(item => {
 
-searchInput.addEventListener("keydown", (event) => {
+        item.classList.remove("active");
 
-    if (event.key === "Enter") {
+        const href = item.getAttribute("href");
 
-        searchSite();
+        if (href === "#" + currentSection) {
+            item.classList.add("active");
+        }
 
-    }
+    });
 
 });
 
 
-/* =========================================
-   ページ表示時の簡単なアニメーション
-========================================= */
+// =========================================
+// 検索ボックス
+// =========================================
 
-const cards = document.querySelectorAll(
-    ".article-card, .character-card, .boss-card, .tool-card"
+const searchInput = document.querySelector(
+    ".search-box input"
 );
 
-const observer = new IntersectionObserver(
-    (entries) => {
 
-        entries.forEach(entry => {
+if (searchInput) {
 
-            if (entry.isIntersecting) {
+    searchInput.addEventListener("input", () => {
 
-                entry.target.style.opacity = "1";
-                entry.target.style.transform = "translateY(0)";
+        const keyword =
+            searchInput.value.toLowerCase().trim();
 
-                observer.unobserve(entry.target);
+        const cards =
+            document.querySelectorAll(
+                ".player-card, .video-card, .tip-card"
+            );
+
+
+        cards.forEach(card => {
+
+            const text =
+                card.textContent.toLowerCase();
+
+            if (
+                keyword === "" ||
+                text.includes(keyword)
+            ) {
+
+                card.style.display = "";
+
+            } else {
+
+                card.style.display = "none";
 
             }
 
         });
 
-    },
-    {
-        threshold: 0.1
-    }
-);
+    });
+
+}
 
 
-cards.forEach(card => {
+// =========================================
+// ページ読み込み完了
+// =========================================
 
-    card.style.opacity = "0";
-    card.style.transform = "translateY(20px)";
-    card.style.transition =
-        "opacity 0.6s ease, transform 0.6s ease";
+document.addEventListener("DOMContentLoaded", () => {
 
-    observer.observe(card);
+    console.log(
+        "ULTIMA 騎士団ボス攻略サイト loaded."
+    );
 
 });
