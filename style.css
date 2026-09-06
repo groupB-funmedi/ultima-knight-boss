@@ -971,7 +971,9 @@ body {
     display: flex;
     flex-direction: column;
 
-    gap: 12px;
+    gap: 14px;
+
+    overflow: visible;
 }
 
 
@@ -980,19 +982,22 @@ body {
 ===================================================== */
 
 .equipment-image-box {
-    width: 100%;
+    position: relative;
 
-    /* 高さを固定しない */
+    width: 100%;
     height: auto;
 
+    display: block;
+
     overflow: hidden;
+
+    flex-shrink: 0;
 
     border:
         1px solid
         rgba(201, 166, 70, 0.25);
 
-    background:
-        #080705;
+    background: #080705;
 }
 
 
@@ -1002,16 +1007,25 @@ body {
 
 .equipment-image-box img {
     width: 100%;
-
-    /* 元画像の比率に合わせる */
     height: auto;
 
     display: block;
 
-    /* contain / cover は使わない */
-    object-fit: unset;
-
+    object-fit: contain;
     object-position: center;
+
+    max-width: 100%;
+}
+
+
+/* =====================================================
+   PLAYERカード
+===================================================== */
+
+.player-card {
+    min-width: 0;
+
+    overflow: hidden;
 }
 
 
@@ -1019,20 +1033,74 @@ body {
    スマホ
 ===================================================== */
 
-@media (max-width: 700px) {
+@media (max-width: 800px) {
 
     .equipment-images {
-        gap: 8px;
+        width: 100%;
+
+        display: flex;
+        flex-direction: column;
+
+        gap: 12px;
+
+        overflow: visible;
     }
 
     .equipment-image-box {
         width: 100%;
         height: auto;
+
+        display: block;
+
+        flex: none;
+
+        overflow: hidden;
     }
 
     .equipment-image-box img {
         width: 100%;
         height: auto;
+
+        display: block;
+
+        max-width: 100%;
+
+        object-fit: contain;
+    }
+
+}
+
+
+/* =====================================================
+   小さいスマホ
+===================================================== */
+
+@media (max-width: 520px) {
+
+    .equipment-title {
+        margin-top: 18px;
+        margin-bottom: 10px;
+    }
+
+    .equipment-images {
+        gap: 10px;
+    }
+
+    .equipment-image-box {
+        width: 100%;
+        height: auto;
+
+        margin: 0;
+        padding: 0;
+    }
+
+    .equipment-image-box img {
+        width: 100%;
+        height: auto;
+
+        margin: 0;
+
+        display: block;
     }
 
 }
