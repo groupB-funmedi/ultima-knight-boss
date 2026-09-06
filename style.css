@@ -1,7 +1,6 @@
-/* =========================================
+/* =====================================================
    ULTIMA 騎士団ボス攻略
-   Dark Fantasy Theme
-========================================= */
+===================================================== */
 
 :root {
     --bg-main: #090807;
@@ -29,9 +28,9 @@
 }
 
 
-/* =========================================
+/* =====================================================
    RESET
-========================================= */
+===================================================== */
 
 * {
     margin: 0;
@@ -44,6 +43,8 @@ html {
 }
 
 body {
+    min-height: 100vh;
+
     background:
         radial-gradient(
             circle at 70% 10%,
@@ -69,9 +70,9 @@ body {
 }
 
 
-/* =========================================
+/* =====================================================
    SCROLLBAR
-========================================= */
+===================================================== */
 
 ::-webkit-scrollbar {
     width: 9px;
@@ -91,9 +92,9 @@ body {
 }
 
 
-/* =========================================
+/* =====================================================
    SIDEBAR
-========================================= */
+===================================================== */
 
 .sidebar {
     position: fixed;
@@ -104,6 +105,8 @@ body {
     width: var(--sidebar-width);
     height: 100vh;
 
+    overflow-y: auto;
+
     background:
         linear-gradient(
             180deg,
@@ -111,20 +114,19 @@ body {
             rgba(5, 5, 4, 0.99)
         );
 
-    border-right: 1px solid rgba(201, 166, 70, 0.18);
-
-    z-index: 1000;
-
-    overflow-y: auto;
+    border-right:
+        1px solid rgba(201, 166, 70, 0.18);
 
     box-shadow:
         15px 0 40px rgba(0, 0, 0, 0.35);
+
+    z-index: 1000;
 }
 
 
-/* =========================================
+/* =====================================================
    LOGO
-========================================= */
+===================================================== */
 
 .logo-area {
     height: 92px;
@@ -134,7 +136,8 @@ body {
 
     padding: 0 25px;
 
-    border-bottom: 1px solid rgba(201, 166, 70, 0.15);
+    border-bottom:
+        1px solid rgba(201, 166, 70, 0.15);
 }
 
 .logo-mark {
@@ -152,8 +155,6 @@ body {
     font-size: 30px;
 
     border: 1px solid var(--gold-dark);
-
-    transform: rotate(-3deg);
 
     box-shadow:
         inset 0 0 15px rgba(201, 166, 70, 0.08);
@@ -177,32 +178,27 @@ body {
 }
 
 
-/* =========================================
+/* =====================================================
    SEARCH
-========================================= */
+===================================================== */
 
 .search-box {
-    margin: 18px 18px 15px;
-
     height: 42px;
+
+    margin: 18px;
 
     display: flex;
     align-items: center;
 
     padding: 0 12px;
 
-    border: 1px solid rgba(201, 166, 70, 0.25);
-
-    background: rgba(255, 255, 255, 0.025);
-
     color: var(--gold);
 
-    transition: 0.25s;
-}
+    border:
+        1px solid rgba(201, 166, 70, 0.25);
 
-.search-box:focus-within {
-    border-color: var(--gold);
-    background: rgba(201, 166, 70, 0.04);
+    background:
+        rgba(255, 255, 255, 0.025);
 }
 
 .search-box span {
@@ -229,16 +225,17 @@ body {
 }
 
 
-/* =========================================
+/* =====================================================
    SIDE MENU
-========================================= */
+===================================================== */
 
 .side-menu {
-    padding-bottom: 100px;
+    padding-bottom: 40px;
 }
 
 .menu-title {
     margin-top: 17px;
+
     padding: 8px 24px;
 
     color: var(--gold);
@@ -248,7 +245,8 @@ body {
 
     letter-spacing: 2px;
 
-    border-left: 3px solid var(--gold);
+    border-left:
+        3px solid var(--gold);
 
     background:
         linear-gradient(
@@ -259,8 +257,6 @@ body {
 }
 
 .menu-item {
-    position: relative;
-
     display: flex;
     align-items: center;
 
@@ -275,7 +271,8 @@ body {
     font-size: 13px;
     font-weight: 600;
 
-    border-left: 2px solid transparent;
+    border-left:
+        2px solid transparent;
 
     transition:
         color 0.2s,
@@ -286,15 +283,13 @@ body {
 .menu-item span {
     width: 30px;
 
+    margin-right: 7px;
+
     color: #777168;
 
     font-size: 17px;
 
     text-align: center;
-
-    margin-right: 7px;
-
-    transition: 0.2s;
 }
 
 .menu-item:hover {
@@ -307,11 +302,8 @@ body {
             transparent
         );
 
-    border-left-color: var(--gold);
-}
-
-.menu-item:hover span {
-    color: var(--gold);
+    border-left-color:
+        var(--gold);
 }
 
 .menu-item.active {
@@ -324,7 +316,8 @@ body {
             rgba(111, 24, 24, 0)
         );
 
-    border-left-color: var(--red-light);
+    border-left-color:
+        var(--red-light);
 }
 
 .menu-item.active span {
@@ -332,74 +325,23 @@ body {
 }
 
 
-/* =========================================
-   SIDEBAR BOTTOM
-========================================= */
-
-.sidebar-bottom {
-    position: absolute;
-
-    left: 0;
-    bottom: 0;
-
-    width: 100%;
-
-    padding: 20px;
-
-    background:
-        linear-gradient(
-            180deg,
-            transparent,
-            rgba(0, 0, 0, 0.9)
-        );
-}
-
-.guild-message {
-    padding: 13px;
-
-    text-align: center;
-
-    border: 1px solid rgba(201, 166, 70, 0.2);
-
-    background: rgba(201, 166, 70, 0.025);
-}
-
-.guild-message-small {
-    color: var(--text-muted);
-
-    font-size: 10px;
-
-    letter-spacing: 2px;
-}
-
-.guild-message-large {
-    margin-top: 3px;
-
-    color: var(--gold-light);
-
-    font-size: 12px;
-    font-weight: bold;
-
-    letter-spacing: 2px;
-}
-
-
-/* =========================================
+/* =====================================================
    MAIN
-========================================= */
+===================================================== */
 
 .main-content {
     margin-left: var(--sidebar-width);
 
     min-height: 100vh;
 
-    padding: 0 55px 80px;
+    padding:
+        0 55px 80px;
 }
 
 
-/* =========================================
+/* =====================================================
    HEADER
-========================================= */
+===================================================== */
 
 .top-header {
     height: 85px;
@@ -408,7 +350,8 @@ body {
     align-items: center;
     justify-content: space-between;
 
-    border-bottom: 1px solid rgba(201, 166, 70, 0.12);
+    border-bottom:
+        1px solid rgba(201, 166, 70, 0.12);
 }
 
 .breadcrumb {
@@ -435,15 +378,15 @@ body {
 }
 
 .header-title span {
-    color: #777168;
-
     margin-left: 8px;
+
+    color: #777168;
 }
 
 
-/* =========================================
+/* =====================================================
    HERO
-========================================= */
+===================================================== */
 
 .boss-hero {
     position: relative;
@@ -457,7 +400,8 @@ body {
 
     overflow: hidden;
 
-    border: 1px solid rgba(201, 166, 70, 0.22);
+    border:
+        1px solid rgba(201, 166, 70, 0.22);
 
     background:
         linear-gradient(
@@ -473,7 +417,6 @@ body {
     content: "";
 
     position: absolute;
-
     inset: 0;
 
     background:
@@ -489,7 +432,7 @@ body {
 .boss-hero-content {
     position: relative;
 
-    width: 62%;
+    width: 58%;
 
     padding: 55px;
 
@@ -512,29 +455,17 @@ body {
     font-family:
         Georgia,
         "Yu Mincho",
-        "Hiragino Mincho ProN",
         serif;
 
-    font-size: clamp(48px, 5vw, 76px);
-
-    font-weight: 700;
-
-    letter-spacing: 8px;
+    font-size:
+        clamp(48px, 5vw, 76px);
 
     line-height: 1.15;
 
+    letter-spacing: 8px;
+
     text-shadow:
         0 4px 25px rgba(0, 0, 0, 0.9);
-}
-
-.boss-hero p {
-    max-width: 630px;
-
-    margin-top: 18px;
-
-    color: #aaa49a;
-
-    font-size: 14px;
 }
 
 .boss-tags {
@@ -555,21 +486,24 @@ body {
 
     letter-spacing: 1px;
 
-    border: 1px solid rgba(201, 166, 70, 0.18);
+    border:
+        1px solid rgba(201, 166, 70, 0.18);
 }
 
 .tag.gold {
     color: var(--gold-light);
 
-    border-color: rgba(201, 166, 70, 0.55);
+    border-color:
+        rgba(201, 166, 70, 0.55);
 
-    background: rgba(201, 166, 70, 0.06);
+    background:
+        rgba(201, 166, 70, 0.06);
 }
 
 
-/* =========================================
+/* =====================================================
    BOSS VISUAL
-========================================= */
+===================================================== */
 
 .boss-visual {
     position: absolute;
@@ -577,7 +511,7 @@ body {
     top: 0;
     right: 0;
 
-    width: 43%;
+    width: 45%;
     height: 100%;
 
     display: flex;
@@ -587,15 +521,13 @@ body {
     overflow: hidden;
 }
 
-
-/* ボス画像の後ろの光 */
 .boss-visual::before {
     content: "";
 
     position: absolute;
 
-    width: 330px;
-    height: 330px;
+    width: 360px;
+    height: 360px;
 
     border-radius: 50%;
 
@@ -608,17 +540,13 @@ body {
         );
 
     filter: blur(3px);
-
-    z-index: 0;
 }
 
-
-/* ボス画像を入れる枠 */
 .boss-placeholder {
     position: relative;
 
-    width: 90%;
-    height: 90%;
+    width: 94%;
+    height: 94%;
 
     display: flex;
     align-items: center;
@@ -626,26 +554,9 @@ body {
 
     overflow: hidden;
 
-    border: none;
-
-    background: transparent;
-
-    transform: none;
-
-    box-shadow: none;
-
     z-index: 1;
 }
 
-
-/* 以前の装飾線を消す */
-.boss-placeholder::before,
-.boss-placeholder::after {
-    display: none;
-}
-
-
-/* ボス画像 */
 .boss-image {
     width: 100%;
     height: 100%;
@@ -653,7 +564,6 @@ body {
     display: block;
 
     object-fit: contain;
-
     object-position: center;
 
     filter:
@@ -664,9 +574,9 @@ body {
 }
 
 
-/* =========================================
-   CURRENT BOSS CARD
-========================================= */
+/* =====================================================
+   CURRENT BOSS
+===================================================== */
 
 .current-boss-card {
     display: flex;
@@ -676,7 +586,8 @@ body {
 
     padding: 25px 30px;
 
-    border: 1px solid var(--border);
+    border:
+        1px solid var(--border);
 
     background:
         linear-gradient(
@@ -704,7 +615,8 @@ body {
 
     font-size: 35px;
 
-    border: 1px solid rgba(201, 166, 70, 0.3);
+    border:
+        1px solid rgba(201, 166, 70, 0.3);
 
     background: #11181c;
 }
@@ -740,6 +652,8 @@ body {
 
 .boss-card-tags {
     display: flex;
+    flex-wrap: wrap;
+
     gap: 8px;
 
     margin-top: 10px;
@@ -752,16 +666,18 @@ body {
 
     font-size: 9px;
 
-    border: 1px solid rgba(201, 166, 70, 0.2);
+    border:
+        1px solid rgba(201, 166, 70, 0.2);
 }
 
 
-/* =========================================
+/* =====================================================
    CONTENT SECTION
-========================================= */
+===================================================== */
 
 .content-section {
     margin-top: 70px;
+
     scroll-margin-top: 30px;
 }
 
@@ -776,7 +692,8 @@ body {
 
     padding-bottom: 17px;
 
-    border-bottom: 1px solid rgba(201, 166, 70, 0.15);
+    border-bottom:
+        1px solid rgba(201, 166, 70, 0.15);
 }
 
 .section-kicker {
@@ -812,22 +729,24 @@ body {
 }
 
 
-/* =========================================
-   PARTY NOTICE
-========================================= */
+/* =====================================================
+   PARTY
+===================================================== */
 
 .party-notice {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
 
     margin-bottom: 20px;
 
     padding: 15px 20px;
 
-    border: 1px solid rgba(201, 166, 70, 0.2);
+    border:
+        1px solid rgba(201, 166, 70, 0.2);
 
-    background: rgba(201, 166, 70, 0.035);
+    background:
+        rgba(201, 166, 70, 0.035);
 }
 
 .party-notice strong {
@@ -838,16 +757,10 @@ body {
     letter-spacing: 2px;
 }
 
-.party-notice span {
-    color: #7d776d;
 
-    font-size: 11px;
-}
-
-
-/* =========================================
-   PLAYERS GRID
-========================================= */
+/* =====================================================
+   PLAYERS
+===================================================== */
 
 .players-grid {
     display: grid;
@@ -863,7 +776,8 @@ body {
 
     padding: 25px;
 
-    border: 1px solid rgba(201, 166, 70, 0.2);
+    border:
+        1px solid rgba(201, 166, 70, 0.2);
 
     background:
         linear-gradient(
@@ -879,12 +793,15 @@ body {
 }
 
 .player-card:hover {
-    transform: translateY(-3px);
+    transform:
+        translateY(-3px);
 
-    border-color: rgba(201, 166, 70, 0.45);
+    border-color:
+        rgba(201, 166, 70, 0.45);
 
     box-shadow:
-        0 20px 50px rgba(0, 0, 0, 0.4);
+        0 20px 50px
+        rgba(0, 0, 0, 0.4);
 }
 
 .player-header {
@@ -893,12 +810,15 @@ body {
 
     padding-bottom: 15px;
 
-    border-bottom: 1px solid rgba(201, 166, 70, 0.12);
+    border-bottom:
+        1px solid rgba(201, 166, 70, 0.12);
 }
 
 .player-number {
     width: 46px;
     height: 46px;
+
+    flex-shrink: 0;
 
     display: flex;
     align-items: center;
@@ -908,13 +828,17 @@ body {
 
     color: var(--gold-light);
 
-    font-family: Georgia, serif;
+    font-family:
+        Georgia,
+        serif;
 
     font-size: 17px;
 
-    border: 1px solid rgba(201, 166, 70, 0.4);
+    border:
+        1px solid rgba(201, 166, 70, 0.4);
 
-    background: rgba(201, 166, 70, 0.035);
+    background:
+        rgba(201, 166, 70, 0.035);
 }
 
 .player-label {
@@ -943,15 +867,17 @@ body {
 
     font-size: 10px;
 
-    border: 1px solid rgba(201, 166, 70, 0.2);
+    border:
+        1px solid rgba(201, 166, 70, 0.2);
 
-    background: rgba(201, 166, 70, 0.04);
+    background:
+        rgba(201, 166, 70, 0.04);
 }
 
 
-/* =========================================
+/* =====================================================
    CHARACTERS
-========================================= */
+===================================================== */
 
 .characters {
     display: grid;
@@ -973,11 +899,8 @@ body {
 
     overflow: hidden;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border: 1px solid rgba(201, 166, 70, 0.18);
+    border:
+        1px solid rgba(201, 166, 70, 0.18);
 
     background:
         radial-gradient(
@@ -1002,73 +925,133 @@ body {
 
     margin-top: 7px;
 
+    overflow: hidden;
+
     color: #c6c0b4;
 
     font-size: 9px;
 
     white-space: nowrap;
-    overflow: hidden;
     text-overflow: ellipsis;
 }
 
 .character-slot small {
+    display: block;
+
     color: #69635a;
 
     font-size: 8px;
 }
 
 
-/* =========================================
+/* =====================================================
    EQUIPMENT
-========================================= */
+===================================================== */
 
 .equipment-title {
-    margin-top: 20px;
-    margin-bottom: 8px;
+    margin-top: 22px;
+    margin-bottom: 12px;
 
     color: var(--gold);
 
-    font-size: 9px;
+    font-size: 10px;
+    font-weight: bold;
 
     letter-spacing: 2px;
 }
 
-.equipment-list {
-    display: grid;
 
-    grid-template-columns:
-        repeat(4, 1fr);
+/* =====================================================
+   装備画像2枚
+===================================================== */
 
-    gap: 6px;
-}
+.equipment-images {
+    width: 100%;
 
-.equipment-list span {
-    padding: 5px 3px;
+    display: flex;
+    flex-direction: column;
 
-    color: #888176;
-
-    font-size: 9px;
-
-    text-align: center;
-
-    border: 1px solid rgba(201, 166, 70, 0.12);
-
-    background: rgba(255, 255, 255, 0.015);
+    gap: 12px;
 }
 
 
-/* =========================================
-   PLAYER TACTIC
-========================================= */
+/* =====================================================
+   装備画像の枠
+===================================================== */
+
+.equipment-image-box {
+    width: 100%;
+
+    /* 高さを固定しない */
+    height: auto;
+
+    overflow: hidden;
+
+    border:
+        1px solid
+        rgba(201, 166, 70, 0.25);
+
+    background:
+        #080705;
+}
+
+
+/* =====================================================
+   装備画像
+===================================================== */
+
+.equipment-image-box img {
+    width: 100%;
+
+    /* 元画像の比率に合わせる */
+    height: auto;
+
+    display: block;
+
+    /* contain / cover は使わない */
+    object-fit: unset;
+
+    object-position: center;
+}
+
+
+/* =====================================================
+   スマホ
+===================================================== */
+
+@media (max-width: 700px) {
+
+    .equipment-images {
+        gap: 8px;
+    }
+
+    .equipment-image-box {
+        width: 100%;
+        height: auto;
+    }
+
+    .equipment-image-box img {
+        width: 100%;
+        height: auto;
+    }
+
+}
+
+
+/* =====================================================
+   TACTIC
+===================================================== */
 
 .player-tactic {
     margin-top: 18px;
 
     padding: 13px;
 
-    border-left: 2px solid var(--gold-dark);
+    border-left:
+        2px solid var(--gold-dark);
 
-    background: rgba(0, 0, 0, 0.2);
+    background:
+        rgba(0, 0, 0, 0.2);
 }
 
 .tactic-title {
@@ -1087,141 +1070,549 @@ body {
 }
 
 
-/* =========================================
+/* =====================================================
    BOSS STATUS
-========================================= */
+===================================================== */
 
-.boss-status-grid {
+.boss-status-section {
+    margin-top: 70px;
+}
+
+.akum-status-panel {
+    width: 100%;
+
     display: grid;
 
     grid-template-columns:
-        1.3fr 1fr;
-
-    gap: 20px;
-}
-
-.status-main,
-.status-list {
-    padding: 30px;
-
-    border: 1px solid rgba(201, 166, 70, 0.2);
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(19, 17, 13, 0.98),
-            rgba(8, 8, 7, 0.98)
-        );
-}
-
-.status-boss-name {
-    color: var(--white);
-
-    font-family:
-        Georgia,
-        "Yu Mincho",
-        serif;
-
-    font-size: 27px;
-}
-
-.status-level {
-    display: inline-block;
-
-    margin-top: 6px;
-
-    padding: 3px 8px;
-
-    color: var(--gold);
-
-    font-size: 9px;
-
-    border: 1px solid rgba(201, 166, 70, 0.25);
-}
-
-.hp-label {
-    margin-top: 28px;
-
-    color: var(--gold);
-
-    font-size: 10px;
-
-    letter-spacing: 2px;
-}
-
-.hp-bar {
-    height: 13px;
-
-    margin-top: 7px;
+        minmax(0, 3.25fr)
+        minmax(230px, 1fr);
 
     overflow: hidden;
 
-    background: #211713;
+    border:
+        1px solid rgba(201, 166, 70, 0.18);
 
-    border: 1px solid rgba(201, 166, 70, 0.16);
+    border-radius: 10px;
+
+    background:
+        radial-gradient(
+            circle at 20% 0%,
+            rgba(132, 93, 24, 0.07),
+            transparent 38%
+        ),
+        linear-gradient(
+            145deg,
+            #0b0906,
+            #050506
+        );
+
+    box-shadow:
+        0 20px 50px
+        rgba(0, 0, 0, 0.45);
 }
 
-.hp-value {
-    width: 78%;
-    height: 100%;
+
+/* 左側 */
+.akum-status-main {
+    min-width: 0;
+
+    padding:
+        27px 24px 22px;
+
+    border-right:
+        1px solid rgba(255, 255, 255, 0.07);
+}
+
+
+/* タイトル */
+.akum-status-title {
+    display: flex;
+    align-items: center;
+
+    gap: 15px;
+
+    color: #e8e3db;
+
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.gold-line {
+    display: inline-block;
+
+    width: 25px;
+    height: 2px;
 
     background:
         linear-gradient(
             90deg,
-            #721d1d,
-            #bd3535
+            #d5b43e,
+            rgba(213, 180, 62, 0)
         );
 }
 
-.hp-number {
-    margin-top: 6px;
+.boss-level-label {
+    margin-top: 15px;
+    margin-bottom: 7px;
 
-    color: #aaa49a;
+    color: #7b7770;
 
     font-size: 11px;
+    font-weight: 700;
+}
+
+
+/* =====================================================
+   LEVEL BUTTONS
+===================================================== */
+
+.boss-level-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(10, minmax(0, 1fr));
+
+    gap:
+        7px 9px;
+
+    margin-bottom: 36px;
+}
+
+.boss-level-button {
+    height: 31px;
+
+    cursor: pointer;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.09);
+
+    outline: none;
+
+    color: #aaa69f;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    background:
+        linear-gradient(
+            180deg,
+            #1d1b19,
+            #11100f
+        );
+
+    clip-path:
+        polygon(
+            8% 0,
+            100% 0,
+            92% 100%,
+            0 100%
+        );
+
+    transition: 0.2s;
+}
+
+.boss-level-button:hover {
+    color: #ead36a;
+
+    border-color:
+        rgba(213, 177, 55, 0.45);
+}
+
+.boss-level-button.active {
+    color: #ead26a;
+
+    border-color:
+        rgba(214, 177, 52, 0.75);
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(106, 82, 24, 0.82),
+            rgba(49, 37, 11, 0.92)
+        );
+
+    box-shadow:
+        inset 0 -3px 0
+        rgba(227, 197, 75, 0.55);
+}
+
+
+/* =====================================================
+   STAT AREA
+===================================================== */
+
+.akum-stat-columns {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        minmax(0, 1fr);
+
+    gap: 42px;
+}
+
+.akum-stat-column {
+    min-width: 0;
+}
+
+.akum-stat-row {
+    display: grid;
+
+    grid-template-columns:
+        130px
+        minmax(90px, 1fr)
+        85px;
+
+    align-items: center;
+
+    gap: 12px;
+
+    min-height: 38px;
+
+    border-bottom:
+        1px solid rgba(255, 255, 255, 0.035);
+}
+
+.akum-stat-name {
+    color: #aaa69f;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    white-space: nowrap;
+}
+
+.akum-stat-row strong {
+    color: #d5b337;
+
+    font-size: 12px;
 
     text-align: right;
+
+    white-space: nowrap;
 }
 
-.status-list {
-    display: flex;
-    flex-direction: column;
 
-    justify-content: center;
+/* バー */
+.akum-stat-bar {
+    position: relative;
+
+    height: 7px;
+
+    border-radius: 20px;
+
+    background:
+        rgba(255, 255, 255, 0.045);
 }
 
-.status-row {
+.akum-bar-fill {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    height: 100%;
+
+    border-radius: 20px;
+
+    transition:
+        width 0.3s ease;
+}
+
+
+/* HP */
+.akum-bar-fill.hp {
+    background:
+        linear-gradient(
+            90deg,
+            #008b70,
+            #15d6af
+        );
+}
+
+
+/* 攻撃 */
+.akum-bar-fill.attack {
+    background:
+        linear-gradient(
+            90deg,
+            #9e151a,
+            #e13a3d
+        );
+}
+
+
+/* 防御 */
+.akum-bar-fill.defense {
+    background:
+        linear-gradient(
+            90deg,
+            #164dbc,
+            #4387ff
+        );
+}
+
+
+/* クリティカル */
+.akum-bar-fill.critical {
+    background:
+        linear-gradient(
+            90deg,
+            #806713,
+            #b59a35
+        );
+}
+
+
+/* 貫通・忍耐 */
+.akum-bar-fill.normal {
+    background:
+        linear-gradient(
+            90deg,
+            #746019,
+            #b49739
+        );
+}
+
+
+/* 光る丸 */
+.akum-bar-dot {
+    position: absolute;
+
+    top: 50%;
+
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: #ffffff;
+
+    transform:
+        translate(-50%, -50%);
+
+    transition:
+        left 0.3s ease;
+
+    box-shadow:
+        0 0 8px #ffffff,
+        0 0 15px
+        rgba(255, 226, 128, 0.65);
+}
+
+
+/* 右列 */
+.akum-simple-row {
+    min-height: 38px;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
 
-    padding: 13px 0;
+    gap: 15px;
 
-    border-bottom: 1px solid rgba(201, 166, 70, 0.09);
+    border-bottom:
+        1px solid rgba(255, 255, 255, 0.035);
 }
 
-.status-row:last-child {
-    border-bottom: none;
+.akum-simple-row span {
+    color: #aaa69f;
+
+    font-size: 12px;
+    font-weight: 700;
 }
 
-.status-row span {
-    color: #817b71;
+.akum-simple-row strong {
+    color: #d5b337;
+
+    font-size: 12px;
+
+    white-space: nowrap;
+}
+
+
+/* =====================================================
+   BASE RESISTANCE
+===================================================== */
+
+.base-resistance {
+    min-height: 46px;
+
+    margin-top: 34px;
+
+    padding: 0 15px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border:
+        1px solid rgba(191, 146, 32, 0.35);
+
+    border-radius: 7px;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(65, 45, 10, 0.20),
+            rgba(28, 23, 15, 0.20)
+        );
+}
+
+.base-resistance-left {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    color: #c8c4bc;
+
+    font-size: 12px;
+}
+
+.warning-icon {
+    width: 18px;
+    height: 18px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 3px;
+
+    background: #ff454c;
+
+    transform: rotate(45deg);
+}
+
+.warning-icon span {
+    color: white;
 
     font-size: 11px;
+    font-weight: bold;
+
+    transform: rotate(-45deg);
 }
 
-.status-row strong {
-    color: var(--white);
+.info-icon {
+    width: 14px;
+    height: 14px;
 
-    font-family: Georgia, serif;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    border:
+        1px solid #77736d;
+
+    border-radius: 50%;
+
+    color: #aaa69f;
+
+    font-size: 8px;
+}
+
+.base-resistance-value {
+    color: #d9b733;
 
     font-size: 15px;
 }
 
 
-/* =========================================
+/* =====================================================
+   RESISTANCE
+===================================================== */
+
+.akum-resistance-panel {
+    min-width: 230px;
+
+    padding:
+        27px 25px;
+}
+
+.resistance-list {
+    margin-top: 29px;
+}
+
+.resistance-row {
+    min-height: 36px;
+
+    display: grid;
+
+    grid-template-columns:
+        28px 1fr auto;
+
+    align-items: center;
+
+    gap: 9px;
+
+    color: #e8e5de;
+
+    font-size: 13px;
+}
+
+.resistance-row strong {
+    color: #ff4b4b;
+
+    font-size: 12px;
+}
+
+.element-icon {
+    width: 20px;
+    height: 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    color: white;
+
+    font-size: 11px;
+    font-weight: bold;
+
+    box-shadow:
+        0 0 4px
+        rgba(255, 255, 255, 0.30);
+}
+
+.element-icon.ice {
+    background: #35bce4;
+}
+
+.element-icon.dark {
+    background: #9849e2;
+}
+
+.element-icon.fire {
+    background: #ef4055;
+}
+
+.element-icon.holy {
+    background: #e9a91d;
+}
+
+.element-icon.wind {
+    background: #32a76e;
+}
+
+.element-icon.earth {
+    background: #df9950;
+}
+
+.element-icon.physical {
+    background: #858585;
+}
+
+.element-icon.lightning {
+    background: #405ce1;
+}
+
+
+/* =====================================================
    STRATEGY
-========================================= */
+===================================================== */
 
 .strategy-list {
     display: grid;
@@ -1237,9 +1628,11 @@ body {
 
     padding: 20px;
 
-    border: 1px solid rgba(201, 166, 70, 0.17);
+    border:
+        1px solid rgba(201, 166, 70, 0.17);
 
-    background: rgba(255, 255, 255, 0.012);
+    background:
+        rgba(255, 255, 255, 0.012);
 }
 
 .step-number {
@@ -1256,9 +1649,12 @@ body {
 
     color: var(--gold);
 
-    font-family: Georgia, serif;
+    font-family:
+        Georgia,
+        serif;
 
-    border: 1px solid rgba(201, 166, 70, 0.3);
+    border:
+        1px solid rgba(201, 166, 70, 0.3);
 }
 
 .strategy-step h3 {
@@ -1276,9 +1672,9 @@ body {
 }
 
 
-/* =========================================
+/* =====================================================
    TIPS
-========================================= */
+===================================================== */
 
 .tips-grid {
     display: grid;
@@ -1295,9 +1691,11 @@ body {
 
     padding: 18px;
 
-    border: 1px solid rgba(201, 166, 70, 0.16);
+    border:
+        1px solid rgba(201, 166, 70, 0.16);
 
-    background: rgba(201, 166, 70, 0.025);
+    background:
+        rgba(201, 166, 70, 0.025);
 }
 
 .tip-card span {
@@ -1315,9 +1713,9 @@ body {
 }
 
 
-/* =========================================
+/* =====================================================
    VIDEO
-========================================= */
+===================================================== */
 
 .video-grid {
     display: grid;
@@ -1331,7 +1729,8 @@ body {
 .video-card {
     overflow: hidden;
 
-    border: 1px solid rgba(201, 166, 70, 0.18);
+    border:
+        1px solid rgba(201, 166, 70, 0.18);
 
     background: #0d0c0a;
 
@@ -1341,9 +1740,11 @@ body {
 }
 
 .video-card:hover {
-    transform: translateY(-3px);
+    transform:
+        translateY(-3px);
 
-    border-color: rgba(201, 166, 70, 0.45);
+    border-color:
+        rgba(201, 166, 70, 0.45);
 }
 
 .video-thumbnail {
@@ -1370,7 +1771,8 @@ body {
 
     inset: 12px;
 
-    border: 1px solid rgba(201, 166, 70, 0.13);
+    border:
+        1px solid rgba(201, 166, 70, 0.13);
 }
 
 .play-button {
@@ -1383,17 +1785,19 @@ body {
     align-items: center;
     justify-content: center;
 
+    padding-left: 3px;
+
     color: var(--gold-light);
 
     font-size: 19px;
 
-    border: 1px solid rgba(201, 166, 70, 0.45);
-
-    background: rgba(0, 0, 0, 0.55);
+    border:
+        1px solid rgba(201, 166, 70, 0.45);
 
     border-radius: 50%;
 
-    padding-left: 3px;
+    background:
+        rgba(0, 0, 0, 0.55);
 }
 
 .video-info {
@@ -1431,8 +1835,6 @@ body {
     color: var(--gold);
 
     font-size: 36px;
-
-    font-weight: 200;
 }
 
 .add-video h3 {
@@ -1452,9 +1854,9 @@ body {
 }
 
 
-/* =========================================
+/* =====================================================
    FOOTER
-========================================= */
+===================================================== */
 
 footer {
     margin-top: 100px;
@@ -1463,16 +1865,18 @@ footer {
 
     text-align: center;
 
-    border-top: 1px solid rgba(201, 166, 70, 0.14);
+    border-top:
+        1px solid rgba(201, 166, 70, 0.14);
 }
 
 .footer-logo {
     color: var(--gold-light);
 
-    font-family: Georgia, serif;
+    font-family:
+        Georgia,
+        serif;
 
     font-size: 22px;
-
     font-weight: bold;
 
     letter-spacing: 4px;
@@ -1494,7 +1898,8 @@ footer p {
 
     margin: 20px auto;
 
-    background: var(--gold-dark);
+    background:
+        var(--gold-dark);
 }
 
 footer small {
@@ -1504,11 +1909,11 @@ footer small {
 }
 
 
-/* =========================================
-   MOBILE
-========================================= */
+/* =====================================================
+   RESPONSIVE
+===================================================== */
 
-@media (max-width: 1100px) {
+@media (max-width: 1200px) {
 
     :root {
         --sidebar-width: 220px;
@@ -1523,13 +1928,37 @@ footer small {
         padding: 40px;
     }
 
-    .boss-hero h1 {
-        font-size: 50px;
+    .boss-level-grid {
+        gap: 6px;
     }
 
-    .video-grid {
+    .akum-stat-row {
         grid-template-columns:
-            repeat(2, 1fr);
+            110px 1fr 76px;
+    }
+
+}
+
+
+@media (max-width: 950px) {
+
+    .akum-status-panel {
+        grid-template-columns: 1fr;
+    }
+
+    .akum-status-main {
+        border-right: none;
+
+        border-bottom:
+            1px solid rgba(255, 255, 255, 0.07);
+    }
+
+    .akum-resistance-panel {
+        min-width: 0;
+    }
+
+    .players-grid {
+        grid-template-columns: 1fr;
     }
 
 }
@@ -1548,11 +1977,9 @@ footer small {
         height: auto;
 
         border-right: none;
-        border-bottom: 1px solid rgba(201, 166, 70, 0.18);
-    }
 
-    .logo-area {
-        height: 75px;
+        border-bottom:
+            1px solid rgba(201, 166, 70, 0.18);
     }
 
     .side-menu {
@@ -1560,22 +1987,17 @@ footer small {
 
         grid-template-columns:
             repeat(2, 1fr);
-
-        padding-bottom: 10px;
     }
 
     .menu-title {
         grid-column: 1 / -1;
     }
 
-    .sidebar-bottom {
-        display: none;
-    }
-
     .main-content {
         margin-left: 0;
 
-        padding: 0 18px 50px;
+        padding:
+            0 18px 50px;
     }
 
     .top-header {
@@ -1587,7 +2009,7 @@ footer small {
     }
 
     .boss-hero {
-        min-height: 500px;
+        min-height: 520px;
 
         display: block;
     }
@@ -1595,7 +2017,8 @@ footer small {
     .boss-hero-content {
         width: 100%;
 
-        padding: 35px 25px;
+        padding:
+            35px 25px;
     }
 
     .boss-hero h1 {
@@ -1605,28 +2028,11 @@ footer small {
     }
 
     .boss-visual {
-        position: absolute;
-
         top: auto;
         bottom: 0;
 
         width: 100%;
-        height: 200px;
-    }
-
-    .boss-placeholder {
-        width: 150px;
-        height: 150px;
-
-        font-size: 14px;
-    }
-
-    .boss-symbol {
-        font-size: 45px;
-    }
-
-    .current-boss-card {
-        align-items: flex-start;
+        height: 230px;
     }
 
     .section-heading {
@@ -1639,12 +2045,21 @@ footer small {
         text-align: left;
     }
 
-    .players-grid,
-    .boss-status-grid,
     .strategy-list,
     .tips-grid,
     .video-grid {
         grid-template-columns: 1fr;
+    }
+
+    .akum-stat-columns {
+        grid-template-columns: 1fr;
+
+        gap: 18px;
+    }
+
+    .boss-level-grid {
+        grid-template-columns:
+            repeat(5, 1fr);
     }
 
 }
@@ -1657,21 +2072,11 @@ footer small {
         margin-right: 12px;
     }
 
-    .side-menu {
-        grid-template-columns: 1fr 1fr;
-    }
-
     .menu-item {
         padding-left: 14px;
         padding-right: 10px;
 
         font-size: 11px;
-    }
-
-    .menu-item span {
-        width: 22px;
-
-        margin-right: 4px;
     }
 
     .main-content {
@@ -1684,11 +2089,8 @@ footer small {
     }
 
     .boss-hero-content {
-        padding: 30px 20px;
-    }
-
-    .boss-hero p {
-        font-size: 12px;
+        padding:
+            30px 20px;
     }
 
     .current-boss-card {
@@ -1708,32 +2110,6 @@ footer small {
         font-size: 20px;
     }
 
-    .boss-card-info p {
-        font-size: 10px;
-    }
-
-    .boss-card-tags {
-        flex-wrap: wrap;
-    }
-
-    .content-section {
-        margin-top: 50px;
-    }
-
-    .section-heading h2 {
-        font-size: 25px;
-    }
-
-    .party-notice {
-        display: block;
-    }
-
-    .party-notice span {
-        display: block;
-
-        margin-top: 4px;
-    }
-
     .player-card {
         padding: 18px;
     }
@@ -1742,21 +2118,27 @@ footer small {
         gap: 5px;
     }
 
-    .character-slot strong {
-        font-size: 8px;
+    .equipment-image-box {
+        height: 110px;
     }
 
-    .equipment-list span {
-        font-size: 8px;
+    .akum-status-main {
+        padding:
+            20px 12px;
     }
 
-    .status-main,
-    .status-list {
-        padding: 20px;
+    .akum-stat-row {
+        grid-template-columns:
+            100px 1fr 72px;
+
+        gap: 7px;
     }
 
-    .video-thumbnail {
-        height: 150px;
+    .akum-stat-name,
+    .akum-stat-row strong,
+    .akum-simple-row span,
+    .akum-simple-row strong {
+        font-size: 10px;
     }
 
 }
