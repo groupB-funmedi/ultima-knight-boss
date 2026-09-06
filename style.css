@@ -583,83 +583,84 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+
+    overflow: hidden;
 }
 
+
+/* ボス画像の後ろの光 */
 .boss-visual::before {
     content: "";
 
     position: absolute;
 
-    width: 300px;
-    height: 300px;
+    width: 330px;
+    height: 330px;
 
     border-radius: 50%;
 
     background:
         radial-gradient(
             circle,
-            rgba(64, 91, 113, 0.45),
+            rgba(64, 91, 113, 0.30),
             rgba(10, 14, 18, 0.05) 65%,
             transparent 70%
         );
 
-    filter: blur(2px);
+    filter: blur(3px);
+
+    z-index: 0;
 }
 
+
+/* ボス画像を入れる枠 */
 .boss-placeholder {
     position: relative;
 
-    width: 230px;
-    height: 230px;
+    width: 90%;
+    height: 90%;
 
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
 
-    color: var(--white);
+    overflow: hidden;
 
-    font-family:
-        Georgia,
-        "Yu Mincho",
-        serif;
+    border: none;
 
-    font-size: 19px;
+    background: transparent;
 
-    border: 1px solid rgba(201, 166, 70, 0.35);
+    transform: none;
 
-    transform: rotate(3deg);
+    box-shadow: none;
 
-    background:
-        linear-gradient(
-            135deg,
-            rgba(48, 66, 75, 0.75),
-            rgba(8, 10, 11, 0.95)
-        );
-
-    box-shadow:
-        0 0 50px rgba(34, 74, 94, 0.22);
+    z-index: 1;
 }
 
+
+/* 以前の装飾線を消す */
 .boss-placeholder::before,
 .boss-placeholder::after {
-    content: "";
-
-    position: absolute;
-
-    inset: 12px;
-
-    border: 1px solid rgba(201, 166, 70, 0.15);
+    display: none;
 }
 
-.boss-symbol {
-    margin-bottom: 12px;
 
-    color: #83a8bc;
+/* ボス画像 */
+.boss-image {
+    width: 100%;
+    height: 100%;
 
-    font-size: 76px;
+    display: block;
 
-    line-height: 1;
+    object-fit: contain;
+
+    object-position: center;
+
+    filter:
+        drop-shadow(
+            0 15px 30px
+            rgba(0, 0, 0, 0.75)
+        );
 }
 
 
