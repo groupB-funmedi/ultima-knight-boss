@@ -2210,3 +2210,353 @@ footer small {
     }
 
 }
+
+/* =====================================================
+   ADMIN LOGIN
+===================================================== */
+
+.admin-area {
+    padding: 0 18px 18px;
+}
+
+
+/* 管理者ログインボタン */
+.admin-login-button {
+    width: 100%;
+
+    padding: 11px 12px;
+
+    cursor: pointer;
+
+    color: #d8bc59;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+    border:
+        1px solid
+        rgba(201, 166, 70, 0.35);
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(35, 29, 16, 0.95),
+            rgba(14, 12, 9, 0.95)
+        );
+
+    transition:
+        background 0.2s,
+        border-color 0.2s,
+        color 0.2s;
+}
+
+
+.admin-login-button:hover {
+    color: #f2dc83;
+
+    border-color:
+        rgba(201, 166, 70, 0.70);
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(61, 48, 20, 0.95),
+            rgba(18, 14, 9, 0.98)
+        );
+}
+
+
+/* ログイン状態 */
+.admin-status {
+    margin-top: 8px;
+
+    color: #777168;
+
+    font-size: 9px;
+
+    text-align: center;
+}
+
+
+/* ログアウト */
+.admin-logout-button {
+    width: 100%;
+
+    margin-top: 8px;
+
+    padding: 8px;
+
+    cursor: pointer;
+
+    color: #c5bfb5;
+
+    font-size: 10px;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.10);
+
+    background:
+        rgba(255, 255, 255, 0.03);
+}
+
+
+.admin-logout-button:hover {
+    color: white;
+
+    border-color:
+        rgba(201, 166, 70, 0.40);
+}
+
+
+/* =====================================================
+   ADMIN MODAL
+===================================================== */
+
+.admin-modal {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 9999;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+}
+
+
+/* hidden属性を確実に効かせる */
+.admin-modal[hidden] {
+    display: none;
+}
+
+
+/* 黒い背景 */
+.admin-modal-overlay {
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        rgba(0, 0, 0, 0.82);
+
+    backdrop-filter:
+        blur(5px);
+}
+
+
+/* ログインウィンドウ */
+.admin-modal-content {
+    position: relative;
+
+    z-index: 1;
+
+    width: min(
+        420px,
+        100%
+    );
+
+    padding:
+        35px
+        32px;
+
+    border:
+        1px solid
+        rgba(201, 166, 70, 0.45);
+
+    background:
+        radial-gradient(
+            circle at top,
+            rgba(107, 77, 20, 0.12),
+            transparent 45%
+        ),
+        linear-gradient(
+            145deg,
+            #15120d,
+            #080706
+        );
+
+    box-shadow:
+        0 30px 80px
+        rgba(0, 0, 0, 0.8);
+}
+
+
+/* × */
+.admin-modal-close {
+    position: absolute;
+
+    top: 12px;
+    right: 15px;
+
+    cursor: pointer;
+
+    border: none;
+
+    background: none;
+
+    color: #8d877d;
+
+    font-size: 25px;
+}
+
+
+.admin-modal-close:hover {
+    color: #ffffff;
+}
+
+
+.admin-modal-kicker {
+    color: #c9a646;
+
+    font-size: 9px;
+    font-weight: bold;
+
+    letter-spacing: 3px;
+}
+
+
+.admin-modal-content h2 {
+    margin-top: 5px;
+
+    color: #f1eee5;
+
+    font-family:
+        Georgia,
+        "Yu Mincho",
+        serif;
+
+    font-size: 27px;
+}
+
+
+.admin-modal-description {
+    margin-top: 8px;
+    margin-bottom: 25px;
+
+    color: #817b72;
+
+    font-size: 11px;
+}
+
+
+/* =====================================================
+   ADMIN FORM
+===================================================== */
+
+.admin-form-group {
+    margin-bottom: 17px;
+}
+
+
+.admin-form-group label {
+    display: block;
+
+    margin-bottom: 6px;
+
+    color: #aaa49a;
+
+    font-size: 10px;
+}
+
+
+.admin-form-group input {
+    width: 100%;
+
+    padding:
+        12px
+        13px;
+
+    outline: none;
+
+    color: #ffffff;
+
+    border:
+        1px solid
+        rgba(201, 166, 70, 0.20);
+
+    background:
+        #080706;
+}
+
+
+.admin-form-group input:focus {
+    border-color:
+        rgba(201, 166, 70, 0.70);
+
+    box-shadow:
+        0 0 0 2px
+        rgba(201, 166, 70, 0.05);
+}
+
+
+/* エラーなど */
+.admin-login-message {
+    min-height: 20px;
+
+    margin-bottom: 8px;
+
+    color: #e05a5a;
+
+    font-size: 10px;
+}
+
+
+/* ログインボタン */
+.admin-submit-button {
+    width: 100%;
+
+    padding: 12px;
+
+    cursor: pointer;
+
+    color: #0c0a06;
+
+    font-weight: bold;
+
+    border:
+        1px solid
+        #d3b44b;
+
+    background:
+        linear-gradient(
+            180deg,
+            #e1c45e,
+            #ae8d2c
+        );
+}
+
+
+.admin-submit-button:hover {
+    background:
+        linear-gradient(
+            180deg,
+            #ecd471,
+            #c3a037
+        );
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 520px) {
+
+    .admin-modal-content {
+        padding:
+            32px
+            20px;
+    }
+
+    .admin-modal-content h2 {
+        font-size: 23px;
+    }
+
+}
