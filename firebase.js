@@ -437,6 +437,111 @@ const characterMaster = [
         name: "レイピアクロト",
         image: "images/クロト.png",
         transcend: "推奨超越なし"
+    },
+
+    {
+        id: "escanor",
+        name: "エスカノール",
+        image: "images/エスカノール.png",
+        transcend: "推奨超越なし"
+    },
+
+    {
+        id: "diane",
+        name: "ディアンヌ",
+        image: "images/ディアンヌ.png",
+        transcend: "推奨超越なし"
+    },
+
+    {
+        id: "king",
+        name: "キング",
+        image: "images/キング.png",
+        transcend: "推奨超越なし"
+    },
+
+    {
+        id: "jericho",
+        name: "ジェリコ",
+        image: "images/ジェリコ.png",
+        transcend: "推奨超越なし"
+    },
+
+    {
+        id: "guila",
+        name: "ギーラ",
+        image: "images/ギーラ.png",
+        transcend: "推奨超越なし"
+    },
+
+    {
+        id: "elaine",
+        name: "エレイン",
+        image: "images/エレイン.png",
+        transcend: "推奨超越なし"
+    },
+
+    {
+        id: "tristan",
+        name: "トリスタン",
+        image: "images/トリスタン.png",
+        transcend: "推奨超越なし"
+    },
+
+    {
+        id: "tioreh",
+        name: "ティオレー",
+        image: "images/ティオレー.png",
+        transcend: "推奨超越なし"
+    },
+
+    {
+        id: "gilthunder",
+        name: "ギルサンダー",
+        image: "images/ギルサンダー.png",
+        transcend: "推奨超越なし"
+    },
+
+    {
+        id: "deldry",
+        name: "ドレドリン",
+        image: "images/ドレドリン.png",
+        transcend: "推奨超越なし"
+    },
+
+    {
+        id: "bug",
+        name: "バグ",
+        image: "images/バグ.png",
+        transcend: "推奨超越なし"
+    },
+
+    {
+        id: "dreyfus",
+        name: "ドレファス",
+        image: "images/ドレファス.png",
+        transcend: "推奨超越なし"
+    },
+
+    {
+        id: "hendrickson",
+        name: "ヘンドリクセン",
+        image: "images/ヘンドリクセン.png",
+        transcend: "推奨超越なし"
+    },
+
+    {
+        id: "slader",
+        name: "スレイダー",
+        image: "images/スレイダー.png",
+        transcend: "推奨超越なし"
+    },
+
+    {
+        id: "griamore",
+        name: "グリアモール",
+        image: "images/グリアモール.png",
+        transcend: "推奨超越なし"
     }
 
 ];
@@ -743,7 +848,7 @@ function openPartyEditor(
 
     const storedParty =
         currentPartyData[
-            `player${playerNumber}`
+        `player${playerNumber}`
         ];
 
 
@@ -1319,7 +1424,7 @@ onSnapshot(
 
             const characters =
                 currentPartyData[
-                    `player${playerNumber}`
+                `player${playerNumber}`
                 ];
 
 
