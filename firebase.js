@@ -398,13 +398,6 @@ const characterMaster = [
     },
 
     {
-        id: "hauser",
-        name: "ガントレットハウザー",
-        image: "images/ハウザー.png",
-        transcend: "推奨超越2"
-    },
-
-    {
         id: "meliodas",
         name: "メリオダス",
         image: "images/メリオダス.png",
@@ -427,14 +420,14 @@ const characterMaster = [
 
     {
         id: "drake",
-        name: "スタッフドレイク",
+        name: "ドレイク",
         image: "images/ドレイク.png",
         transcend: "推奨超越2"
     },
 
     {
         id: "clotho",
-        name: "レイピアクロト",
+        name: "クロト",
         image: "images/クロト.png",
         transcend: "推奨超越なし"
     },
@@ -479,6 +472,13 @@ const characterMaster = [
         name: "エレイン",
         image: "images/エレイン.png",
         transcend: "推奨超越なし"
+    },
+
+    {
+        id: "hauser",
+        name: "ハウザー",
+        image: "images/ハウザー.png",
+        transcend: "推奨超越2"
     },
 
     {
