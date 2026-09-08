@@ -3506,3 +3506,151 @@ footer small {
 
     border-color: #d4af37;
 }
+
+/* ========================================
+   EQUIPMENT
+======================================== */
+
+.equipment-character-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 12px;
+}
+
+
+/* キャラクター1人分 */
+.equipment-character-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    padding: 12px 14px;
+
+    background: rgba(0, 0, 0, 0.22);
+
+    border: 1px solid rgba(212, 175, 55, 0.22);
+    border-radius: 8px;
+
+    overflow-x: auto;
+}
+
+
+/* キャラクター名 */
+.equipment-character-info {
+    flex: 0 0 110px;
+    min-width: 110px;
+}
+
+
+.equipment-character-name {
+    display: block;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    color: #f1e5c5;
+
+    white-space: nowrap;
+}
+
+
+/* 9個の装備枠 */
+.equipment-slots {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+
+    min-width: max-content;
+}
+
+
+/* 装備1個 */
+.equipment-slot {
+    width: 58px;
+    height: 58px;
+
+    flex: 0 0 58px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 3px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(44, 38, 31, 0.95),
+            rgba(17, 15, 13, 0.95)
+        );
+
+    border: 1px solid rgba(212, 175, 55, 0.45);
+    border-radius: 6px;
+
+    color: #bbaa80;
+
+    font-size: 10px;
+    font-weight: 700;
+
+    cursor: default;
+
+    overflow: hidden;
+}
+
+
+/* 将来ここに装備画像を入れる */
+.equipment-slot img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    border-radius: 4px;
+}
+
+
+/* 刻印と武器の間を少し空ける */
+.equipment-slot[data-equipment-type="weapon"] {
+    margin-right: 5px;
+}
+
+
+/* 防具4個の後ろを少し空ける */
+.equipment-slot[data-equipment-type="armor4"] {
+    margin-right: 5px;
+}
+
+
+/* スマホ */
+@media (max-width: 768px) {
+
+    .equipment-character-row {
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+
+    .equipment-character-info {
+        flex: 0 0 90px;
+        min-width: 90px;
+    }
+
+
+    .equipment-character-name {
+        font-size: 12px;
+    }
+
+
+    .equipment-slot {
+        width: 50px;
+        height: 50px;
+
+        flex-basis: 50px;
+
+        font-size: 9px;
+    }
+
+}
