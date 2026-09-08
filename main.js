@@ -104,60 +104,147 @@ window.addEventListener("scroll", () => {
 });
 
 
-// =====================================================
-// 検索
-// =====================================================
+// =========================================
+// 検索ボックス
+// =========================================
 
-const searchInput =
-    document.querySelector(
-        ".search-box input"
-    );
-
+const searchInput = document.querySelector(
+    ".search-box input"
+);
 
 if (searchInput) {
 
-    searchInput.addEventListener(
-        "input",
-        () => {
+    searchInput.addEventListener("input", () => {
 
-            const keyword =
-                searchInput
-                    .value
-                    .toLowerCase()
-                    .trim();
+        const keyword =
+            searchInput.value
+                .toLowerCase()
+                .trim();
+
+        const playerCards =
+            document.querySelectorAll(
+                ".player-card"
+            );
 
 
-            const cards =
-                document.querySelectorAll(
-                    ".player-card, .video-card, .tip-card"
+        // 最初にヒットしたPLAYERを保存
+        let firstMatch = null;
+
+
+        playerCards.forEach(card => {
+
+            // PLAYER番号
+            const playerNumber =
+                card.id.replace(
+                    "player",
+                    ""
                 );
 
 
-            cards.forEach(card => {
+            // 編成名
+            const partyName =
+                card.querySelector(
+                    ".player-header h3"
+                )
+                    ?.textContent
+                    .toLowerCase()
+                    .trim() || "";
 
-                const text =
-                    card
-                        .textContent
-                        .toLowerCase();
+
+            // 担当
+            const roleText =
+                card.querySelector(
+                    ".player-role"
+                )
+                    ?.textContent
+                    .toLowerCase()
+                    .trim() || "";
 
 
+            let isMatch = false;
+
+
+            // =================================
+            // 空欄なら全PLAYER表示
+            // =================================
+
+            if (keyword === "") {
+
+                isMatch = true;
+
+            }
+
+
+            // =================================
+            // 1～5ならPLAYER番号検索
+            // =================================
+
+            else if (
+                /^[1-5]$/.test(keyword)
+            ) {
+
+                isMatch =
+                    playerNumber === keyword;
+
+            }
+
+
+            // =================================
+            // 編成名・担当の部分検索
+            // =================================
+
+            else {
+
+                isMatch =
+                    partyName.includes(keyword)
+                    ||
+                    roleText.includes(keyword);
+
+            }
+
+
+            // =================================
+            // 表示・非表示
+            // =================================
+
+            if (isMatch) {
+
+                card.style.display = "";
+
+
+                // 最初にヒットしたカードを記録
                 if (
-                    keyword === "" ||
-                    text.includes(keyword)
+                    keyword !== "" &&
+                    firstMatch === null
                 ) {
 
-                    card.style.display = "";
-
-                } else {
-
-                    card.style.display = "none";
+                    firstMatch = card;
 
                 }
 
+            } else {
+
+                card.style.display = "none";
+
+            }
+
+        });
+
+
+        // =====================================
+        // 検索結果まで自動スクロール
+        // =====================================
+
+        if (firstMatch) {
+
+            firstMatch.scrollIntoView({
+                behavior: "smooth",
+                block: "center"
             });
 
         }
-    );
+
+    });
 
 }
 
