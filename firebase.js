@@ -906,20 +906,27 @@ function openPartyEditor(
                     const master =
                         characterMaster.find(
                             item =>
-                                item.id === character.id
+                                item.id ===
+                                character.id
                         );
 
+
                     if (!master) {
+
                         return null;
+
                     }
 
+
                     return {
+
                         ...master,
 
                         transcend:
                             character.transcend ||
                             master.transcend ||
                             "推奨超越なし"
+
                     };
 
                 })
@@ -1040,6 +1047,7 @@ function closePartyEditor() {
 
 // =====================================================
 // キャラ選択一覧を表示
+// ※ 初回だけ全カードを生成
 // =====================================================
 
 function renderCharacterSelector() {
@@ -1049,35 +1057,34 @@ function renderCharacterSelector() {
             "characterSelectGrid"
         );
 
-
     const count =
         document.getElementById(
             "selectedCharacterCount"
         );
-
 
     if (!grid || !count) {
         return;
     }
 
 
-    grid.innerHTML = "";
-
-
+    // 選択人数を更新
     count.textContent =
         selectedCharacters.length;
+
+
+    // 一覧を初期化
+    grid.innerHTML = "";
 
 
     characterMaster.forEach(
         character => {
 
             const isSelected =
-                selectedCharacters
-                    .some(
-                        selected =>
-                            selected.id ===
-                            character.id
-                    );
+                selectedCharacters.some(
+                    selected =>
+                        selected.id ===
+                        character.id
+                );
 
 
             const card =
@@ -1085,13 +1092,13 @@ function renderCharacterSelector() {
                     "button"
                 );
 
-
-            card.type =
-                "button";
-
+            card.type = "button";
 
             card.className =
                 "character-select-card";
+
+            card.dataset.characterId =
+                character.id;
 
 
             if (isSelected) {
@@ -1112,6 +1119,7 @@ function renderCharacterSelector() {
                     <img
                         src="${character.image}"
                         alt="${character.name}"
+                        loading="lazy"
                     >
 
                     <div
@@ -1137,8 +1145,9 @@ function renderCharacterSelector() {
                 "click",
                 () => {
 
-                    toggleCharacter(
-                        character
+                    toggleCharacterFast(
+                        character,
+                        card
                     );
 
                 }
@@ -1150,20 +1159,83 @@ function renderCharacterSelector() {
                 const selectedCharacter =
                     selectedCharacters.find(
                         selected =>
-                            selected.id === character.id
+                            selected.id ===
+                            character.id
                     );
 
-                const transcendBox =
-                    document.createElement("div");
+                if (selectedCharacter) {
 
-                transcendBox.className =
-                    "transcend-editor";
+                    createTranscendEditor(
+                        selectedCharacter,
+                        card
+                    );
 
-                transcendBox.innerHTML = `
+                }
 
-        <span>
-            推奨<br>
-            超越
+            }
+
+            grid.appendChild(
+                card
+            );
+
+        }
+    );
+
+}
+
+// =====================================================
+// 推奨超越の選択欄を作成
+// =====================================================
+
+function createTranscendEditor(
+    character,
+    card
+) {
+
+    // すでにある場合は作らない
+    if (
+        card.querySelector(
+            ".transcend-editor"
+        )
+    ) {
+        return;
+    }
+
+
+    const editor =
+        document.createElement(
+            "div"
+        );
+
+    editor.className =
+        "transcend-editor";
+
+
+    // 現在の値を取得
+    let currentValue =
+        character.transcend
+            ?.replace(
+                "推奨超越",
+                ""
+            ) || "なし";
+
+
+    if (
+        ![
+            "なし",
+            "1",
+            "2",
+            "3"
+        ].includes(currentValue)
+    ) {
+        currentValue = "なし";
+    }
+
+
+    editor.innerHTML = `
+
+        <span class="transcend-label">
+            推奨超越
         </span>
 
         <select
@@ -1191,98 +1263,92 @@ function renderCharacterSelector() {
     `;
 
 
-                const select =
-                    transcendBox.querySelector(
-                        ".transcend-select"
-                    );
+    const select =
+        editor.querySelector(
+            ".transcend-select"
+        );
 
 
-                let currentValue =
-                    selectedCharacter
-                        ?.transcend
-                        ?.replace(
-                            "推奨超越",
-                            ""
-                        ) || "なし";
+    select.value =
+        currentValue;
 
 
-                if (
-                    ![
-                        "なし",
-                        "1",
-                        "2",
-                        "3"
-                    ].includes(currentValue)
-                ) {
-                    currentValue = "なし";
-                }
+    // selectを押したとき
+    // キャラ選択が解除されないようにする
+    select.addEventListener(
+        "click",
+        event => {
 
-
-                select.value =
-                    currentValue;
-
-
-                select.addEventListener(
-                    "click",
-                    event => {
-                        event.stopPropagation();
-                    }
-                );
-
-
-                select.addEventListener(
-                    "change",
-                    event => {
-
-                        event.stopPropagation();
-
-                        if (
-                            selectedCharacter
-                        ) {
-
-                            selectedCharacter.transcend =
-                                `推奨超越${event.target.value}`;
-
-                        }
-
-                    }
-                );
-
-
-                card.appendChild(
-                    transcendBox
-                );
-
-            }
-
-            grid.appendChild(
-                card
-            );
+            event.stopPropagation();
 
         }
     );
 
-}
 
+    // 推奨超越を変更
+    select.addEventListener(
+        "change",
+        event => {
+
+            event.stopPropagation();
+
+            character.transcend =
+                `推奨超越${event.target.value}`;
+
+        }
+    );
+
+
+    // キャラカードをクリック扱いにしない
+    editor.addEventListener(
+        "click",
+        event => {
+
+            event.stopPropagation();
+
+        }
+    );
+
+
+    card.appendChild(
+        editor
+    );
+
+}
 
 // =====================================================
 // キャラクター選択
+// 高速版：クリックしたカードだけ更新
 // =====================================================
 
-function toggleCharacter(
-    character
+function toggleCharacterFast(
+    character,
+    card
 ) {
 
+    const count =
+        document.getElementById(
+            "selectedCharacterCount"
+        );
+
+    const message =
+        document.getElementById(
+            "partyEditorMessage"
+        );
+
+
     const index =
-        selectedCharacters
-            .findIndex(
-                selected =>
-                    selected.id ===
-                    character.id
-            );
+        selectedCharacters.findIndex(
+            selected =>
+                selected.id ===
+                character.id
+        );
 
 
-    // 選択済みなら解除
+    // =========================================
+    // 選択済み → 解除
+    // =========================================
+
     if (index !== -1) {
 
         selectedCharacters.splice(
@@ -1291,98 +1357,111 @@ function toggleCharacter(
         );
 
 
-        renderCharacterSelector();
+        card.classList.remove(
+            "selected"
+        );
+
+        const transcendEditor =
+            card.querySelector(
+                ".transcend-editor"
+            );
+
+
+        if (transcendEditor) {
+
+            transcendEditor.remove();
+
+        }
+
+
+        if (count) {
+
+            count.textContent =
+                selectedCharacters.length;
+
+        }
+
+
+        if (message) {
+
+            message.textContent = "";
+
+        }
+
 
         return;
 
     }
 
 
-    // 4人まで
+    // =========================================
+    // 最大4人
+    // =========================================
+
     if (
         selectedCharacters.length >= 4
     ) {
 
-        const message =
-            document.getElementById(
-                "partyEditorMessage"
-            );
+        if (message) {
 
+            message.textContent =
+                "選択できるキャラクターは4人までです。";
 
-        message.textContent =
-            "選択できるキャラクターは4人までです。";
-
+        }
 
         return;
 
     }
 
 
-    selectedCharacters.push({
+    // =========================================
+    // キャラを追加
+    // =========================================
+
+    // キャラごとに独立したデータとして追加
+    const selectedCharacter = {
+
         ...character,
+
         transcend:
             character.transcend ||
             "推奨超越なし"
-    });
+
+    };
 
 
-    document.getElementById(
-        "partyEditorMessage"
-    ).textContent =
-        "";
-
-    const playerCard =
-        document.getElementById(
-            `player${playerNumber}`
-        );
+    selectedCharacters.push(
+        selectedCharacter
+    );
 
 
-    const currentPartyName =
-        currentPartyData[
-        `player${playerNumber}Name`
-        ] ||
-        playerCard
-            ?.querySelector(
-                ".player-header h3"
-            )
-            ?.textContent
-            ?.trim() ||
-        "";
+    // このカードだけ選択状態にする
+    card.classList.add(
+        "selected"
+    );
 
 
-    const currentRoleText =
-        currentPartyData[
-        `player${playerNumber}Role`
-        ] ||
-        playerCard
-            ?.querySelector(
-                ".player-role"
-            )
-            ?.textContent
-            ?.replace(
-                "担当：",
-                ""
-            )
-            ?.trim() ||
-        "アタッカー";
+    // 推奨超越の選択欄を追加
+    createTranscendEditor(
+        selectedCharacter,
+        card
+    );
 
 
-    document.getElementById(
-        "partyNameInput"
-    ).value =
-        currentPartyName;
+    // 人数だけ変更
+    if (count) {
+
+        count.textContent =
+            selectedCharacters.length;
+
+    }
 
 
-    document.getElementById(
-        "partyRoleSelect"
-    ).value =
-        currentRoleText ===
-            "サポーター"
-            ? "サポーター"
-            : "アタッカー";
+    if (message) {
 
+        message.textContent = "";
 
-    renderCharacterSelector();
+    }
 
 }
 

@@ -3455,3 +3455,54 @@ footer small {
 
     cursor: pointer;
 }
+
+/* =========================================
+   推奨超越 編集
+========================================= */
+
+.transcend-editor {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+
+    width: 100%;
+
+    margin-top: 8px;
+    padding-top: 8px;
+
+    border-top: 1px solid rgba(212, 175, 55, 0.18);
+}
+
+
+.transcend-label {
+    font-size: 10px;
+    font-weight: 700;
+
+    color: #d4af37;
+
+    white-space: nowrap;
+}
+
+
+.transcend-select {
+    padding: 5px 7px;
+
+    border: 1px solid rgba(212, 175, 55, 0.4);
+    border-radius: 5px;
+
+    background: #111;
+    color: #fff;
+
+    font-size: 12px;
+
+    cursor: pointer;
+}
+
+
+.transcend-select:focus {
+    outline: none;
+
+    border-color: #d4af37;
+}
