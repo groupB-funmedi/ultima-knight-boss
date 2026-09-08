@@ -3374,3 +3374,84 @@ footer small {
     }
 
 }
+
+/* =========================================
+   PARTY EDITOR SETTINGS
+========================================= */
+
+.party-setting-group {
+    margin: 18px 0;
+}
+
+
+.party-setting-group label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+    color: #d4af37;
+}
+
+
+.party-setting-input,
+.party-setting-select {
+    width: 100%;
+
+    box-sizing: border-box;
+
+    padding: 11px 12px;
+
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 6px;
+
+    background: #111;
+    color: #fff;
+
+    font: inherit;
+}
+
+
+.party-setting-input:focus,
+.party-setting-select:focus {
+    outline: none;
+
+    border-color: #d4af37;
+}
+
+
+/* 推奨超越 */
+
+.transcend-editor {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+
+    margin-top: 8px;
+}
+
+
+.transcend-editor span {
+    font-size: 11px;
+
+    color: #d4af37;
+}
+
+
+.transcend-select {
+    padding: 4px 6px;
+
+    border: 1px solid rgba(212, 175, 55, 0.35);
+    border-radius: 4px;
+
+    background: #111;
+    color: #fff;
+
+    cursor: pointer;
+}

@@ -725,15 +725,57 @@ function createPartyEditorModal() {
 
 
             <p
-                class="party-editor-description"
-            >
-                キャラクターを4人選択してください。
-            </p>
+    class="party-editor-description"
+>
+    編成情報とキャラクターを設定してください。
+</p>
 
 
-            <div
-                class="selected-count"
-            >
+<!-- 編成名 -->
+<div class="party-setting-group">
+
+    <label for="partyNameInput">
+        編成名
+    </label>
+
+    <input
+        type="text"
+        id="partyNameInput"
+        class="party-setting-input"
+        placeholder="例：デイジー入りマーリン編成"
+    >
+
+</div>
+
+
+<!-- 担当 -->
+<div class="party-setting-group">
+
+    <label for="partyRoleSelect">
+        担当
+    </label>
+
+    <select
+        id="partyRoleSelect"
+        class="party-setting-select"
+    >
+
+        <option value="アタッカー">
+            アタッカー
+        </option>
+
+        <option value="サポーター">
+            サポーター
+        </option>
+
+    </select>
+
+</div>
+
+
+<div
+    class="selected-count"
+>
 
                 選択中：
 
@@ -861,12 +903,24 @@ function openPartyEditor(
             storedParty
                 .map(character => {
 
-                    return characterMaster
-                        .find(
-                            master =>
-                                master.id ===
-                                character.id
+                    const master =
+                        characterMaster.find(
+                            item =>
+                                item.id === character.id
                         );
+
+                    if (!master) {
+                        return null;
+                    }
+
+                    return {
+                        ...master,
+
+                        transcend:
+                            character.transcend ||
+                            master.transcend ||
+                            "推奨超越なし"
+                    };
 
                 })
                 .filter(Boolean);
@@ -1091,6 +1145,116 @@ function renderCharacterSelector() {
             );
 
 
+            if (isSelected) {
+
+                const selectedCharacter =
+                    selectedCharacters.find(
+                        selected =>
+                            selected.id === character.id
+                    );
+
+                const transcendBox =
+                    document.createElement("div");
+
+                transcendBox.className =
+                    "transcend-editor";
+
+                transcendBox.innerHTML = `
+
+        <span>
+            推奨<br>
+            超越
+        </span>
+
+        <select
+            class="transcend-select"
+        >
+
+            <option value="なし">
+                なし
+            </option>
+
+            <option value="1">
+                1
+            </option>
+
+            <option value="2">
+                2
+            </option>
+
+            <option value="3">
+                3
+            </option>
+
+        </select>
+
+    `;
+
+
+                const select =
+                    transcendBox.querySelector(
+                        ".transcend-select"
+                    );
+
+
+                let currentValue =
+                    selectedCharacter
+                        ?.transcend
+                        ?.replace(
+                            "推奨超越",
+                            ""
+                        ) || "なし";
+
+
+                if (
+                    ![
+                        "なし",
+                        "1",
+                        "2",
+                        "3"
+                    ].includes(currentValue)
+                ) {
+                    currentValue = "なし";
+                }
+
+
+                select.value =
+                    currentValue;
+
+
+                select.addEventListener(
+                    "click",
+                    event => {
+                        event.stopPropagation();
+                    }
+                );
+
+
+                select.addEventListener(
+                    "change",
+                    event => {
+
+                        event.stopPropagation();
+
+                        if (
+                            selectedCharacter
+                        ) {
+
+                            selectedCharacter.transcend =
+                                `推奨超越${event.target.value}`;
+
+                        }
+
+                    }
+                );
+
+
+                card.appendChild(
+                    transcendBox
+                );
+
+            }
+
             grid.appendChild(
                 card
             );
@@ -1154,15 +1318,68 @@ function toggleCharacter(
     }
 
 
-    selectedCharacters.push(
-        character
-    );
+    selectedCharacters.push({
+        ...character,
+        transcend:
+            character.transcend ||
+            "推奨超越なし"
+    });
 
 
     document.getElementById(
         "partyEditorMessage"
     ).textContent =
         "";
+
+    const playerCard =
+        document.getElementById(
+            `player${playerNumber}`
+        );
+
+
+    const currentPartyName =
+        currentPartyData[
+        `player${playerNumber}Name`
+        ] ||
+        playerCard
+            ?.querySelector(
+                ".player-header h3"
+            )
+            ?.textContent
+            ?.trim() ||
+        "";
+
+
+    const currentRoleText =
+        currentPartyData[
+        `player${playerNumber}Role`
+        ] ||
+        playerCard
+            ?.querySelector(
+                ".player-role"
+            )
+            ?.textContent
+            ?.replace(
+                "担当：",
+                ""
+            )
+            ?.trim() ||
+        "アタッカー";
+
+
+    document.getElementById(
+        "partyNameInput"
+    ).value =
+        currentPartyName;
+
+
+    document.getElementById(
+        "partyRoleSelect"
+    ).value =
+        currentRoleText ===
+            "サポーター"
+            ? "サポーター"
+            : "アタッカー";
 
 
     renderCharacterSelector();
@@ -1222,6 +1439,32 @@ async function savePartyComposition() {
         const playerKey =
             `player${editingPlayer}`;
 
+        const partyName =
+            document.getElementById(
+                "partyNameInput"
+            ).value.trim();
+
+
+        const partyRole =
+            document.getElementById(
+                "partyRoleSelect"
+            ).value;
+
+
+        if (!partyName) {
+
+            message.textContent =
+                "編成名を入力してください。";
+
+            saveButton.disabled =
+                false;
+
+            saveButton.textContent =
+                "この編成を保存";
+
+            return;
+        }
+
 
         const saveData =
             selectedCharacters
@@ -1246,7 +1489,14 @@ async function savePartyComposition() {
             partyDocument,
             {
                 [playerKey]:
-                    saveData
+                    saveData,
+
+                [`player${editingPlayer}Name`]:
+                    partyName,
+
+                [`player${editingPlayer}Role`]:
+                    partyRole
+
             },
             {
                 merge: true
@@ -1438,6 +1688,61 @@ onSnapshot(
                     playerNumber,
                     characters
                 );
+
+                const playerCard =
+                    document.getElementById(
+                        `player${playerNumber}`
+                    );
+
+
+                if (playerCard) {
+
+                    const partyName =
+                        currentPartyData[
+                        `player${playerNumber}Name`
+                        ];
+
+
+                    const partyRole =
+                        currentPartyData[
+                        `player${playerNumber}Role`
+                        ];
+
+
+                    const titleElement =
+                        playerCard.querySelector(
+                            ".player-header h3"
+                        );
+
+
+                    const roleElement =
+                        playerCard.querySelector(
+                            ".player-role"
+                        );
+
+
+                    if (
+                        titleElement &&
+                        partyName
+                    ) {
+
+                        titleElement.textContent =
+                            partyName;
+
+                    }
+
+
+                    if (
+                        roleElement &&
+                        partyRole
+                    ) {
+
+                        roleElement.textContent =
+                            `担当：${partyRole}`;
+
+                    }
+
+                }
 
             }
 
@@ -2203,7 +2508,7 @@ function openPlayerTacticEditor(
 
     const savedText =
         currentPartyData[
-            `player${playerNumber}Tactic`
+        `player${playerNumber}Tactic`
         ];
 
 
