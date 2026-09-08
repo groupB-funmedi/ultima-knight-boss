@@ -140,10 +140,6 @@
                 OTHER
             </div>
 
-            <a href="#notes" class="menu-item">
-                <span>!</span>
-                攻略メモ
-            </a>
 
             <a href="#contact" class="menu-item">
                 <span>✉</span>
@@ -274,6 +270,66 @@
 
         </section>
 
+
+        <!-- =====================================
+        全編成共通の立ち回り
+        ====================================== -->
+        <section class="content-section" id="strategy">
+
+            <div class="section-heading">
+
+                <div>
+
+                    <div class="section-kicker">
+                        BATTLE STRATEGY
+                    </div>
+
+                    <h2>
+                        全編成共通の立ち回り
+                    </h2>
+
+                </div>
+
+                <div class="section-description">
+                    5人全員で共有する立ち回り・注意点を掲載します。
+                </div>
+
+            </div>
+
+
+            <div class="shared-strategy-box">
+
+                <div class="shared-strategy-header">
+
+                    <div>
+
+                        <div class="tactic-title">
+                            共通立ち回り
+                        </div>
+
+                        <div class="shared-strategy-subtitle">
+                            ALL PLAYER STRATEGY
+                        </div>
+
+                    </div>
+
+
+                    <!-- 管理者ログイン中だけ表示 -->
+                    <button id="editSharedStrategyButton" class="strategy-edit-button" type="button" hidden>
+                        ✎ 立ち回りを編集
+                    </button>
+
+                </div>
+
+
+                <!-- 一般ユーザーにも表示される文章 -->
+                <div id="sharedStrategyText" class="shared-strategy-text">
+                    共通の立ち回りはまだ登録されていません。
+                </div>
+
+            </div>
+
+        </section>
 
         <!-- =====================================
              パーティ編成
@@ -1504,207 +1560,19 @@
         </section>
 
 
-        <!-- =====================================
-             立ち回り
-        ====================================== -->
-        <section class="content-section" id="strategy">
-
-            <div class="section-heading">
-
-                <div>
-
-                    <div class="section-kicker">
-                        BATTLE STRATEGY
-                    </div>
-
-                    <h2>
-                        立ち回り・攻略手順
-                    </h2>
-
-                </div>
-
-                <div class="section-description">
-                    5人それぞれの役割と行動をまとめます。
-                </div>
-
-            </div>
 
 
-            <div class="strategy-list">
 
-                <div class="strategy-step">
-
-                    <div class="step-number">
-                        01
-                    </div>
-
-                    <div>
-
-                        <h3>
-                            開幕
-                        </h3>
-
-                        <p>
-                            開幕時の行動、バフ・デバフ、
-                            初動について記載します。
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-                <div class="strategy-step">
-
-                    <div class="step-number">
-                        02
-                    </div>
-
-                    <div>
-
-                        <h3>
-                            序盤
-                        </h3>
-
-                        <p>
-                            ボスの攻撃を確認しながら
-                            各プレイヤーが役割を遂行します。
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-                <div class="strategy-step">
-
-                    <div class="step-number">
-                        03
-                    </div>
-
-                    <div>
-
-                        <h3>
-                            中盤
-                        </h3>
-
-                        <p>
-                            スキル回しや攻撃タイミングを
-                            合わせます。
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-                <div class="strategy-step">
-
-                    <div class="step-number">
-                        04
-                    </div>
-
-                    <div>
-
-                        <h3>
-                            終盤
-                        </h3>
-
-                        <p>
-                            全員で火力を集中させ、
-                            ボス撃破を狙います。
-                        </p>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
 
 
         <!-- =====================================
-             攻略ポイント
-        ====================================== -->
-        <section class="content-section" id="notes">
-
-            <div class="section-heading">
-
-                <div>
-
-                    <div class="section-kicker">
-                        IMPORTANT NOTES
-                    </div>
-
-                    <h2>
-                        攻略ポイント
-                    </h2>
-
-                </div>
-
-            </div>
-
-
-            <div class="tips-grid">
-
-                <div class="tip-card">
-
-                    <span>◆</span>
-
-                    <p>
-                        5人のプレイヤーで役割を明確にする。
-                    </p>
-
-                </div>
-
-
-                <div class="tip-card">
-
-                    <span>◆</span>
-
-                    <p>
-                        各プレイヤーは4キャラの役割を確認する。
-                    </p>
-
-                </div>
-
-
-                <div class="tip-card">
-
-                    <span>◆</span>
-
-                    <p>
-                        スキルや必殺技のタイミングを合わせる。
-                    </p>
-
-                </div>
-
-
-                <div class="tip-card">
-
-                    <span>◆</span>
-
-                    <p>
-                        うまくいった攻略方法を記録して共有する。
-                    </p>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =====================================
-             動画
+        攻略動画
         ====================================== -->
         <section class="content-section" id="videos">
 
             <div class="section-heading">
 
                 <div>
-
                     <div class="section-kicker">
                         VIDEO & RECORD
                     </div>
@@ -1712,83 +1580,82 @@
                     <h2>
                         攻略動画・実績
                     </h2>
-
                 </div>
 
                 <div class="section-description">
-                    これまでにうまくいった攻略動画を掲載します。
+                    騎士団ボス攻略の参考動画を掲載しています。
                 </div>
 
             </div>
 
 
-            <div class="video-grid">
+            <!-- 動画一覧 -->
+            <div class="video-list">
 
-                <div class="video-card">
+                <!-- =========================
+             動画 1
+        ========================== -->
+                <article class="video-card">
 
-                    <div class="video-thumbnail">
+                    <div class="video-player">
 
-                        <span class="play-button">
-                            ▶
-                        </span>
-
-                    </div>
-
-                    <div class="video-info">
-
-                        <h3>
-                            魔獣アクム攻略動画
-                        </h3>
-
-                        <p>
-                            5人20キャラ編成での攻略
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-                <div class="video-card">
-
-                    <div class="video-thumbnail">
-
-                        <span class="play-button">
-                            ▶
-                        </span>
+                        <iframe src="https://www.youtube.com/embed/qIO0gxLqOiU?rel=0" title="騎士団ボス攻略動画1" loading="lazy"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen>
+                        </iframe>
 
                     </div>
 
                     <div class="video-info">
 
+                        <div class="video-type">
+                            YOUTUBE
+                        </div>
+
                         <h3>
-                            安定攻略・立ち回り解説
+                            攻略動画 01
                         </h3>
 
                         <p>
-                            各プレイヤーの行動を解説
+                            騎士団ボス攻略の参考動画です。
                         </p>
 
                     </div>
 
-                </div>
+                </article>
 
 
-                <div class="video-card add-video">
+                <!-- =========================
+             動画 2
+        ========================== -->
+                <article class="video-card">
 
-                    <div class="add-video-symbol">
-                        ＋
+                    <div class="video-player">
+
+                        <iframe src="https://www.youtube.com/embed/qIO0gxLqOiU?rel=0" title="騎士団ボス攻略動画1" loading="lazy"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen>
+                        </iframe>
+
                     </div>
 
-                    <h3>
-                        動画を追加する
-                    </h3>
+                    <div class="video-info">
 
-                    <p>
-                        後からYouTube動画を追加できます。
-                    </p>
+                        <div class="video-type">
+                            YOUTUBE
+                        </div>
 
-                </div>
+                        <h3>
+                            攻略動画 02
+                        </h3>
+
+                        <p>
+                            騎士団ボス攻略の参考動画です。
+                        </p>
+
+                    </div>
+
+                </article>
 
             </div>
 
@@ -1798,21 +1665,40 @@
         <!-- =====================================
              フッター
         ====================================== -->
-        <footer id="contact">
+        <footer class="site-footer" id="contact">
 
-            <div class="footer-logo">
-                ULTIMA
+            <div>
+                <strong>ULTIMA</strong>
+                <p>騎士団ボス攻略サイト</p>
+
+                <!-- お問い合わせ -->
+                <div class="footer-contact">
+
+                    <span>お問い合わせ</span>
+
+                    <a href="https://x.com/ne_7ori?s=11" target="_blank" rel="noopener noreferrer"
+                        class="footer-x-link">
+                        X : @ne_7ori
+                    </a>
+
+                </div>
+
             </div>
 
-            <p>
-                騎士団ボス攻略サイト
-            </p>
+            <!-- 団長紹介 -->
+            <div class="footer-contact">
 
-            <div class="footer-line"></div>
+                <span>団長紹介</span>
 
-            <small>
-                © ULTIMA Knight Boss Guide
-            </small>
+                <a href="https://x.com/_xRmume1_?s=20" target="_blank" rel="noopener noreferrer" class="footer-x-link">
+                    X : @_xRmume1_
+                </a>
+
+            </div>
+
+            <div>
+                © ULTIMA
+            </div>
 
         </footer>
 

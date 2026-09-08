@@ -1496,3 +1496,1007 @@ onAuthStateChanged(
 createEditButtons();
 
 createPartyEditorModal();
+
+// =====================================================
+// 全編成共通 BATTLE STRATEGY
+// =====================================================
+
+const sharedStrategyButton =
+    document.getElementById("editSharedStrategyButton");
+
+const sharedStrategyText =
+    document.getElementById("sharedStrategyText");
+
+
+// =====================================================
+// BATTLE STRATEGY 編集モーダルを作成
+// =====================================================
+
+function createSharedStrategyModal() {
+
+    if (
+        document.getElementById(
+            "sharedStrategyModal"
+        )
+    ) {
+        return;
+    }
+
+
+    const modal =
+        document.createElement("div");
+
+
+    modal.id =
+        "sharedStrategyModal";
+
+    modal.className =
+        "party-editor-modal";
+
+    modal.hidden =
+        true;
+
+
+    modal.innerHTML = `
+
+        <div
+            class="party-editor-overlay"
+        ></div>
+
+        <div
+            class="party-editor-window strategy-editor-window"
+        >
+
+            <button
+                type="button"
+                class="party-editor-close"
+                id="sharedStrategyClose"
+            >
+                ×
+            </button>
+
+
+            <div class="party-editor-kicker">
+                BATTLE STRATEGY EDITOR
+            </div>
+
+
+            <h2>
+                全編成共通の立ち回り
+            </h2>
+
+
+            <p class="party-editor-description">
+                5人全員で共有する立ち回りを入力してください。
+            </p>
+
+
+            <textarea
+                id="sharedStrategyInput"
+                class="strategy-editor-textarea"
+                placeholder="例：
+
+【開幕】
+PLAYER 1が○○を使用する。
+
+【序盤】
+PLAYER 2とPLAYER 3は○○を担当する。
+
+【終盤】
+全員で必殺技を合わせる。"
+            ></textarea>
+
+
+            <div
+                id="sharedStrategyMessage"
+                class="party-editor-message"
+            ></div>
+
+
+            <div class="party-editor-actions">
+
+                <button
+                    type="button"
+                    class="party-editor-cancel"
+                    id="sharedStrategyCancel"
+                >
+                    キャンセル
+                </button>
+
+
+                <button
+                    type="button"
+                    class="party-editor-save"
+                    id="sharedStrategySave"
+                >
+                    立ち回りを保存
+                </button>
+
+            </div>
+
+        </div>
+
+    `;
+
+
+    document.body.appendChild(modal);
+
+
+    document
+        .getElementById("sharedStrategyClose")
+        .addEventListener(
+            "click",
+            closeSharedStrategyEditor
+        );
+
+
+    document
+        .getElementById("sharedStrategyCancel")
+        .addEventListener(
+            "click",
+            closeSharedStrategyEditor
+        );
+
+
+    modal
+        .querySelector(".party-editor-overlay")
+        .addEventListener(
+            "click",
+            closeSharedStrategyEditor
+        );
+
+
+    document
+        .getElementById("sharedStrategySave")
+        .addEventListener(
+            "click",
+            saveSharedStrategy
+        );
+}
+
+
+// =====================================================
+// 編集画面を開く
+// =====================================================
+
+function openSharedStrategyEditor() {
+
+    const input =
+        document.getElementById(
+            "sharedStrategyInput"
+        );
+
+
+    const message =
+        document.getElementById(
+            "sharedStrategyMessage"
+        );
+
+
+    input.value =
+        currentPartyData.sharedStrategy || "";
+
+
+    message.textContent =
+        "";
+
+
+    document.getElementById(
+        "sharedStrategyModal"
+    ).hidden = false;
+}
+
+
+// =====================================================
+// 編集画面を閉じる
+// =====================================================
+
+function closeSharedStrategyEditor() {
+
+    const modal =
+        document.getElementById(
+            "sharedStrategyModal"
+        );
+
+
+    if (modal) {
+
+        modal.hidden =
+            true;
+
+    }
+}
+
+
+// =====================================================
+// Firestoreへ保存
+// =====================================================
+
+async function saveSharedStrategy() {
+
+    const input =
+        document.getElementById(
+            "sharedStrategyInput"
+        );
+
+
+    const message =
+        document.getElementById(
+            "sharedStrategyMessage"
+        );
+
+
+    const saveButton =
+        document.getElementById(
+            "sharedStrategySave"
+        );
+
+
+    const user =
+        auth.currentUser;
+
+
+    // 管理者チェック
+    if (
+        !user ||
+        user.uid !== ADMIN_UID
+    ) {
+
+        message.textContent =
+            "管理者としてログインしてください。";
+
+        return;
+    }
+
+
+    const text =
+        input.value.trim();
+
+
+    saveButton.disabled =
+        true;
+
+    saveButton.textContent =
+        "保存中...";
+
+    message.textContent =
+        "";
+
+
+    try {
+
+        await setDoc(
+            partyDocument,
+            {
+                sharedStrategy: text
+            },
+            {
+                merge: true
+            }
+        );
+
+
+        message.textContent =
+            "立ち回りを保存しました。";
+
+
+        setTimeout(
+            () => {
+
+                closeSharedStrategyEditor();
+
+            },
+            500
+        );
+
+
+    } catch (error) {
+
+        console.error(
+            "立ち回り保存エラー:",
+            error
+        );
+
+
+        message.textContent =
+            "保存できませんでした。";
+
+    } finally {
+
+        saveButton.disabled =
+            false;
+
+        saveButton.textContent =
+            "立ち回りを保存";
+
+    }
+}
+
+
+// =====================================================
+// 編集ボタン
+// =====================================================
+
+if (sharedStrategyButton) {
+
+    sharedStrategyButton.addEventListener(
+        "click",
+        openSharedStrategyEditor
+    );
+
+}
+
+
+// =====================================================
+// 編集モーダル作成
+// =====================================================
+
+createSharedStrategyModal();
+
+
+// =====================================================
+// 管理者だけ編集ボタンを表示
+// =====================================================
+
+onAuthStateChanged(
+    auth,
+    user => {
+
+        if (!sharedStrategyButton) {
+            return;
+        }
+
+
+        const isAdmin =
+            user &&
+            user.uid === ADMIN_UID;
+
+
+        sharedStrategyButton.hidden =
+            !isAdmin;
+
+    }
+);
+
+
+// =====================================================
+// FirestoreからBATTLE STRATEGYを読み込む
+// =====================================================
+
+onSnapshot(
+    partyDocument,
+    snapshot => {
+
+        if (!snapshot.exists()) {
+            return;
+        }
+
+
+        const data =
+            snapshot.data();
+
+
+        if (
+            typeof data.sharedStrategy ===
+            "string"
+        ) {
+
+            if (sharedStrategyText) {
+
+                sharedStrategyText.textContent =
+                    data.sharedStrategy ||
+                    "共通の立ち回りはまだ登録されていません。";
+
+            }
+
+        }
+
+    },
+    error => {
+
+        console.error(
+            "立ち回り読み込みエラー:",
+            error
+        );
+
+    }
+);
+
+// =====================================================
+// PLAYER 1～5 個別立ち回り編集
+// =====================================================
+
+let editingTacticPlayer = null;
+
+
+// =====================================================
+// 各PLAYERに「立ち回りを編集」ボタンを作成
+// =====================================================
+
+function createTacticEditButtons() {
+
+    for (
+        let playerNumber = 1;
+        playerNumber <= 5;
+        playerNumber++
+    ) {
+
+        const playerCard =
+            document.getElementById(
+                `player${playerNumber}`
+            );
+
+
+        if (!playerCard) {
+            continue;
+        }
+
+
+        const tacticBox =
+            playerCard.querySelector(
+                ".player-tactic"
+            );
+
+
+        if (!tacticBox) {
+            continue;
+        }
+
+
+        // 文章部分に識別用IDを付ける
+        const tacticText =
+            tacticBox.querySelector("p");
+
+
+        if (tacticText) {
+
+            tacticText.id =
+                `player${playerNumber}TacticText`;
+
+        }
+
+
+        // ボタンがすでにある場合は追加しない
+        if (
+            tacticBox.querySelector(
+                ".tactic-edit-button"
+            )
+        ) {
+            continue;
+        }
+
+
+        const button =
+            document.createElement("button");
+
+
+        button.type =
+            "button";
+
+        button.className =
+            "tactic-edit-button";
+
+        button.textContent =
+            "✎ 立ち回りを編集";
+
+        button.dataset.player =
+            playerNumber;
+
+        button.hidden =
+            true;
+
+
+        button.addEventListener(
+            "click",
+            () => {
+
+                openPlayerTacticEditor(
+                    playerNumber
+                );
+
+            }
+        );
+
+
+        tacticBox.appendChild(
+            button
+        );
+
+    }
+
+}
+
+
+// =====================================================
+// 個別立ち回り編集モーダルを作成
+// =====================================================
+
+function createPlayerTacticModal() {
+
+    if (
+        document.getElementById(
+            "playerTacticModal"
+        )
+    ) {
+        return;
+    }
+
+
+    const modal =
+        document.createElement("div");
+
+
+    modal.id =
+        "playerTacticModal";
+
+    modal.className =
+        "party-editor-modal";
+
+    modal.hidden =
+        true;
+
+
+    modal.innerHTML = `
+
+        <div
+            class="party-editor-overlay"
+        ></div>
+
+
+        <div
+            class="party-editor-window strategy-editor-window"
+        >
+
+            <button
+                type="button"
+                class="party-editor-close"
+                id="playerTacticClose"
+            >
+                ×
+            </button>
+
+
+            <div class="party-editor-kicker">
+                PLAYER STRATEGY EDITOR
+            </div>
+
+
+            <h2 id="playerTacticEditorTitle">
+                PLAYERの立ち回り
+            </h2>
+
+
+            <p class="party-editor-description">
+                この編成を担当するプレイヤーの
+                立ち回りを入力してください。
+            </p>
+
+
+            <textarea
+                id="playerTacticInput"
+                class="strategy-editor-textarea"
+                placeholder="例：
+
+【開幕】
+○○のスキルを使用する。
+
+【中盤】
+ボスの攻撃を確認して○○する。
+
+【終盤】
+必殺技を使用する。"
+            ></textarea>
+
+
+            <div
+                id="playerTacticMessage"
+                class="party-editor-message"
+            ></div>
+
+
+            <div class="party-editor-actions">
+
+                <button
+                    type="button"
+                    class="party-editor-cancel"
+                    id="playerTacticCancel"
+                >
+                    キャンセル
+                </button>
+
+
+                <button
+                    type="button"
+                    class="party-editor-save"
+                    id="playerTacticSave"
+                >
+                    立ち回りを保存
+                </button>
+
+            </div>
+
+        </div>
+
+    `;
+
+
+    document.body.appendChild(
+        modal
+    );
+
+
+    document
+        .getElementById(
+            "playerTacticClose"
+        )
+        .addEventListener(
+            "click",
+            closePlayerTacticEditor
+        );
+
+
+    document
+        .getElementById(
+            "playerTacticCancel"
+        )
+        .addEventListener(
+            "click",
+            closePlayerTacticEditor
+        );
+
+
+    modal
+        .querySelector(
+            ".party-editor-overlay"
+        )
+        .addEventListener(
+            "click",
+            closePlayerTacticEditor
+        );
+
+
+    document
+        .getElementById(
+            "playerTacticSave"
+        )
+        .addEventListener(
+            "click",
+            savePlayerTactic
+        );
+
+}
+
+
+// =====================================================
+// 個別立ち回り編集画面を開く
+// =====================================================
+
+function openPlayerTacticEditor(
+    playerNumber
+) {
+
+    editingTacticPlayer =
+        playerNumber;
+
+
+    const input =
+        document.getElementById(
+            "playerTacticInput"
+        );
+
+
+    const message =
+        document.getElementById(
+            "playerTacticMessage"
+        );
+
+
+    const title =
+        document.getElementById(
+            "playerTacticEditorTitle"
+        );
+
+
+    title.textContent =
+        `PLAYER ${playerNumber} の立ち回り`;
+
+
+    const savedText =
+        currentPartyData[
+            `player${playerNumber}Tactic`
+        ];
+
+
+    // Firestoreに保存済みならそれを表示
+    if (
+        typeof savedText === "string"
+    ) {
+
+        input.value =
+            savedText;
+
+    } else {
+
+        // 未保存なら現在HTMLにある文章を入れる
+        const currentText =
+            document.getElementById(
+                `player${playerNumber}TacticText`
+            );
+
+
+        input.value =
+            currentText
+                ? currentText.textContent.trim()
+                : "";
+
+    }
+
+
+    message.textContent =
+        "";
+
+
+    document.getElementById(
+        "playerTacticModal"
+    ).hidden = false;
+
+}
+
+
+// =====================================================
+// 個別立ち回り編集画面を閉じる
+// =====================================================
+
+function closePlayerTacticEditor() {
+
+    const modal =
+        document.getElementById(
+            "playerTacticModal"
+        );
+
+
+    if (modal) {
+
+        modal.hidden =
+            true;
+
+    }
+
+
+    editingTacticPlayer =
+        null;
+
+}
+
+
+// =====================================================
+// PLAYER個別立ち回りをFirestoreへ保存
+// =====================================================
+
+async function savePlayerTactic() {
+
+    if (!editingTacticPlayer) {
+        return;
+    }
+
+
+    const user =
+        auth.currentUser;
+
+
+    const message =
+        document.getElementById(
+            "playerTacticMessage"
+        );
+
+
+    if (
+        !user ||
+        user.uid !== ADMIN_UID
+    ) {
+
+        message.textContent =
+            "管理者としてログインしてください。";
+
+        return;
+
+    }
+
+
+    const input =
+        document.getElementById(
+            "playerTacticInput"
+        );
+
+
+    const saveButton =
+        document.getElementById(
+            "playerTacticSave"
+        );
+
+
+    const text =
+        input.value.trim();
+
+
+    const tacticKey =
+        `player${editingTacticPlayer}Tactic`;
+
+
+    saveButton.disabled =
+        true;
+
+    saveButton.textContent =
+        "保存中...";
+
+    message.textContent =
+        "";
+
+
+    try {
+
+        await setDoc(
+            partyDocument,
+            {
+                [tacticKey]: text
+            },
+            {
+                merge: true
+            }
+        );
+
+
+        message.textContent =
+            "立ち回りを保存しました。";
+
+
+        setTimeout(
+            () => {
+
+                closePlayerTacticEditor();
+
+            },
+            500
+        );
+
+
+    } catch (error) {
+
+        console.error(
+            "PLAYER立ち回り保存エラー:",
+            error
+        );
+
+
+        message.textContent =
+            "保存できませんでした。";
+
+    } finally {
+
+        saveButton.disabled =
+            false;
+
+        saveButton.textContent =
+            "立ち回りを保存";
+
+    }
+
+}
+
+
+// =====================================================
+// Firestoreの個別立ち回りを画面へ反映
+// =====================================================
+
+function updatePlayerTactics(
+    data
+) {
+
+    for (
+        let playerNumber = 1;
+        playerNumber <= 5;
+        playerNumber++
+    ) {
+
+        const tacticKey =
+            `player${playerNumber}Tactic`;
+
+
+        const savedText =
+            data[tacticKey];
+
+
+        const textElement =
+            document.getElementById(
+                `player${playerNumber}TacticText`
+            );
+
+
+        if (
+            textElement &&
+            typeof savedText === "string"
+        ) {
+
+            textElement.textContent =
+                savedText ||
+                "立ち回りはまだ登録されていません。";
+
+        }
+
+    }
+
+}
+
+
+// =====================================================
+// Firestoreをリアルタイム監視
+// =====================================================
+
+onSnapshot(
+    partyDocument,
+    snapshot => {
+
+        if (!snapshot.exists()) {
+            return;
+        }
+
+
+        const data =
+            snapshot.data();
+
+
+        updatePlayerTactics(
+            data
+        );
+
+    },
+    error => {
+
+        console.error(
+            "PLAYER立ち回り読み込みエラー:",
+            error
+        );
+
+    }
+);
+
+
+// =====================================================
+// 管理者だけ編集ボタンを表示
+// =====================================================
+
+onAuthStateChanged(
+    auth,
+    user => {
+
+        const buttons =
+            document.querySelectorAll(
+                ".tactic-edit-button"
+            );
+
+
+        const isAdmin =
+            user &&
+            user.uid === ADMIN_UID;
+
+
+        buttons.forEach(
+            button => {
+
+                button.hidden =
+                    !isAdmin;
+
+            }
+        );
+
+    }
+);
+
+
+// =====================================================
+// 初期化
+// =====================================================
+
+createTacticEditButtons();
+
+createPlayerTacticModal();
