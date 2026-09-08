@@ -1723,6 +1723,62 @@ function updatePlayerCard(
             }
         );
 
+    // =========================================
+    // EQUIPMENT欄のキャラ情報も更新
+    // =========================================
+
+    const equipmentArea =
+        document.getElementById(
+            `player${playerNumber}Equipment`
+        );
+
+
+    if (equipmentArea) {
+
+        const equipmentRows =
+            equipmentArea.querySelectorAll(
+                ".equipment-character-row"
+            );
+
+
+        characters
+            .slice(0, 4)
+            .forEach(
+                (
+                    character,
+                    index
+                ) => {
+
+                    const row =
+                        equipmentRows[index];
+
+
+                    if (!row) {
+                        return;
+                    }
+
+
+                    
+
+                    const characterName =
+                        row.querySelector(
+                            ".equipment-character-name"
+                        );
+
+
+                    
+                    if (characterName) {
+
+                        characterName.textContent =
+                            character.name;
+
+                    }
+
+                }
+            );
+
+    }
+
 }
 
 
