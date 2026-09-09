@@ -546,6 +546,879 @@ const characterMaster = [
 
 ];
 
+// =====================================================
+// 装備マスター
+// =====================================================
+
+// 武器種
+const weaponTypes = [
+    "ガントレット",
+    "スタッフ",
+    "魔導書",
+    "ランス",
+    "レイピア",
+    "ワンド",
+    "三節棍",
+    "剣盾",
+    "双剣",
+    "大剣",
+    "長剣",
+    "斧"
+];
+
+
+// 装備部位
+const equipmentTypes = {
+    engraving: "刻印",
+    weapon: "武器",
+    top: "トップス",
+    belt: "ベルト",
+    bottom: "ボトムス",
+    boots: "ブーツ",
+    earring: "耳飾り",
+    necklace: "首飾り",
+    ring: "指輪"
+};
+
+
+// =====================================================
+// 装備マスター
+// =====================================================
+
+const equipmentMaster = {
+
+    // =================================================
+    // 武器
+    // =================================================
+
+    weapons: {
+
+        "ガントレット": [],
+
+        "スタッフ": [],
+
+        "魔導書": [],
+
+        "ランス": [],
+
+        "レイピア": [],
+
+        "ワンド": [],
+
+        "三節棍": [],
+
+        "剣盾": [],
+
+
+        // -----------------------------------------
+        // 双剣
+        // -----------------------------------------
+
+        "双剣": [
+
+            {
+                id: "flame_dual_swords",
+                name: "炎火双剣",
+                image: "images/炎火双剣.png"
+            },
+
+            {
+                id: "black_flame_dual_swords",
+                name: "黒炎双剣",
+                image: "images/黒炎双剣.png"
+            },
+
+            {
+                id: "crafted_dual_swords",
+                name: "製作双剣",
+                image: "images/製作双剣.png"
+            }
+
+        ],
+
+
+        "大剣": [],
+
+
+        // -----------------------------------------
+        // 長剣
+        // -----------------------------------------
+
+        "長剣": [
+
+            {
+                id: "flame_long_sword",
+                name: "炎火長剣",
+                image: "images/炎火長剣.png"
+            },
+
+            {
+                id: "black_flame_long_sword",
+                name: "黒炎長剣",
+                image: "images/黒炎長剣.png"
+            },
+
+            {
+                id: "soul_long_sword",
+                name: "魂長剣",
+                image: "images/魂長剣.png"
+            }
+
+        ],
+
+
+        // -----------------------------------------
+        // 斧
+        // -----------------------------------------
+
+        "斧": [
+
+            {
+                id: "flame_axe",
+                name: "炎火斧",
+                image: "images/炎火斧.png"
+            },
+
+            {
+                id: "black_flame_axe",
+                name: "黒炎斧",
+                image: "images/黒炎斧.png"
+            },
+
+            {
+                id: "soul_axe",
+                name: "魂斧",
+                image: "images/魂斧.png"
+            }
+
+        ]
+
+    },
+
+
+    // =================================================
+    // トップス
+    // =================================================
+
+    top: [
+
+        {
+            id: "arachne_top",
+            name: "アラクネートップス",
+            image: "images/アラクネートップス.png"
+        },
+
+        {
+            id: "taranis_top",
+            name: "タラニストップス",
+            image: "images/タラニストップス.png"
+        },
+
+        {
+            id: "knight_top",
+            name: "騎士団トップス",
+            image: "images/騎士団トップス.png"
+        },
+
+        {
+            id: "madness_top",
+            name: "狂気トップス",
+            image: "images/狂気トップス.png"
+        },
+
+        {
+            id: "jet_black_top",
+            name: "漆黒トップス",
+            image: "images/漆黒トップス.png"
+        },
+
+        {
+            id: "wild_top",
+            name: "野生トップス",
+            image: "images/野生トップス.png"
+        },
+
+        {
+            id: "galand_top",
+            name: "ガラントップス",
+            image: "images/ガラントップス.png"
+        }
+
+    ],
+
+
+    // =================================================
+    // ベルト
+    // =================================================
+
+    belt: [
+
+        {
+            id: "arachne_belt",
+            name: "アラクネーベルト",
+            image: "images/アラクネーベルト.png"
+        },
+
+        {
+            id: "taranis_belt",
+            name: "タラニスベルト",
+            image: "images/タラニスベルト.png"
+        },
+
+        {
+            id: "watcher_belt",
+            name: "監視者ベルト",
+            image: "images/監視者ベルト.png"
+        },
+
+        {
+            id: "knight_belt",
+            name: "騎士団ベルト",
+            image: "images/騎士団ベルト.png"
+        },
+
+        {
+            id: "madness_belt",
+            name: "狂気ベルト",
+            image: "images/狂気ベルト.png"
+        },
+
+        {
+            id: "jet_black_belt",
+            name: "漆黒ベルト",
+            image: "images/漆黒ベルト.png"
+        },
+
+        {
+            id: "wild_belt",
+            name: "野生ベルト",
+            image: "images/野生ベルト.png"
+        }
+
+    ],
+
+
+    // =================================================
+    // ボトムス
+    // =================================================
+
+    bottom: [
+
+        {
+            id: "arachne_bottom",
+            name: "アラクネーボトムス",
+            image: "images/アラクネーボトムス.png"
+        },
+
+        {
+            id: "golem_bottom",
+            name: "ゴーレムボトムス",
+            image: "images/ゴーレムボトムス.png"
+        },
+
+        {
+            id: "taranis_bottom",
+            name: "タラニスボトムス",
+            image: "images/タラニスボトムス.png"
+        },
+
+        {
+            id: "watcher_bottom",
+            name: "監視者ボトムス",
+            image: "images/監視者ボトムス.png"
+        },
+
+        {
+            id: "knight_bottom",
+            name: "騎士団ボトムス",
+            image: "images/騎士団ボトムス.png"
+        },
+
+        {
+            id: "madness_bottom",
+            name: "狂気ボトムス",
+            image: "images/狂気ボトムス.png"
+        },
+
+        {
+            id: "jet_black_bottom",
+            name: "漆黒ボトムス",
+            image: "images/漆黒ボトムス.png"
+        },
+
+        {
+            id: "spider_bottom",
+            name: "蜘蛛ボトムス",
+            image: "images/蜘蛛ボトムス.png"
+        },
+
+        {
+            id: "wild_bottom",
+            name: "野生ボトムス",
+            image: "images/野生ボトムス.png"
+        }
+
+    ],
+
+
+    // =================================================
+    // ブーツ
+    // =================================================
+
+    boots: [
+
+        {
+            id: "arachne_boots",
+            name: "アラクネーブーツ",
+            image: "images/アラクネーブーツ.png"
+        },
+
+        {
+            id: "taranis_boots",
+            name: "タラニスブーツ",
+            image: "images/タラニスブーツ.png"
+        },
+
+        {
+            id: "madness_boots",
+            name: "狂気ブーツ",
+            image: "images/狂気ブーツ.webp"
+        },
+
+        {
+            id: "jet_black_boots",
+            name: "漆黒ブーツ",
+            image: "images/漆黒ブーツ.png"
+        },
+
+        {
+            id: "spider_boots",
+            name: "蜘蛛ブーツ",
+            image: "images/蜘蛛ブーツ.png"
+        }
+
+    ],
+
+
+    // =================================================
+    // 耳飾り
+    // =================================================
+
+    earring: [
+
+        {
+            id: "taranis_earring",
+            name: "タラニス耳飾り",
+            image: "images/タラニス耳飾り.webp"
+        },
+
+        {
+            id: "knight_earring",
+            name: "騎士団耳飾り",
+            image: "images/騎士団耳飾り.png"
+        },
+
+        {
+            id: "regeneration_earring",
+            name: "再生耳飾り",
+            image: "images/再生耳飾り.png"
+        },
+
+        {
+            id: "curse_earring",
+            name: "呪い耳飾り",
+            image: "images/呪い耳飾り.png"
+        },
+
+        {
+            id: "fallen_earring",
+            name: "堕落耳飾り",
+            image: "images/堕落耳飾り.png"
+        }
+
+    ],
+
+
+    // =================================================
+    // 首飾り
+    // =================================================
+
+    necklace: [
+
+        {
+            id: "arachne_necklace",
+            name: "アラクネー首飾り",
+            image: "images/アラクネー首飾り.png"
+        },
+
+        {
+            id: "taranis_necklace",
+            name: "タラニス首飾り",
+            image: "images/タラニス首飾り.webp"
+        },
+
+        {
+            id: "durack_necklace",
+            name: "デュラック首飾り",
+            image: "images/デュラック首飾り.png"
+        },
+
+        {
+            id: "knight_necklace",
+            name: "騎士団首飾り",
+            image: "images/騎士団首飾り.png"
+        },
+
+        {
+            id: "madness_necklace",
+            name: "狂気首飾り",
+            image: "images/狂気首飾り.png"
+        },
+
+        {
+            id: "regeneration_necklace",
+            name: "再生首飾り",
+            image: "images/再生首飾り.png"
+        },
+
+        {
+            id: "curse_necklace",
+            name: "呪い首飾り",
+            image: "images/呪い首飾り.png"
+        },
+
+        {
+            id: "fallen_necklace",
+            name: "堕落首飾り",
+            image: "images/堕落首飾り.png"
+        }
+
+    ],
+
+
+    // =================================================
+    // 指輪
+    // =================================================
+
+    ring: [
+
+        {
+            id: "arachne_ring",
+            name: "アラクネー指輪",
+            image: "images/アラクネー指輪.png"
+        },
+
+        {
+            id: "taranis_ring",
+            name: "タラニス指輪",
+            image: "images/タラニス指輪.webp"
+        },
+
+        {
+            id: "knight_ring",
+            name: "騎士団指輪",
+            image: "images/騎士団指輪.png"
+        },
+
+        {
+            id: "madness_ring",
+            name: "狂気指輪",
+            image: "images/狂気指輪.png"
+        },
+
+        {
+            id: "regeneration_ring",
+            name: "再生指輪",
+            image: "images/再生指輪.png"
+        },
+
+        {
+            id: "curse_ring",
+            name: "呪い指輪",
+            image: "images/呪い指輪.png"
+        },
+
+        {
+            id: "fallen_ring",
+            name: "堕落指輪",
+            image: "images/堕落指輪.png"
+        },
+
+        {
+            id: "spider_ring",
+            name: "蜘蛛指輪",
+            image: "images/蜘蛛指輪.png"
+        },
+
+        {
+            id: "oath_ring",
+            name: "盟約指輪",
+            image: "images/盟約指輪.png"
+        }
+
+    ]
+
+};
+
+// =====================================================
+// キャラクター別 装備ルール
+// =====================================================
+
+const characterEquipmentRules = {
+
+    elaine: {
+        engravings: [
+            "旅人",
+            "軽やか",
+            "聖女"
+        ],
+        weaponTypes: [
+            "ワンド",
+            "スタッフ",
+            "魔導書"
+        ]
+    },
+
+    guila: {
+        engravings: [
+            "誘爆",
+            "軽やか",
+            "紅炎"
+        ],
+        weaponTypes: [
+            "ランス",
+            "剣盾",
+            "レイピア"
+        ]
+    },
+
+    jericho: {
+        engravings: [
+            "星形",
+            "秘密",
+            "思い出"
+        ],
+        weaponTypes: [
+            "双剣",
+            "ランス",
+            "レイピア"
+        ]
+    },
+
+    king: {
+        engravings: [
+            "怠惰",
+            "深き森"
+        ],
+        weaponTypes: [
+            "スタッフ",
+            "魔導書",
+            "ワンド"
+        ]
+    },
+
+    diane: {
+        engravings: [
+            "嫉妬",
+            "元気",
+            "スパイナス"
+        ],
+        weaponTypes: [
+            "斧",
+            "ガントレット",
+            "三節棍"
+        ]
+    },
+
+    drake: {
+        engravings: [
+            "過去",
+            "影",
+            "インペリアル"
+        ],
+        weaponTypes: [
+            "大剣",
+            "スタッフ",
+            "長剣"
+        ]
+    },
+
+    manny: {
+        engravings: [
+            "最高位",
+            "未知",
+            "神聖"
+        ],
+        weaponTypes: [
+            "スタッフ",
+            "双剣",
+            "長剣"
+        ]
+    },
+
+    meliodas: {
+
+        engravings: [
+
+            {
+                id: "meliodas_engraving_new",
+                name: "新たな",
+                image: "images/メリオダス刻印新たな.png"
+            },
+
+            {
+                id: "meliodas_engraving_simple",
+                name: "簡易的",
+                image: "images/メリオダス刻印簡易的.png"
+            },
+
+            {
+                id: "meliodas_engraving_strongest",
+                name: "最強",
+                image: "images/メリオダス刻印最強.png"
+            }
+
+        ],
+
+        weaponTypes: [
+            "長剣",
+            "斧",
+            "双剣"
+        ]
+
+    },
+
+    daisy: {
+        engravings: [
+            "小さな",
+            "探求",
+            "春色"
+        ],
+        weaponTypes: [
+            "剣盾",
+            "魔導書",
+            "ワンド"
+        ]
+    },
+
+    escanor: {
+        engravings: [
+            "黄金",
+            "北部",
+            "満ち足りた"
+        ],
+        weaponTypes: [
+            "斧",
+            "大剣",
+            "剣盾"
+        ]
+    },
+
+    clotho: {
+        engravings: [
+            "大学者",
+            "軽やか",
+            "探検家"
+        ],
+        weaponTypes: [
+            "レイピア",
+            "魔導書",
+            "スタッフ"
+        ]
+    },
+
+    merlin: {
+        engravings: [
+            "軽やか",
+            "暴食",
+            "知識"
+        ],
+        weaponTypes: [
+            "魔導書",
+            "ワンド",
+            "スタッフ"
+        ]
+    },
+
+    elizabeth: {
+        engravings: [
+            "酒場",
+            "リオネス"
+        ],
+        weaponTypes: [
+            "魔導書",
+            "スタッフ",
+            "ワンド"
+        ]
+    },
+
+    gowther: {
+        engravings: [
+            "秘蔵",
+            "色欲",
+            "最小限"
+        ],
+        weaponTypes: [
+            "ワンド",
+            "魔導書",
+            "スタッフ"
+        ]
+    },
+
+    derieri: {
+        engravings: [
+            "反抗",
+            "最低限"
+        ],
+        weaponTypes: [
+            "ガントレット",
+            "大剣",
+            "斧"
+        ]
+    },
+
+    ban: {
+        engravings: [
+            "臨時",
+            "強欲",
+            "軽快"
+        ],
+        weaponTypes: [
+            "三節棍",
+            "大剣",
+            "ガントレット"
+        ]
+    },
+
+    tristan: {
+        engravings: [
+            "品格",
+            "冒険",
+            "誓い"
+        ],
+        weaponTypes: [
+            "双剣",
+            "大剣",
+            "長剣"
+        ]
+    },
+
+    tioreh: {
+        engravings: [
+            "森と大地",
+            "冒険",
+            "妖精"
+        ],
+        weaponTypes: [
+            "魔導書",
+            "ワンド",
+            "スタッフ"
+        ]
+    },
+
+    gilthunder: {
+        engravings: [
+            "電撃",
+            "模範的",
+            "将来有望"
+        ],
+        weaponTypes: [
+            "長剣",
+            "剣盾",
+            "ランス"
+        ]
+    },
+
+    hauser: {
+        engravings: [
+            "暴風",
+            "堅固"
+        ],
+        weaponTypes: [
+            "ランス",
+            "ガントレット",
+            "三節棍"
+        ]
+    },
+
+    deldry: {
+        engravings: [
+            "王家",
+            "入念",
+            "堅固"
+        ],
+        weaponTypes: [
+            "剣盾",
+            "斧",
+            "レイピア"
+        ]
+    },
+
+    bug: {
+        engravings: [
+            "影",
+            "足取り",
+            "潜行"
+        ],
+        weaponTypes: [
+            "斧",
+            "双剣",
+            "魔導書"
+        ]
+    },
+
+    dreyfus: {
+        engravings: [
+            "老将",
+            "飾らない",
+            "栄誉"
+        ],
+        weaponTypes: [
+            "レイピア",
+            "長剣",
+            "ランス"
+        ]
+    },
+
+    hendrickson: {
+        engravings: [
+            "若き日",
+            "施薬院",
+            "帰ってきた"
+        ],
+        weaponTypes: [
+            "長剣",
+            "双剣",
+            "ランス"
+        ]
+    },
+
+    slader: {
+        engravings: [
+            "老王",
+            "極秘任務",
+            "万全"
+        ],
+        weaponTypes: [
+            "大剣",
+            "斧",
+            "三節棍"
+        ]
+    },
+
+    griamore: {
+        engravings: [
+            "鉄壁",
+            "簡易防壁"
+        ],
+        weaponTypes: [
+            "剣盾",
+            "三節棍",
+            "ガントレット"
+        ]
+    }
+
+};
 
 // =====================================================
 // Firestore 編成ドキュメント
@@ -659,6 +1532,1343 @@ function createEditButtons() {
 
 }
 
+
+// =====================================================
+// 装備編集ボタンを作成
+// =====================================================
+
+function createEquipmentEditButtons() {
+
+    for (
+        let playerNumber = 1;
+        playerNumber <= 5;
+        playerNumber++
+    ) {
+
+        const playerCard =
+            document.getElementById(
+                `player${playerNumber}`
+            );
+
+
+        if (!playerCard) {
+            continue;
+        }
+
+
+        const equipmentTitle =
+            playerCard.querySelector(
+                ".equipment-title"
+            );
+
+
+        if (!equipmentTitle) {
+            continue;
+        }
+
+
+        // すでにボタンがある場合は作らない
+        if (
+            playerCard.querySelector(
+                ".equipment-edit-button"
+            )
+        ) {
+            continue;
+        }
+
+
+        const button =
+            document.createElement(
+                "button"
+            );
+
+
+        button.type =
+            "button";
+
+
+        button.className =
+            "equipment-edit-button";
+
+
+        button.textContent =
+            "⚙ 装備を編集";
+
+
+        button.dataset.player =
+            playerNumber;
+
+
+        // 最初は非表示
+        button.hidden =
+            true;
+
+
+        equipmentTitle.appendChild(
+            button
+        );
+
+    }
+
+}
+
+// =====================================================
+// 装備編集
+// =====================================================
+
+let editingEquipmentPlayer = null;
+
+
+// 装備編集画面で一時的に保持するデータ
+let equipmentDraft = {};
+
+
+// 装備部位の表示名
+const equipmentSlotLabels = {
+    engraving: "刻印",
+    weapon: "武器",
+    top: "トップス",
+    belt: "ベルト",
+    bottom: "ボトムス",
+    boots: "ブーツ",
+    earring: "耳飾り",
+    necklace: "首飾り",
+    ring: "指輪"
+};
+
+
+// =====================================================
+// 装備編集モーダルを作成
+// =====================================================
+
+function createEquipmentEditorModal() {
+
+    // 二重作成防止
+    if (
+        document.getElementById(
+            "equipmentEditorModal"
+        )
+    ) {
+        return;
+    }
+
+
+    const modal =
+        document.createElement(
+            "div"
+        );
+
+
+    modal.id =
+        "equipmentEditorModal";
+
+    modal.className =
+        "equipment-editor-modal";
+
+    modal.hidden =
+        true;
+
+
+    modal.innerHTML = `
+
+        <div class="equipment-editor-backdrop"></div>
+
+        <div class="equipment-editor-panel">
+
+            <div class="equipment-editor-header">
+
+                <div>
+
+                    <div class="equipment-editor-label">
+                        EQUIPMENT EDITOR
+                    </div>
+
+                    <h2 id="equipmentEditorTitle">
+                        装備を編集
+                    </h2>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="equipment-editor-close"
+                    id="equipmentEditorClose"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <p class="equipment-editor-help">
+                各装備枠をクリックして装備を選択してください。
+            </p>
+
+
+            <div
+                class="equipment-editor-characters"
+                id="equipmentEditorCharacters"
+            ></div>
+
+
+            <div
+                class="equipment-select-area"
+                id="equipmentSelectArea"
+                hidden
+            >
+
+                <div class="equipment-select-header">
+
+                    <div>
+
+                        <div
+                            class="equipment-select-character"
+                            id="equipmentSelectCharacter"
+                        ></div>
+
+                        <h3
+                            id="equipmentSelectTitle"
+                        >
+                            装備を選択
+                        </h3>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="equipment-select-close"
+                        id="equipmentSelectClose"
+                    >
+                        閉じる
+                    </button>
+
+                </div>
+
+
+                <div
+                    class="equipment-option-grid"
+                    id="equipmentOptionGrid"
+                ></div>
+
+            </div>
+
+
+            <div
+                class="equipment-editor-message"
+                id="equipmentEditorMessage"
+            ></div>
+
+
+            <div class="equipment-editor-actions">
+
+                <button
+                    type="button"
+                    class="equipment-editor-cancel"
+                    id="equipmentEditorCancel"
+                >
+                    キャンセル
+                </button>
+
+
+                <button
+                    type="button"
+                    class="equipment-editor-save"
+                    id="equipmentEditorSave"
+                >
+                    装備を保存
+                </button>
+
+            </div>
+
+        </div>
+
+    `;
+
+
+    document.body.appendChild(
+        modal
+    );
+
+
+    // ×ボタン
+    document
+        .getElementById(
+            "equipmentEditorClose"
+        )
+        .addEventListener(
+            "click",
+            closeEquipmentEditor
+        );
+
+
+    // キャンセル
+    document
+        .getElementById(
+            "equipmentEditorCancel"
+        )
+        .addEventListener(
+            "click",
+            closeEquipmentEditor
+        );
+
+
+    // 装備候補を閉じる
+    document
+        .getElementById(
+            "equipmentSelectClose"
+        )
+        .addEventListener(
+            "click",
+            closeEquipmentSelector
+        );
+
+
+    // 背景クリック
+    modal
+        .querySelector(
+            ".equipment-editor-backdrop"
+        )
+        .addEventListener(
+            "click",
+            closeEquipmentEditor
+        );
+
+
+    // 保存
+    document
+        .getElementById(
+            "equipmentEditorSave"
+        )
+        .addEventListener(
+            "click",
+            saveEquipment
+        );
+
+}
+
+
+// =====================================================
+// 装備編集ボタンにクリック処理を追加
+// =====================================================
+
+function setupEquipmentEditButtons() {
+
+    const buttons =
+        document.querySelectorAll(
+            ".equipment-edit-button"
+        );
+
+
+    buttons.forEach(
+        button => {
+
+            // 二重登録防止
+            if (
+                button.dataset.listenerAdded ===
+                "true"
+            ) {
+                return;
+            }
+
+
+            button.dataset.listenerAdded =
+                "true";
+
+
+            button.addEventListener(
+                "click",
+                () => {
+
+                    const playerNumber =
+                        Number(
+                            button.dataset.player
+                        );
+
+
+                    openEquipmentEditor(
+                        playerNumber
+                    );
+
+                }
+            );
+
+        }
+    );
+
+}
+
+
+// =====================================================
+// 装備編集画面を開く
+// =====================================================
+
+function openEquipmentEditor(
+    playerNumber
+) {
+
+    const user =
+        auth.currentUser;
+
+
+    // 管理者以外は開けない
+    if (
+        !user ||
+        user.uid !== ADMIN_UID
+    ) {
+        return;
+    }
+
+
+    const characters =
+        currentPartyData[
+        `player${playerNumber}`
+        ];
+
+
+    if (
+        !Array.isArray(characters) ||
+        characters.length === 0
+    ) {
+
+        alert(
+            "このPLAYERには編成データがありません。"
+        );
+
+        return;
+    }
+
+
+    editingEquipmentPlayer =
+        playerNumber;
+
+
+    // =========================================
+    // Firestoreの保存済み装備をコピー
+    // =========================================
+
+    const storedEquipment =
+        currentPartyData[
+        `player${playerNumber}Equipment`
+        ] || {};
+
+
+    equipmentDraft =
+        JSON.parse(
+            JSON.stringify(
+                storedEquipment
+            )
+        );
+
+
+    // =========================================
+    // 現在の4キャラ分の保存領域を作成
+    // =========================================
+
+    characters
+        .slice(0, 4)
+        .forEach(
+            character => {
+
+                if (
+                    !equipmentDraft[
+                    character.id
+                    ]
+                ) {
+
+                    equipmentDraft[
+                        character.id
+                    ] = {};
+
+                }
+
+            }
+        );
+
+
+    document.getElementById(
+        "equipmentEditorTitle"
+    ).textContent =
+        `PLAYER ${playerNumber} の装備を編集`;
+
+
+    document.getElementById(
+        "equipmentEditorMessage"
+    ).textContent =
+        "";
+
+
+    closeEquipmentSelector();
+
+
+    renderEquipmentEditor();
+
+
+    document.getElementById(
+        "equipmentEditorModal"
+    ).hidden =
+        false;
+
+}
+
+
+// =====================================================
+// 装備編集画面を閉じる
+// =====================================================
+
+function closeEquipmentEditor() {
+
+    const modal =
+        document.getElementById(
+            "equipmentEditorModal"
+        );
+
+
+    if (modal) {
+        modal.hidden =
+            true;
+    }
+
+
+    editingEquipmentPlayer =
+        null;
+
+    equipmentDraft =
+        {};
+
+}
+
+
+// =====================================================
+// 4キャラ × 9装備枠を表示
+// =====================================================
+
+function renderEquipmentEditor() {
+
+    if (
+        editingEquipmentPlayer ===
+        null
+    ) {
+        return;
+    }
+
+
+    const container =
+        document.getElementById(
+            "equipmentEditorCharacters"
+        );
+
+
+    if (!container) {
+        return;
+    }
+
+
+    container.innerHTML =
+        "";
+
+
+    const characters =
+        currentPartyData[
+        `player${editingEquipmentPlayer}`
+        ] || [];
+
+
+    characters
+        .slice(0, 4)
+        .forEach(
+            (
+                character,
+                characterIndex
+            ) => {
+
+                const row =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                row.className =
+                    "equipment-editor-character-row";
+
+
+                // -------------------------------------
+                // キャラ名
+                // -------------------------------------
+
+                const characterInfo =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                characterInfo.className =
+                    "equipment-editor-character-info";
+
+
+                characterInfo.innerHTML = `
+
+                    <span class="equipment-editor-character-number">
+                        CHARACTER ${characterIndex + 1}
+                    </span>
+
+                    <strong>
+                        ${character.name}
+                    </strong>
+
+                `;
+
+
+                row.appendChild(
+                    characterInfo
+                );
+
+
+                // -------------------------------------
+                // 装備9枠
+                // -------------------------------------
+
+                const slots =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                slots.className =
+                    "equipment-editor-slots";
+
+
+                Object.keys(
+                    equipmentSlotLabels
+                )
+                    .forEach(
+                        equipmentType => {
+
+                            const slot =
+                                createEquipmentEditorSlot(
+                                    character,
+                                    equipmentType
+                                );
+
+
+                            slots.appendChild(
+                                slot
+                            );
+
+                        }
+                    );
+
+
+                row.appendChild(
+                    slots
+                );
+
+
+                container.appendChild(
+                    row
+                );
+
+            }
+        );
+
+}
+
+
+// =====================================================
+// 装備編集画面の1スロットを作る
+// =====================================================
+
+function createEquipmentEditorSlot(
+    character,
+    equipmentType
+) {
+
+    const button =
+        document.createElement(
+            "button"
+        );
+
+
+    button.type =
+        "button";
+
+
+    button.className =
+        "equipment-editor-slot";
+
+
+    const savedItem =
+        equipmentDraft[
+        character.id
+        ]?.[
+        equipmentType
+        ];
+
+
+    if (
+        savedItem &&
+        savedItem.image
+    ) {
+
+        button.innerHTML = `
+
+            <span class="equipment-editor-slot-label">
+                ${equipmentSlotLabels[equipmentType]}
+            </span>
+
+            <img
+                src="${savedItem.image}"
+                alt="${savedItem.name}"
+                loading="lazy"
+            >
+
+            <small>
+                ${savedItem.name}
+            </small>
+
+        `;
+
+    } else {
+
+        button.innerHTML = `
+
+            <span class="equipment-editor-slot-label">
+                ${equipmentSlotLabels[equipmentType]}
+            </span>
+
+            <span class="equipment-editor-empty">
+                ＋
+            </span>
+
+            <small>
+                未選択
+            </small>
+
+        `;
+
+    }
+
+
+    button.addEventListener(
+        "click",
+        () => {
+
+            openEquipmentSelector(
+                character,
+                equipmentType
+            );
+
+        }
+    );
+
+
+    return button;
+
+}
+
+
+// =====================================================
+// 選択できる装備候補を取得
+// =====================================================
+
+function getEquipmentOptions(
+    character,
+    equipmentType
+) {
+
+    // =========================================
+    // 刻印
+    // =========================================
+
+    if (
+        equipmentType ===
+        "engraving"
+    ) {
+
+        const rule =
+            characterEquipmentRules[
+            character.id
+            ];
+
+
+        if (
+            !rule ||
+            !Array.isArray(
+                rule.engravings
+            )
+        ) {
+            return [];
+        }
+
+
+        return rule.engravings
+            .map(
+                (
+                    engraving,
+                    index
+                ) => {
+
+                    // すでに画像付きオブジェクトの場合
+                    if (
+                        typeof engraving ===
+                        "object"
+                    ) {
+
+                        return engraving;
+
+                    }
+
+
+                    // まだ文字列だけ登録されている刻印
+                    return {
+
+                        id:
+                            `${character.id}_engraving_${index + 1}`,
+
+                        name:
+                            engraving,
+
+                        image:
+                            null
+
+                    };
+
+                }
+            );
+
+    }
+
+
+    // =========================================
+    // 武器
+    // =========================================
+
+    if (
+        equipmentType ===
+        "weapon"
+    ) {
+
+        const rule =
+            characterEquipmentRules[
+            character.id
+            ];
+
+
+        if (
+            !rule ||
+            !Array.isArray(
+                rule.weaponTypes
+            )
+        ) {
+            return [];
+        }
+
+
+        const weaponOptions =
+            [];
+
+
+        rule.weaponTypes
+            .forEach(
+                weaponType => {
+
+                    const weapons =
+                        equipmentMaster
+                            .weapons[
+                        weaponType
+                        ] || [];
+
+
+                    weapons.forEach(
+                        weapon => {
+
+                            weaponOptions.push({
+
+                                ...weapon,
+
+                                weaponType:
+                                    weaponType
+
+                            });
+
+                        }
+                    );
+
+                }
+            );
+
+
+        return weaponOptions;
+
+    }
+
+
+    // =========================================
+    // 防具・アクセサリー
+    // =========================================
+
+    return (
+        equipmentMaster[
+        equipmentType
+        ] || []
+    );
+
+}
+
+
+// =====================================================
+// 装備候補画面を開く
+// =====================================================
+
+function openEquipmentSelector(
+    character,
+    equipmentType
+) {
+
+    const selectArea =
+        document.getElementById(
+            "equipmentSelectArea"
+        );
+
+
+    const title =
+        document.getElementById(
+            "equipmentSelectTitle"
+        );
+
+
+    const characterLabel =
+        document.getElementById(
+            "equipmentSelectCharacter"
+        );
+
+
+    const grid =
+        document.getElementById(
+            "equipmentOptionGrid"
+        );
+
+
+    if (
+        !selectArea ||
+        !title ||
+        !characterLabel ||
+        !grid
+    ) {
+        return;
+    }
+
+
+    characterLabel.textContent =
+        character.name;
+
+
+    title.textContent =
+        `${equipmentSlotLabels[equipmentType]}を選択`;
+
+
+    grid.innerHTML =
+        "";
+
+
+    const options =
+        getEquipmentOptions(
+            character,
+            equipmentType
+        );
+
+
+    // =========================================
+    // 「装備を外す」
+    // =========================================
+
+    const removeButton =
+        document.createElement(
+            "button"
+        );
+
+
+    removeButton.type =
+        "button";
+
+
+    removeButton.className =
+        "equipment-option-card equipment-remove-card";
+
+
+    removeButton.innerHTML = `
+
+        <span class="equipment-remove-icon">
+            ×
+        </span>
+
+        <strong>
+            装備を外す
+        </strong>
+
+    `;
+
+
+    removeButton.addEventListener(
+        "click",
+        () => {
+
+            if (
+                !equipmentDraft[
+                character.id
+                ]
+            ) {
+
+                equipmentDraft[
+                    character.id
+                ] = {};
+
+            }
+
+
+            delete equipmentDraft[
+                character.id
+            ][
+                equipmentType
+            ];
+
+
+            renderEquipmentEditor();
+
+            closeEquipmentSelector();
+
+        }
+    );
+
+
+    grid.appendChild(
+        removeButton
+    );
+
+
+    // =========================================
+    // 候補がない場合
+    // =========================================
+
+    if (
+        options.length === 0
+    ) {
+
+        const empty =
+            document.createElement(
+                "div"
+            );
+
+
+        empty.className =
+            "equipment-option-empty";
+
+
+        if (
+            equipmentType ===
+            "weapon"
+        ) {
+
+            empty.textContent =
+                "このキャラクターが使用できる武器は、まだ装備マスターに登録されていません。";
+
+        } else {
+
+            empty.textContent =
+                "この装備の候補はまだ登録されていません。";
+
+        }
+
+
+        grid.appendChild(
+            empty
+        );
+
+    }
+
+
+    // =========================================
+    // 装備候補
+    // =========================================
+
+    options.forEach(
+        option => {
+
+            const card =
+                document.createElement(
+                    "button"
+                );
+
+
+            card.type =
+                "button";
+
+
+            card.className =
+                "equipment-option-card";
+
+
+            const currentlySelected =
+                equipmentDraft[
+                    character.id
+                ]?.[
+                    equipmentType
+                ]?.id ===
+                option.id;
+
+
+            if (
+                currentlySelected
+            ) {
+
+                card.classList.add(
+                    "selected"
+                );
+
+            }
+
+
+            const weaponTypeText =
+                option.weaponType
+                    ?
+                    `<span class="equipment-option-type">
+                        ${option.weaponType}
+                    </span>`
+                    :
+                    "";
+
+
+            const imageHtml =
+                option.image
+                    ?
+                    `
+                    <img
+                        src="${option.image}"
+                        alt="${option.name}"
+                        loading="lazy"
+                    >
+                    `
+                    :
+                    `
+                    <div class="equipment-option-no-image">
+                        画像未登録
+                    </div>
+                    `;
+
+
+            card.innerHTML = `
+
+                ${imageHtml}
+
+                <strong>
+                    ${option.name}
+                </strong>
+
+                ${weaponTypeText}
+
+            `;
+
+
+            card.addEventListener(
+                "click",
+                () => {
+
+                    if (
+                        !equipmentDraft[
+                        character.id
+                        ]
+                    ) {
+
+                        equipmentDraft[
+                            character.id
+                        ] = {};
+
+                    }
+
+
+                    equipmentDraft[
+                        character.id
+                    ][
+                        equipmentType
+                    ] = {
+
+                        id:
+                            option.id,
+
+                        name:
+                            option.name,
+
+                        image:
+                            option.image || null
+
+                    };
+
+
+                    if (
+                        option.weaponType
+                    ) {
+
+                        equipmentDraft[
+                            character.id
+                        ][
+                            equipmentType
+                        ].weaponType =
+                            option.weaponType;
+
+                    }
+
+
+                    renderEquipmentEditor();
+
+                    closeEquipmentSelector();
+
+                }
+            );
+
+
+            grid.appendChild(
+                card
+            );
+
+        }
+    );
+
+
+    selectArea.hidden =
+        false;
+
+
+    selectArea.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest"
+    });
+
+}
+
+
+// =====================================================
+// 装備候補画面を閉じる
+// =====================================================
+
+function closeEquipmentSelector() {
+
+    const area =
+        document.getElementById(
+            "equipmentSelectArea"
+        );
+
+
+    if (area) {
+        area.hidden =
+            true;
+    }
+
+}
+
+
+// =====================================================
+// 装備をFirestoreへ保存
+// =====================================================
+
+async function saveEquipment() {
+
+    if (
+        editingEquipmentPlayer ===
+        null
+    ) {
+        return;
+    }
+
+
+    const user =
+        auth.currentUser;
+
+
+    if (
+        !user ||
+        user.uid !== ADMIN_UID
+    ) {
+        return;
+    }
+
+
+    const saveButton =
+        document.getElementById(
+            "equipmentEditorSave"
+        );
+
+
+    const message =
+        document.getElementById(
+            "equipmentEditorMessage"
+        );
+
+
+    saveButton.disabled =
+        true;
+
+
+    saveButton.textContent =
+        "保存中...";
+
+
+    message.textContent =
+        "";
+
+
+    try {
+
+        await setDoc(
+            partyDocument,
+            {
+
+                [`player${editingEquipmentPlayer}Equipment`]:
+                    equipmentDraft
+
+            },
+            {
+                merge: true
+            }
+        );
+
+
+        message.textContent =
+            "装備を保存しました。";
+
+
+        setTimeout(
+            () => {
+
+                closeEquipmentEditor();
+
+            },
+            500
+        );
+
+    } catch (error) {
+
+        console.error(
+            "装備保存エラー:",
+            error
+        );
+
+
+        message.textContent =
+            "装備を保存できませんでした。";
+
+    } finally {
+
+        saveButton.disabled =
+            false;
+
+
+        saveButton.textContent =
+            "装備を保存";
+
+    }
+
+}
 
 // =====================================================
 // 編成編集モーダルを作成
@@ -1758,7 +3968,7 @@ function updatePlayerCard(
                     }
 
 
-                    
+
 
                     const characterName =
                         row.querySelector(
@@ -1766,13 +3976,109 @@ function updatePlayerCard(
                         );
 
 
-                    
+
                     if (characterName) {
 
                         characterName.textContent =
                             character.name;
 
                     }
+
+                }
+            );
+
+    }
+
+    // =========================================
+    // 保存済み装備をEQUIPMENT欄に表示
+    // =========================================
+
+    const playerEquipment =
+        currentPartyData[
+        `player${playerNumber}Equipment`
+        ] || {};
+
+
+    if (equipmentArea) {
+
+        const equipmentRows =
+            equipmentArea.querySelectorAll(
+                ".equipment-character-row"
+            );
+
+
+        characters
+            .slice(0, 4)
+            .forEach(
+                (
+                    character,
+                    index
+                ) => {
+
+                    const row =
+                        equipmentRows[
+                        index
+                        ];
+
+
+                    if (!row) {
+                        return;
+                    }
+
+
+                    const characterEquipment =
+                        playerEquipment[
+                        character.id
+                        ] || {};
+
+
+                    const equipmentSlots =
+                        row.querySelectorAll(
+                            ".equipment-slot"
+                        );
+
+
+                    equipmentSlots.forEach(
+                        slot => {
+
+                            const type =
+                                slot.dataset
+                                    .equipmentType;
+
+
+                            const item =
+                                characterEquipment[
+                                type
+                                ];
+
+
+                            if (
+                                item &&
+                                item.image
+                            ) {
+
+                                slot.innerHTML = `
+
+                                    <img
+                                        src="${item.image}"
+                                        alt="${item.name}"
+                                        title="${item.name}"
+                                        loading="lazy"
+                                    >
+
+                                `;
+
+                            } else {
+
+                                slot.textContent =
+                                    equipmentSlotLabels[
+                                    type
+                                    ] || "";
+
+                            }
+
+                        }
+                    );
 
                 }
             );
@@ -1904,11 +4210,9 @@ onAuthStateChanged(
     auth,
     user => {
 
-        const editButtons =
-            document.querySelectorAll(
-                ".party-edit-button"
-            );
-
+        // =========================================
+        // 管理者かどうか
+        // =========================================
 
         const isAdmin =
             user &&
@@ -1916,7 +4220,37 @@ onAuthStateChanged(
             ADMIN_UID;
 
 
+        // =========================================
+        // 編成編集ボタン
+        // =========================================
+
+        const editButtons =
+            document.querySelectorAll(
+                ".party-edit-button"
+            );
+
+
         editButtons.forEach(
+            button => {
+
+                button.hidden =
+                    !isAdmin;
+
+            }
+        );
+
+
+        // =========================================
+        // 装備編集ボタン
+        // =========================================
+
+        const equipmentEditButtons =
+            document.querySelectorAll(
+                ".equipment-edit-button"
+            );
+
+
+        equipmentEditButtons.forEach(
             button => {
 
                 button.hidden =
@@ -1934,6 +4268,12 @@ onAuthStateChanged(
 // =====================================================
 
 createEditButtons();
+
+createEquipmentEditButtons();
+
+createEquipmentEditorModal();
+
+setupEquipmentEditButtons();
 
 createPartyEditorModal();
 
