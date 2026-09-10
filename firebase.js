@@ -1854,7 +1854,7 @@ const characterEquipmentRules = {
             createEngravingItem(
                 "デリエリ",
                 "derieri_engraving_3",
-                "デリエリ刻印反骨の斥候.webp"
+                "デリエリ刻印反骨の所作.webp"
             )
 
         ],
