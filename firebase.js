@@ -582,6 +582,31 @@ const equipmentTypes = {
 
 
 // =====================================================
+// 装備データ作成用
+// =====================================================
+
+function createEquipmentItem(
+    id,
+    filename
+) {
+
+    return {
+        id: id,
+
+        // 拡張子を除いたファイル名を表示名にする
+        name: filename.replace(
+            /\.(png|webp|jpg|jpeg)$/i,
+            ""
+        ),
+
+        image:
+            `images/${filename}`
+    };
+
+}
+
+
+// =====================================================
 // 装備マスター
 // =====================================================
 
@@ -593,103 +618,300 @@ const equipmentMaster = {
 
     weapons: {
 
-        "ガントレット": [],
+        // ---------------------------------------------
+        // ガントレット
+        // ---------------------------------------------
 
-        "スタッフ": [],
+        "ガントレット": [
 
-        "魔導書": [],
+            createEquipmentItem(
+                "flame_gauntlet",
+                "炎火ガントレット.png"
+            ),
 
-        "ランス": [],
+            createEquipmentItem(
+                "black_gauntlet",
+                "黒炎ガントレット.webp"
+            ),
 
-        "レイピア": [],
+            createEquipmentItem(
+                "soul_gauntlet",
+                "魂ガントレット.webp"
+            )
 
-        "ワンド": [],
-
-        "三節棍": [],
-
-        "剣盾": [],
+        ],
 
 
-        // -----------------------------------------
+        // ---------------------------------------------
+        // スタッフ
+        // ---------------------------------------------
+
+        "スタッフ": [
+
+            createEquipmentItem(
+                "flame_staff",
+                "炎火スタッフ.png"
+            ),
+
+            createEquipmentItem(
+                "black_staff",
+                "黒炎スタッフ.webp"
+            )
+
+        ],
+
+
+        // ---------------------------------------------
+        // 魔導書
+        // ---------------------------------------------
+
+        "魔導書": [
+
+            createEquipmentItem(
+                "flame_grimoire",
+                "炎火魔導書.png"
+            ),
+
+            createEquipmentItem(
+                "black_grimoire",
+                "黒炎魔導書.webp"
+            ),
+
+            createEquipmentItem(
+                "soul_grimoire",
+                "魂魔導書.webp"
+            ),
+
+            createEquipmentItem(
+                "craft_grimoire",
+                "製作魔導書.webp"
+            ),
+
+            createEquipmentItem(
+                "rupture_grimoire",
+                "破裂魔導書.webp"
+            )
+
+        ],
+
+
+        // ---------------------------------------------
+        // ランス
+        // ---------------------------------------------
+
+        "ランス": [
+
+            createEquipmentItem(
+                "flame_lance",
+                "炎火ランス.png"
+            ),
+
+            createEquipmentItem(
+                "black_lance",
+                "黒炎ランス.webp"
+            )
+
+        ],
+
+
+        // ---------------------------------------------
+        // レイピア
+        // ---------------------------------------------
+
+        "レイピア": [
+
+            createEquipmentItem(
+                "flame_rapier",
+                "炎火レイピア.png"
+            ),
+
+            createEquipmentItem(
+                "black_rapier",
+                "黒炎レイピア.webp"
+            ),
+
+            createEquipmentItem(
+                "soul_rapier",
+                "魂レイピア.png"
+            ),
+
+            createEquipmentItem(
+                "craft_rapier",
+                "製作レイピア.webp"
+            )
+
+        ],
+
+
+        // ---------------------------------------------
+        // ワンド
+        // ---------------------------------------------
+
+        "ワンド": [
+
+            createEquipmentItem(
+                "flame_wand",
+                "炎火ワンド.png"
+            ),
+
+            createEquipmentItem(
+                "black_wand",
+                "黒炎ワンド.webp"
+            ),
+
+            createEquipmentItem(
+                "soul_wand",
+                "魂ワンド.webp"
+            )
+
+        ],
+
+
+        // ---------------------------------------------
+        // 三節棍
+        // ---------------------------------------------
+
+        "三節棍": [
+
+            createEquipmentItem(
+                "flame_three_section_staff",
+                "炎火三節棍.png"
+            ),
+
+            createEquipmentItem(
+                "black_three_section_staff",
+                "黒炎三節棍.webp"
+            ),
+
+            createEquipmentItem(
+                "soul_three_section_staff",
+                "魂三節棍.webp"
+            )
+
+        ],
+
+
+        // ---------------------------------------------
+        // 剣盾
+        // ---------------------------------------------
+
+        "剣盾": [
+
+            createEquipmentItem(
+                "flame_sword_shield",
+                "炎火剣盾.png"
+            ),
+
+            createEquipmentItem(
+                "black_sword_shield",
+                "黒炎剣盾.webp"
+            ),
+
+            createEquipmentItem(
+                "soul_sword_shield",
+                "魂剣盾.png"
+            )
+
+        ],
+
+
+        // ---------------------------------------------
         // 双剣
-        // -----------------------------------------
+        // ---------------------------------------------
 
         "双剣": [
 
-            {
-                id: "flame_dual_swords",
-                name: "炎火双剣",
-                image: "images/炎火双剣.png"
-            },
+            createEquipmentItem(
+                "flame_dual_swords",
+                "炎火双剣.png"
+            ),
 
-            {
-                id: "black_flame_dual_swords",
-                name: "黒炎双剣",
-                image: "images/黒炎双剣.png"
-            },
+            createEquipmentItem(
+                "black_dual_swords",
+                "黒炎双剣.webp"
+            ),
 
-            {
-                id: "crafted_dual_swords",
-                name: "製作双剣",
-                image: "images/製作双剣.png"
-            }
+            createEquipmentItem(
+                "craft_dual_swords",
+                "製作双剣.webp"
+            )
 
         ],
 
 
-        "大剣": [],
+        // ---------------------------------------------
+        // 大剣
+        // ---------------------------------------------
+
+        "大剣": [
+
+            createEquipmentItem(
+                "flame_great_sword",
+                "炎火大剣.png"
+            ),
+
+            createEquipmentItem(
+                "black_great_sword",
+                "黒炎大剣.webp"
+            ),
+
+            createEquipmentItem(
+                "snake_dragon_great_sword",
+                "蛇龍大剣.webp"
+            )
+
+        ],
 
 
-        // -----------------------------------------
+        // ---------------------------------------------
         // 長剣
-        // -----------------------------------------
+        // ---------------------------------------------
 
         "長剣": [
 
-            {
-                id: "flame_long_sword",
-                name: "炎火長剣",
-                image: "images/炎火長剣.png"
-            },
+            createEquipmentItem(
+                "flame_long_sword",
+                "炎火長剣.png"
+            ),
 
-            {
-                id: "black_flame_long_sword",
-                name: "黒炎長剣",
-                image: "images/黒炎長剣.png"
-            },
+            createEquipmentItem(
+                "black_long_sword",
+                "黒炎長剣.webp"
+            ),
 
-            {
-                id: "soul_long_sword",
-                name: "魂長剣",
-                image: "images/魂長剣.png"
-            }
+            createEquipmentItem(
+                "soul_long_sword",
+                "魂長剣.webp"
+            )
 
         ],
 
 
-        // -----------------------------------------
+        // ---------------------------------------------
         // 斧
-        // -----------------------------------------
+        // ---------------------------------------------
 
         "斧": [
 
-            {
-                id: "flame_axe",
-                name: "炎火斧",
-                image: "images/炎火斧.png"
-            },
+            createEquipmentItem(
+                "flame_axe",
+                "炎火斧.png"
+            ),
 
-            {
-                id: "black_flame_axe",
-                name: "黒炎斧",
-                image: "images/黒炎斧.png"
-            },
+            createEquipmentItem(
+                "black_axe",
+                "黒炎斧.webp"
+            ),
 
-            {
-                id: "soul_axe",
-                name: "魂斧",
-                image: "images/魂斧.png"
-            }
+            createEquipmentItem(
+                "soul_axe",
+                "魂斧.webp"
+            ),
+
+            createEquipmentItem(
+                "snake_dragon_axe",
+                "蛇龍斧.webp"
+            )
 
         ]
 
@@ -702,47 +924,45 @@ const equipmentMaster = {
 
     top: [
 
-        {
-            id: "arachne_top",
-            name: "アラクネートップス",
-            image: "images/アラクネートップス.png"
-        },
+        createEquipmentItem(
+            "arachne_top",
+            "アラクネートップス.webp"
+        ),
 
-        {
-            id: "taranis_top",
-            name: "タラニストップス",
-            image: "images/タラニストップス.png"
-        },
+        createEquipmentItem(
+            "galand_top",
+            "ガラントップス.webp"
+        ),
 
-        {
-            id: "knight_top",
-            name: "騎士団トップス",
-            image: "images/騎士団トップス.png"
-        },
+        createEquipmentItem(
+            "taranis_top",
+            "タラニストップス.webp"
+        ),
 
-        {
-            id: "madness_top",
-            name: "狂気トップス",
-            image: "images/狂気トップス.png"
-        },
+        createEquipmentItem(
+            "shaggy_top",
+            "シャキーラトップス.webp"
+        ),
 
-        {
-            id: "jet_black_top",
-            name: "漆黒トップス",
-            image: "images/漆黒トップス.png"
-        },
+        createEquipmentItem(
+            "watcher_top",
+            "監視者トップス.webp"
+        ),
 
-        {
-            id: "wild_top",
-            name: "野生トップス",
-            image: "images/野生トップス.png"
-        },
+        createEquipmentItem(
+            "knight_top",
+            "騎士団トップス.webp"
+        ),
 
-        {
-            id: "galand_top",
-            name: "ガラントップス",
-            image: "images/ガラントップス.png"
-        }
+        createEquipmentItem(
+            "jet_black_top",
+            "漆黒トップス.webp"
+        ),
+
+        createEquipmentItem(
+            "wild_top",
+            "野生トップス.webp"
+        )
 
     ],
 
@@ -753,47 +973,40 @@ const equipmentMaster = {
 
     belt: [
 
-        {
-            id: "arachne_belt",
-            name: "アラクネーベルト",
-            image: "images/アラクネーベルト.png"
-        },
+        createEquipmentItem(
+            "arachne_belt",
+            "アラクネーベルト.webp"
+        ),
 
-        {
-            id: "taranis_belt",
-            name: "タラニスベルト",
-            image: "images/タラニスベルト.png"
-        },
+        createEquipmentItem(
+            "taranis_belt",
+            "タラニスベルト.webp"
+        ),
 
-        {
-            id: "watcher_belt",
-            name: "監視者ベルト",
-            image: "images/監視者ベルト.png"
-        },
+        createEquipmentItem(
+            "shaggy_belt",
+            "シャキーラベルト.webp"
+        ),
 
-        {
-            id: "knight_belt",
-            name: "騎士団ベルト",
-            image: "images/騎士団ベルト.png"
-        },
+        createEquipmentItem(
+            "watcher_belt",
+            "監視者ベルト.webp"
+        ),
 
-        {
-            id: "madness_belt",
-            name: "狂気ベルト",
-            image: "images/狂気ベルト.png"
-        },
+        createEquipmentItem(
+            "knight_belt",
+            "騎士団ベルト.webp"
+        ),
 
-        {
-            id: "jet_black_belt",
-            name: "漆黒ベルト",
-            image: "images/漆黒ベルト.png"
-        },
+        createEquipmentItem(
+            "jet_black_belt",
+            "漆黒ベルト.webp"
+        ),
 
-        {
-            id: "wild_belt",
-            name: "野生ベルト",
-            image: "images/野生ベルト.png"
-        }
+        createEquipmentItem(
+            "wild_belt",
+            "野生ベルト.webp"
+        )
 
     ],
 
@@ -804,59 +1017,45 @@ const equipmentMaster = {
 
     bottom: [
 
-        {
-            id: "arachne_bottom",
-            name: "アラクネーボトムス",
-            image: "images/アラクネーボトムス.png"
-        },
+        createEquipmentItem(
+            "arachne_bottom",
+            "アラクネーボトムス.webp"
+        ),
 
-        {
-            id: "golem_bottom",
-            name: "ゴーレムボトムス",
-            image: "images/ゴーレムボトムス.png"
-        },
+        createEquipmentItem(
+            "taranis_bottom",
+            "タラニスボトムス.webp"
+        ),
 
-        {
-            id: "taranis_bottom",
-            name: "タラニスボトムス",
-            image: "images/タラニスボトムス.png"
-        },
+        createEquipmentItem(
+            "shaggy_bottom",
+            "シャキーラボトムス.webp"
+        ),
 
-        {
-            id: "watcher_bottom",
-            name: "監視者ボトムス",
-            image: "images/監視者ボトムス.png"
-        },
+        createEquipmentItem(
+            "golem_bottom",
+            "ゴーレムボトムス.webp"
+        ),
 
-        {
-            id: "knight_bottom",
-            name: "騎士団ボトムス",
-            image: "images/騎士団ボトムス.png"
-        },
+        createEquipmentItem(
+            "watcher_bottom",
+            "監視者ボトムス.webp"
+        ),
 
-        {
-            id: "madness_bottom",
-            name: "狂気ボトムス",
-            image: "images/狂気ボトムス.png"
-        },
+        createEquipmentItem(
+            "knight_bottom",
+            "騎士団ボトムス.webp"
+        ),
 
-        {
-            id: "jet_black_bottom",
-            name: "漆黒ボトムス",
-            image: "images/漆黒ボトムス.png"
-        },
+        createEquipmentItem(
+            "jet_black_bottom",
+            "漆黒ボトムス.webp"
+        ),
 
-        {
-            id: "spider_bottom",
-            name: "蜘蛛ボトムス",
-            image: "images/蜘蛛ボトムス.png"
-        },
-
-        {
-            id: "wild_bottom",
-            name: "野生ボトムス",
-            image: "images/野生ボトムス.png"
-        }
+        createEquipmentItem(
+            "wild_bottom",
+            "野生ボトムス.webp"
+        )
 
     ],
 
@@ -867,35 +1066,45 @@ const equipmentMaster = {
 
     boots: [
 
-        {
-            id: "arachne_boots",
-            name: "アラクネーブーツ",
-            image: "images/アラクネーブーツ.png"
-        },
+        createEquipmentItem(
+            "taranis_boots",
+            "タラニスブーツ.webp"
+        ),
 
-        {
-            id: "taranis_boots",
-            name: "タラニスブーツ",
-            image: "images/タラニスブーツ.png"
-        },
+        createEquipmentItem(
+            "shaggy_boots",
+            "シャキーラブーツ.webp"
+        ),
 
-        {
-            id: "madness_boots",
-            name: "狂気ブーツ",
-            image: "images/狂気ブーツ.webp"
-        },
+        createEquipmentItem(
+            "monspeet_boots",
+            "モンスピートブーツ.webp"
+        ),
 
-        {
-            id: "jet_black_boots",
-            name: "漆黒ブーツ",
-            image: "images/漆黒ブーツ.png"
-        },
+        createEquipmentItem(
+            "watcher_boots",
+            "監視者ブーツ.webp"
+        ),
 
-        {
-            id: "spider_boots",
-            name: "蜘蛛ブーツ",
-            image: "images/蜘蛛ブーツ.png"
-        }
+        createEquipmentItem(
+            "knight_boots",
+            "騎士団ブーツ.webp"
+        ),
+
+        createEquipmentItem(
+            "jet_black_boots",
+            "漆黒ブーツ.webp"
+        ),
+
+        createEquipmentItem(
+            "spider_boots",
+            "蜘蛛ブーツ.webp"
+        ),
+
+        createEquipmentItem(
+            "wild_boots",
+            "野生ブーツ.webp"
+        )
 
     ],
 
@@ -906,35 +1115,45 @@ const equipmentMaster = {
 
     earring: [
 
-        {
-            id: "taranis_earring",
-            name: "タラニス耳飾り",
-            image: "images/タラニス耳飾り.webp"
-        },
+        createEquipmentItem(
+            "arachne_earring",
+            "アラクネー耳飾り.webp"
+        ),
 
-        {
-            id: "knight_earring",
-            name: "騎士団耳飾り",
-            image: "images/騎士団耳飾り.png"
-        },
+        createEquipmentItem(
+            "taranis_earring",
+            "タラニス耳飾り.webp"
+        ),
 
-        {
-            id: "regeneration_earring",
-            name: "再生耳飾り",
-            image: "images/再生耳飾り.png"
-        },
+        createEquipmentItem(
+            "shaggy_earring",
+            "シャキーラ耳飾り.webp"
+        ),
 
-        {
-            id: "curse_earring",
-            name: "呪い耳飾り",
-            image: "images/呪い耳飾り.png"
-        },
+        createEquipmentItem(
+            "knight_earring",
+            "騎士団耳飾り.webp"
+        ),
 
-        {
-            id: "fallen_earring",
-            name: "堕落耳飾り",
-            image: "images/堕落耳飾り.png"
-        }
+        createEquipmentItem(
+            "chaos_earring",
+            "混沌耳飾り.webp"
+        ),
+
+        createEquipmentItem(
+            "regeneration_earring",
+            "再生耳飾り.webp"
+        ),
+
+        createEquipmentItem(
+            "curse_earring",
+            "呪い耳飾り.webp"
+        ),
+
+        createEquipmentItem(
+            "fallen_earring",
+            "堕落耳飾り.webp"
+        )
 
     ],
 
@@ -945,53 +1164,45 @@ const equipmentMaster = {
 
     necklace: [
 
-        {
-            id: "arachne_necklace",
-            name: "アラクネー首飾り",
-            image: "images/アラクネー首飾り.png"
-        },
+        createEquipmentItem(
+            "arachne_necklace",
+            "アラクネー首飾り.webp"
+        ),
 
-        {
-            id: "taranis_necklace",
-            name: "タラニス首飾り",
-            image: "images/タラニス首飾り.webp"
-        },
+        createEquipmentItem(
+            "taranis_necklace",
+            "タラニス首飾り.webp"
+        ),
 
-        {
-            id: "durack_necklace",
-            name: "デュラック首飾り",
-            image: "images/デュラック首飾り.png"
-        },
+        createEquipmentItem(
+            "durack_necklace",
+            "デュラック首飾り.webp"
+        ),
 
-        {
-            id: "knight_necklace",
-            name: "騎士団首飾り",
-            image: "images/騎士団首飾り.png"
-        },
+        createEquipmentItem(
+            "shaggy_necklace",
+            "シャキーラ首飾り.webp"
+        ),
 
-        {
-            id: "madness_necklace",
-            name: "狂気首飾り",
-            image: "images/狂気首飾り.png"
-        },
+        createEquipmentItem(
+            "knight_necklace",
+            "騎士団首飾り.webp"
+        ),
 
-        {
-            id: "regeneration_necklace",
-            name: "再生首飾り",
-            image: "images/再生首飾り.png"
-        },
+        createEquipmentItem(
+            "regeneration_necklace",
+            "再生首飾り.webp"
+        ),
 
-        {
-            id: "curse_necklace",
-            name: "呪い首飾り",
-            image: "images/呪い首飾り.png"
-        },
+        createEquipmentItem(
+            "curse_necklace",
+            "呪い首飾り.webp"
+        ),
 
-        {
-            id: "fallen_necklace",
-            name: "堕落首飾り",
-            image: "images/堕落首飾り.png"
-        }
+        createEquipmentItem(
+            "fallen_necklace",
+            "堕落首飾り.webp"
+        )
 
     ],
 
@@ -1002,63 +1213,99 @@ const equipmentMaster = {
 
     ring: [
 
-        {
-            id: "arachne_ring",
-            name: "アラクネー指輪",
-            image: "images/アラクネー指輪.png"
-        },
+        createEquipmentItem(
+            "arachne_ring",
+            "アラクネー指輪.webp"
+        ),
 
-        {
-            id: "taranis_ring",
-            name: "タラニス指輪",
-            image: "images/タラニス指輪.webp"
-        },
+        createEquipmentItem(
+            "taranis_ring",
+            "タラニス指輪.webp"
+        ),
 
-        {
-            id: "knight_ring",
-            name: "騎士団指輪",
-            image: "images/騎士団指輪.png"
-        },
+        createEquipmentItem(
+            "shaggy_ring",
+            "シャキーラ指輪.webp"
+        ),
 
-        {
-            id: "madness_ring",
-            name: "狂気指輪",
-            image: "images/狂気指輪.png"
-        },
+        createEquipmentItem(
+            "knight_ring",
+            "騎士団指輪.webp"
+        ),
 
-        {
-            id: "regeneration_ring",
-            name: "再生指輪",
-            image: "images/再生指輪.png"
-        },
+        createEquipmentItem(
+            "regeneration_ring",
+            "再生指輪.webp"
+        ),
 
-        {
-            id: "curse_ring",
-            name: "呪い指輪",
-            image: "images/呪い指輪.png"
-        },
+        createEquipmentItem(
+            "curse_ring",
+            "呪い指輪.webp"
+        ),
 
-        {
-            id: "fallen_ring",
-            name: "堕落指輪",
-            image: "images/堕落指輪.png"
-        },
+        createEquipmentItem(
+            "fallen_ring",
+            "堕落指輪.webp"
+        ),
 
-        {
-            id: "spider_ring",
-            name: "蜘蛛指輪",
-            image: "images/蜘蛛指輪.png"
-        },
-
-        {
-            id: "oath_ring",
-            name: "盟約指輪",
-            image: "images/盟約指輪.png"
-        }
+        createEquipmentItem(
+            "oath_ring",
+            "盟約指輪.webp"
+        )
 
     ]
 
 };
+
+// =====================================================
+// 刻印データ作成用
+// =====================================================
+
+function createEngravingItem(
+    characterName,
+    id,
+    filename
+) {
+
+    // ファイル名から拡張子を削除
+    let displayName =
+        filename.replace(
+            /\.(png|webp|jpg|jpeg)$/i,
+            ""
+        );
+
+
+    // 「キャラ名 + 刻印」を削除
+    const prefix =
+        `${characterName}刻印`;
+
+
+    if (
+        displayName.startsWith(
+            prefix
+        )
+    ) {
+
+        displayName =
+            displayName.slice(
+                prefix.length
+            );
+
+    }
+
+
+    return {
+
+        id: id,
+
+        name: displayName,
+
+        image:
+            `images/${filename}`
+
+    };
+
+}
 
 // =====================================================
 // キャラクター別 装備ルール
@@ -1066,117 +1313,956 @@ const equipmentMaster = {
 
 const characterEquipmentRules = {
 
-    elaine: {
+    // =================================================
+    // エスカノール
+    // =================================================
+
+    escanor: {
+
         engravings: [
-            "旅人",
-            "軽やか",
-            "聖女"
+
+            createEngravingItem(
+                "エスカノール",
+                "escanor_engraving_1",
+                "エスカノール刻印黄金の威厳.webp"
+            ),
+
+            createEngravingItem(
+                "エスカノール",
+                "escanor_engraving_2",
+                "エスカノール刻印北部の野生.webp"
+            ),
+
+            createEngravingItem(
+                "エスカノール",
+                "escanor_engraving_3",
+                "エスカノール刻印満ち足りた傲慢さ.webp"
+            )
+
         ],
+
+        weaponTypes: [
+            "斧",
+            "大剣",
+            "剣盾"
+        ]
+
+    },
+
+
+    // =================================================
+    // エリザベス
+    // =================================================
+
+    elizabeth: {
+
+        engravings: [
+
+            createEngravingItem(
+                "エリザベス",
+                "elizabeth_engraving_1",
+                "エリザベス刻印リオネスの英雄.webp"
+            ),
+
+            createEngravingItem(
+                "エリザベス",
+                "elizabeth_engraving_2",
+                "エリザベス刻印リオネスの光.webp"
+            ),
+
+            createEngravingItem(
+                "エリザベス",
+                "elizabeth_engraving_3",
+                "エリザベス刻印酒場の花.webp"
+            )
+
+        ],
+
+        weaponTypes: [
+            "魔導書",
+            "スタッフ",
+            "ワンド"
+        ]
+
+    },
+
+
+    // =================================================
+    // エレイン
+    // =================================================
+
+    elaine: {
+
+        engravings: [
+
+            createEngravingItem(
+                "エレイン",
+                "elaine_engraving_1",
+                "エレイン刻印軽やかなお出かけ.webp"
+            ),
+
+            createEngravingItem(
+                "エレイン",
+                "elaine_engraving_2",
+                "エレイン刻印聖女の威厳.webp"
+            ),
+
+            createEngravingItem(
+                "エレイン",
+                "elaine_engraving_3",
+                "エレイン刻印旅人を導く光.webp"
+            )
+
+        ],
+
         weaponTypes: [
             "ワンド",
             "スタッフ",
             "魔導書"
         ]
+
     },
 
+
+    // =================================================
+    // ギーラ
+    // =================================================
+
     guila: {
+
         engravings: [
-            "誘爆",
-            "軽やか",
-            "紅炎"
+
+            createEngravingItem(
+                "ギーラ",
+                "guila_engraving_1",
+                "ギーラ刻印軽やかな足取り.webp"
+            ),
+
+            createEngravingItem(
+                "ギーラ",
+                "guila_engraving_2",
+                "ギーラ刻印紅炎の痕跡.webp"
+            ),
+
+            createEngravingItem(
+                "ギーラ",
+                "guila_engraving_3",
+                "ギーラ刻印誘爆の聖騎士.webp"
+            )
+
         ],
+
         weaponTypes: [
             "ランス",
             "剣盾",
             "レイピア"
         ]
+
     },
 
-    jericho: {
+
+    // =================================================
+    // ギルサンダー
+    // =================================================
+
+    gilthunder: {
+
         engravings: [
-            "星形",
-            "秘密",
-            "思い出"
+
+            createEngravingItem(
+                "ギルサンダー",
+                "gilthunder_engraving_1",
+                "ギルサンダー刻印将来有望な聖騎士.webp"
+            ),
+
+            createEngravingItem(
+                "ギルサンダー",
+                "gilthunder_engraving_2",
+                "ギルサンダー刻印雷撃の聖騎士.webp"
+            ),
+
+            createEngravingItem(
+                "ギルサンダー",
+                "gilthunder_engraving_3",
+                "ギルサンダー刻印模範的な冒険.webp"
+            )
+
         ],
+
         weaponTypes: [
-            "双剣",
-            "ランス",
-            "レイピア"
+            "長剣",
+            "剣盾",
+            "ランス"
         ]
+
     },
+
+
+    // =================================================
+    // キング
+    // =================================================
 
     king: {
+
         engravings: [
-            "怠惰",
-            "深き森"
+
+            createEngravingItem(
+                "キング",
+                "king_engraving_1",
+                "キング刻印〈怠惰の罪〉.webp"
+            ),
+
+            createEngravingItem(
+                "キング",
+                "king_engraving_2",
+                "キング刻印深き森の影.webp"
+            ),
+
+            createEngravingItem(
+                "キング",
+                "king_engraving_3",
+                "キング刻印妖精王の影.webp"
+            )
+
         ],
+
         weaponTypes: [
             "スタッフ",
             "魔導書",
             "ワンド"
         ]
+
     },
 
-    diane: {
+
+    // =================================================
+    // グリアモール
+    // =================================================
+
+    griamore: {
+
         engravings: [
-            "嫉妬",
-            "元気",
-            "スパイナス"
+
+            createEngravingItem(
+                "グリアモール",
+                "griamore_engraving_1",
+                "グリアモール刻印簡易防壁.webp"
+            ),
+
+            createEngravingItem(
+                "グリアモール",
+                "griamore_engraving_2",
+                "グリアモール刻印鉄壁の聖騎士.webp"
+            ),
+
+            createEngravingItem(
+                "グリアモール",
+                "griamore_engraving_3",
+                "グリアモール刻印難攻不落の鉄壁.webp"
+            )
+
         ],
+
+        weaponTypes: [
+            "剣盾",
+            "三節棍",
+            "ガントレット"
+        ]
+
+    },
+
+
+    // =================================================
+    // クロト
+    // =================================================
+
+    clotho: {
+
+        engravings: [
+
+            createEngravingItem(
+                "クロト",
+                "clotho_engraving_1",
+                "クロト刻印軽やかなパーティー服.webp"
+            ),
+
+            createEngravingItem(
+                "クロト",
+                "clotho_engraving_2",
+                "クロト刻印大学者の格式.webp"
+            ),
+
+            createEngravingItem(
+                "クロト",
+                "clotho_engraving_3",
+                "クロト刻印探検家のユニフォーム.webp"
+            )
+
+        ],
+
+        weaponTypes: [
+            "レイピア",
+            "魔導書",
+            "スタッフ"
+        ]
+
+    },
+
+
+    // =================================================
+    // ゴウセル
+    // =================================================
+
+    gowther: {
+
+        engravings: [
+
+            createEngravingItem(
+                "ゴウセル",
+                "gowther_engraving_1",
+                "ゴウセル刻印〈色欲の罪〉.webp"
+            ),
+
+            createEngravingItem(
+                "ゴウセル",
+                "gowther_engraving_2",
+                "ゴウセル刻印最小限の備え.webp"
+            ),
+
+            createEngravingItem(
+                "ゴウセル",
+                "gowther_engraving_3",
+                "ゴウセル刻印秘蔵のデートルック.webp"
+            )
+
+        ],
+
+        weaponTypes: [
+            "ワンド",
+            "魔導書",
+            "スタッフ"
+        ]
+
+    },
+
+
+    // =================================================
+    // ジェリコ
+    // =================================================
+
+    jericho: {
+
+        engravings: [
+
+            createEngravingItem(
+                "ジェリコ",
+                "jericho_engraving_1",
+                "ジェリコ刻印思い出の痕跡.webp"
+            ),
+
+            createEngravingItem(
+                "ジェリコ",
+                "jericho_engraving_2",
+                "ジェリコ刻印星型面頬の聖騎士.webp"
+            ),
+
+            createEngravingItem(
+                "ジェリコ",
+                "jericho_engraving_3",
+                "ジェリコ刻印秘密を抱えし旅人.webp"
+            )
+
+        ],
+
+        weaponTypes: [
+            "双剣",
+            "ランス",
+            "レイピア"
+        ]
+
+    },
+
+
+    // =================================================
+    // スレイダー
+    // =================================================
+
+    slader: {
+
+        engravings: [
+
+            createEngravingItem(
+                "スレイダー",
+                "slader_engraving_1",
+                "スレイダー刻印極秘任務.webp"
+            ),
+
+            createEngravingItem(
+                "スレイダー",
+                "slader_engraving_2",
+                "スレイダー刻印万全の態勢.webp"
+            ),
+
+            createEngravingItem(
+                "スレイダー",
+                "slader_engraving_3",
+                "スレイダー刻印老王の剣.webp"
+            )
+
+        ],
+
+        weaponTypes: [
+            "大剣",
+            "斧",
+            "三節棍"
+        ]
+
+    },
+
+
+    // =================================================
+    // ディアンヌ
+    // =================================================
+
+    diane: {
+
+        engravings: [
+
+            createEngravingItem(
+                "ディアンヌ",
+                "diane_engraving_1",
+                "ディアンヌ刻印〈嫉妬の罪〉.webp"
+            ),
+
+            createEngravingItem(
+                "ディアンヌ",
+                "diane_engraving_2",
+                "ディアンヌ刻印スパイナス戦闘服.webp"
+            ),
+
+            createEngravingItem(
+                "ディアンヌ",
+                "diane_engraving_3",
+                "ディアンヌ刻印元気な少女.webp"
+            )
+
+        ],
+
         weaponTypes: [
             "斧",
             "ガントレット",
             "三節棍"
         ]
+
     },
 
-    drake: {
+
+    // =================================================
+    // ティオレー
+    // =================================================
+
+    tioreh: {
+
         engravings: [
-            "過去",
-            "影",
-            "インペリアル"
+
+            createEngravingItem(
+                "ティオレー",
+                "tioreh_engraving_1",
+                "ティオレー刻印森と大地の娘.webp"
+            ),
+
+            createEngravingItem(
+                "ティオレー",
+                "tioreh_engraving_2",
+                "ティオレー刻印冒険の始まり.webp"
+            ),
+
+            createEngravingItem(
+                "ティオレー",
+                "tioreh_engraving_3",
+                "ティオレー刻印妖精の加護.webp"
+            )
+
         ],
+
+        weaponTypes: [
+            "魔導書",
+            "ワンド",
+            "スタッフ"
+        ]
+
+    },
+
+
+    // =================================================
+    // デイジー
+    // =================================================
+
+    daisy: {
+
+        engravings: [
+
+            createEngravingItem(
+                "デイジー",
+                "daisy_engraving_1",
+                "デイジー刻印春色の礼服.webp"
+            ),
+
+            createEngravingItem(
+                "デイジー",
+                "daisy_engraving_2",
+                "デイジー刻印小さな探検家.webp"
+            ),
+
+            createEngravingItem(
+                "デイジー",
+                "daisy_engraving_3",
+                "デイジー刻印探求の意思.webp"
+            )
+
+        ],
+
+        weaponTypes: [
+            "剣盾",
+            "魔導書",
+            "ワンド"
+        ]
+
+    },
+
+
+    // =================================================
+    // デリエリ
+    // =================================================
+
+    derieri: {
+
+        engravings: [
+
+            createEngravingItem(
+                "デリエリ",
+                "derieri_engraving_1",
+                "デリエリ刻印最低限の礼節.webp"
+            ),
+
+            createEngravingItem(
+                "デリエリ",
+                "derieri_engraving_2",
+                "デリエリ刻印反抗と革命.webp"
+            ),
+
+            createEngravingItem(
+                "デリエリ",
+                "derieri_engraving_3",
+                "デリエリ刻印反骨の斥候.webp"
+            )
+
+        ],
+
+        weaponTypes: [
+            "ガントレット",
+            "大剣",
+            "斧"
+        ]
+
+    },
+
+
+    // =================================================
+    // トリスタン
+    // =================================================
+
+    tristan: {
+
+        engravings: [
+
+            createEngravingItem(
+                "トリスタン",
+                "tristan_engraving_1",
+                "トリスタン刻印王子の誓い.webp"
+            ),
+
+            createEngravingItem(
+                "トリスタン",
+                "tristan_engraving_2",
+                "トリスタン刻印王子の品格.webp"
+            ),
+
+            createEngravingItem(
+                "トリスタン",
+                "tristan_engraving_3",
+                "トリスタン刻印王子の冒険.webp"
+            )
+
+        ],
+
+        weaponTypes: [
+            "双剣",
+            "大剣",
+            "長剣"
+        ]
+
+    },
+
+
+    // =================================================
+    // ドレイク
+    // =================================================
+
+    drake: {
+
+        engravings: [
+
+            createEngravingItem(
+                "ドレイク",
+                "drake_engraving_1",
+                "ドレイク刻印インペリアル・ナイト.webp"
+            ),
+
+            createEngravingItem(
+                "ドレイク",
+                "drake_engraving_2",
+                "ドレイク刻印影の帝王.webp"
+            ),
+
+            createEngravingItem(
+                "ドレイク",
+                "drake_engraving_3",
+                "ドレイク刻印過去の栄光.webp"
+            )
+
+        ],
+
         weaponTypes: [
             "大剣",
             "スタッフ",
             "長剣"
         ]
+
     },
 
-    manny: {
+
+    // =================================================
+    // ドレドリン
+    // =================================================
+
+    deldry: {
+
         engravings: [
-            "最高位",
-            "未知",
-            "神聖"
+
+            createEngravingItem(
+                "ドレドリン",
+                "deldry_engraving_1",
+                "ドレドリン刻印王家の末裔.webp"
+            ),
+
+            createEngravingItem(
+                "ドレドリン",
+                "deldry_engraving_2",
+                "ドレドリン刻印堅固な防御.webp"
+            ),
+
+            createEngravingItem(
+                "ドレドリン",
+                "deldry_engraving_3",
+                "ドレドリン刻印入念な準備.webp"
+            )
+
         ],
+
+        weaponTypes: [
+            "剣盾",
+            "斧",
+            "レイピア"
+        ]
+
+    },
+
+
+    // =================================================
+    // ドレファス
+    // =================================================
+
+    dreyfus: {
+
+        engravings: [
+
+            createEngravingItem(
+                "ドレファス",
+                "dreyfus_engraving_1",
+                "ドレファス刻印栄誉ある騎士.webp"
+            ),
+
+            createEngravingItem(
+                "ドレファス",
+                "dreyfus_engraving_2",
+                "ドレファス刻印飾らない装い.webp"
+            ),
+
+            createEngravingItem(
+                "ドレファス",
+                "dreyfus_engraving_3",
+                "ドレファス刻印老将の名誉.webp"
+            )
+
+        ],
+
+        weaponTypes: [
+            "レイピア",
+            "長剣",
+            "ランス"
+        ]
+
+    },
+
+
+    // =================================================
+    // ハウザー
+    // =================================================
+
+    hauser: {
+
+        engravings: [
+
+            createEngravingItem(
+                "ハウザー",
+                "hauser_engraving_1",
+                "ハウザー刻印堅固な冒険.webp"
+            ),
+
+            createEngravingItem(
+                "ハウザー",
+                "hauser_engraving_2",
+                "ハウザー刻印聖騎士長の威厳.webp"
+            ),
+
+            createEngravingItem(
+                "ハウザー",
+                "hauser_engraving_3",
+                "ハウザー刻印暴風の聖騎士.webp"
+            )
+
+        ],
+
+        weaponTypes: [
+            "ランス",
+            "ガントレット",
+            "三節棍"
+        ]
+
+    },
+
+
+    // =================================================
+    // バグ
+    // =================================================
+
+    bug: {
+
+        engravings: [
+
+            createEngravingItem(
+                "バグ",
+                "bug_engraving_1",
+                "バグ刻印影の足取り.webp"
+            ),
+
+            createEngravingItem(
+                "バグ",
+                "bug_engraving_2",
+                "バグ刻印鋭い勘.webp"
+            ),
+
+            createEngravingItem(
+                "バグ",
+                "bug_engraving_3",
+                "バグ刻印魔神の潜行.webp"
+            )
+
+        ],
+
+        weaponTypes: [
+            "斧",
+            "双剣",
+            "魔導書"
+        ]
+
+    },
+
+
+    // =================================================
+    // バン
+    // =================================================
+
+    ban: {
+
+        engravings: [
+
+            createEngravingItem(
+                "バン",
+                "ban_engraving_1",
+                "バン刻印〈強欲の罪〉.webp"
+            ),
+
+            createEngravingItem(
+                "バン",
+                "ban_engraving_2",
+                "バン刻印軽快な略奪者.webp"
+            ),
+
+            createEngravingItem(
+                "バン",
+                "ban_engraving_3",
+                "バン刻印臨時料理人.webp"
+            )
+
+        ],
+
+        weaponTypes: [
+            "三節棍",
+            "大剣",
+            "ガントレット"
+        ]
+
+    },
+
+
+    // =================================================
+    // ヘンドリクセン
+    // =================================================
+
+    hendrickson: {
+
+        engravings: [
+
+            createEngravingItem(
+                "ヘンドリクセン",
+                "hendrickson_engraving_1",
+                "ヘンドリクセン刻印帰ってきた聖騎士.webp"
+            ),
+
+            createEngravingItem(
+                "ヘンドリクセン",
+                "hendrickson_engraving_2",
+                "ヘンドリクセン刻印施薬院の作業服.webp"
+            ),
+
+            createEngravingItem(
+                "ヘンドリクセン",
+                "hendrickson_engraving_3",
+                "ヘンドリクセン刻印若き日の正装.webp"
+            )
+
+        ],
+
+        weaponTypes: [
+            "長剣",
+            "双剣",
+            "ランス"
+        ]
+
+    },
+
+
+    // =================================================
+    // マーリン
+    // =================================================
+
+    merlin: {
+
+        engravings: [
+
+            createEngravingItem(
+                "マーリン",
+                "merlin_engraving_1",
+                "マーリン刻印〈暴食の罪〉.webp"
+            ),
+
+            createEngravingItem(
+                "マーリン",
+                "merlin_engraving_2",
+                "マーリン刻印軽やかな礼服.webp"
+            ),
+
+            createEngravingItem(
+                "マーリン",
+                "merlin_engraving_3",
+                "マーリン刻印知識の探究者.webp"
+            )
+
+        ],
+
+        weaponTypes: [
+            "魔導書",
+            "ワンド",
+            "スタッフ"
+        ]
+
+    },
+
+
+    // =================================================
+    // マニー
+    // =================================================
+
+    manny: {
+
+        engravings: [
+
+            createEngravingItem(
+                "マニー",
+                "manny_engraving_1",
+                "マニー刻印最高位巫女の権威.webp"
+            ),
+
+            createEngravingItem(
+                "マニー",
+                "manny_engraving_2",
+                "マニー刻印神聖な祭礼.webp"
+            ),
+
+            createEngravingItem(
+                "マニー",
+                "manny_engraving_3",
+                "マニー刻印未知への探究.webp"
+            )
+
+        ],
+
         weaponTypes: [
             "スタッフ",
             "双剣",
             "長剣"
         ]
+
     },
+
+
+    // =================================================
+    // メリオダス
+    // =================================================
 
     meliodas: {
 
         engravings: [
 
-            {
-                id: "meliodas_engraving_new",
-                name: "新たな",
-                image: "images/メリオダス刻印新たな.png"
-            },
+            createEngravingItem(
+                "メリオダス",
+                "meliodas_engraving_1",
+                "メリオダス刻印簡易的な防御.webp"
+            ),
 
-            {
-                id: "meliodas_engraving_simple",
-                name: "簡易的",
-                image: "images/メリオダス刻印簡易的.png"
-            },
+            createEngravingItem(
+                "メリオダス",
+                "meliodas_engraving_2",
+                "メリオダス刻印最強最凶の威容.webp"
+            ),
 
-            {
-                id: "meliodas_engraving_strongest",
-                name: "最強",
-                image: "images/メリオダス刻印最強.png"
-            }
+            createEngravingItem(
+                "メリオダス",
+                "meliodas_engraving_3",
+                "メリオダス刻印新たな冒険.webp"
+            )
 
         ],
 
@@ -1186,236 +2272,6 @@ const characterEquipmentRules = {
             "双剣"
         ]
 
-    },
-
-    daisy: {
-        engravings: [
-            "小さな",
-            "探求",
-            "春色"
-        ],
-        weaponTypes: [
-            "剣盾",
-            "魔導書",
-            "ワンド"
-        ]
-    },
-
-    escanor: {
-        engravings: [
-            "黄金",
-            "北部",
-            "満ち足りた"
-        ],
-        weaponTypes: [
-            "斧",
-            "大剣",
-            "剣盾"
-        ]
-    },
-
-    clotho: {
-        engravings: [
-            "大学者",
-            "軽やか",
-            "探検家"
-        ],
-        weaponTypes: [
-            "レイピア",
-            "魔導書",
-            "スタッフ"
-        ]
-    },
-
-    merlin: {
-        engravings: [
-            "軽やか",
-            "暴食",
-            "知識"
-        ],
-        weaponTypes: [
-            "魔導書",
-            "ワンド",
-            "スタッフ"
-        ]
-    },
-
-    elizabeth: {
-        engravings: [
-            "酒場",
-            "リオネス"
-        ],
-        weaponTypes: [
-            "魔導書",
-            "スタッフ",
-            "ワンド"
-        ]
-    },
-
-    gowther: {
-        engravings: [
-            "秘蔵",
-            "色欲",
-            "最小限"
-        ],
-        weaponTypes: [
-            "ワンド",
-            "魔導書",
-            "スタッフ"
-        ]
-    },
-
-    derieri: {
-        engravings: [
-            "反抗",
-            "最低限"
-        ],
-        weaponTypes: [
-            "ガントレット",
-            "大剣",
-            "斧"
-        ]
-    },
-
-    ban: {
-        engravings: [
-            "臨時",
-            "強欲",
-            "軽快"
-        ],
-        weaponTypes: [
-            "三節棍",
-            "大剣",
-            "ガントレット"
-        ]
-    },
-
-    tristan: {
-        engravings: [
-            "品格",
-            "冒険",
-            "誓い"
-        ],
-        weaponTypes: [
-            "双剣",
-            "大剣",
-            "長剣"
-        ]
-    },
-
-    tioreh: {
-        engravings: [
-            "森と大地",
-            "冒険",
-            "妖精"
-        ],
-        weaponTypes: [
-            "魔導書",
-            "ワンド",
-            "スタッフ"
-        ]
-    },
-
-    gilthunder: {
-        engravings: [
-            "電撃",
-            "模範的",
-            "将来有望"
-        ],
-        weaponTypes: [
-            "長剣",
-            "剣盾",
-            "ランス"
-        ]
-    },
-
-    hauser: {
-        engravings: [
-            "暴風",
-            "堅固"
-        ],
-        weaponTypes: [
-            "ランス",
-            "ガントレット",
-            "三節棍"
-        ]
-    },
-
-    deldry: {
-        engravings: [
-            "王家",
-            "入念",
-            "堅固"
-        ],
-        weaponTypes: [
-            "剣盾",
-            "斧",
-            "レイピア"
-        ]
-    },
-
-    bug: {
-        engravings: [
-            "影",
-            "足取り",
-            "潜行"
-        ],
-        weaponTypes: [
-            "斧",
-            "双剣",
-            "魔導書"
-        ]
-    },
-
-    dreyfus: {
-        engravings: [
-            "老将",
-            "飾らない",
-            "栄誉"
-        ],
-        weaponTypes: [
-            "レイピア",
-            "長剣",
-            "ランス"
-        ]
-    },
-
-    hendrickson: {
-        engravings: [
-            "若き日",
-            "施薬院",
-            "帰ってきた"
-        ],
-        weaponTypes: [
-            "長剣",
-            "双剣",
-            "ランス"
-        ]
-    },
-
-    slader: {
-        engravings: [
-            "老王",
-            "極秘任務",
-            "万全"
-        ],
-        weaponTypes: [
-            "大剣",
-            "斧",
-            "三節棍"
-        ]
-    },
-
-    griamore: {
-        engravings: [
-            "鉄壁",
-            "簡易防壁"
-        ],
-        weaponTypes: [
-            "剣盾",
-            "三節棍",
-            "ガントレット"
-        ]
     }
 
 };
@@ -1628,8 +2484,8 @@ const equipmentSlotLabels = {
     engraving: "刻印",
     weapon: "武器",
     top: "トップス",
-    belt: "ベルト",
     bottom: "ボトムス",
+    belt: "ベルト",
     boots: "ブーツ",
     earring: "耳飾り",
     necklace: "首飾り",

@@ -4269,3 +4269,20 @@ footer small {
     }
 
 }
+
+/* 管理者ではないときは確実に非表示 */
+.equipment-edit-button[hidden] {
+    display: none !important;
+}
+
+/* EQUIPMENT 注意書き */
+.equipment-note {
+    margin: 12px 0 0;
+    padding: 10px 12px;
+    font-size: 0.82rem;
+    line-height: 1.6;
+    color: #c9b98f;
+    border-left: 3px solid #b99a4a;
+    background: rgba(185, 154, 74, 0.07);
+    border-radius: 4px;
+}
