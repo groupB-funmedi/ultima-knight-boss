@@ -1008,3 +1008,44 @@ document.addEventListener(
 
     }
 );
+
+/* =========================================
+   BOSS STATUS タブ切り替え
+========================================= */
+
+const bossStatusTabs =
+    document.querySelectorAll(".boss-status-tab");
+
+const bossStatsTab =
+    document.getElementById("bossStatsTab");
+
+const bossCalculatorTab =
+    document.getElementById("bossCalculatorTab");
+
+bossStatusTabs.forEach((button) => {
+
+    button.addEventListener("click", () => {
+
+        bossStatusTabs.forEach((tab) => {
+            tab.classList.remove("active");
+        });
+
+        button.classList.add("active");
+
+        bossStatsTab.classList.remove("active");
+        bossCalculatorTab.classList.remove("active");
+
+        if (button.dataset.bossTab === "stats") {
+
+            bossStatsTab.classList.add("active");
+
+        } else if (
+            button.dataset.bossTab === "calculator"
+        ) {
+
+            bossCalculatorTab.classList.add("active");
+        }
+
+    });
+
+});

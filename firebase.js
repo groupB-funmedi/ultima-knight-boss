@@ -962,6 +962,11 @@ const equipmentMaster = {
         createEquipmentItem(
             "wild_top",
             "野生トップス.webp"
+        ),
+
+        createEquipmentItem(
+            "kyoki_top",
+            "狂気トップス.webp"
         )
 
     ],
@@ -1006,6 +1011,11 @@ const equipmentMaster = {
         createEquipmentItem(
             "wild_belt",
             "野生ベルト.webp"
+        ),
+
+        createEquipmentItem(
+            "kyoki_belt",
+            "狂気ベルト.webp"
         )
 
     ],
@@ -1055,6 +1065,11 @@ const equipmentMaster = {
         createEquipmentItem(
             "wild_bottom",
             "野生ボトムス.webp"
+        ),
+
+        createEquipmentItem(
+            "kyoki_bottom",
+            "狂気ボトムス.webp"
         )
 
     ],
@@ -1202,6 +1217,11 @@ const equipmentMaster = {
         createEquipmentItem(
             "fallen_necklace",
             "堕落首飾り.webp"
+        ),
+
+        createEquipmentItem(
+            "kyoki_necklace",
+            "狂気首飾り.webp"
         )
 
     ],
@@ -1251,6 +1271,11 @@ const equipmentMaster = {
         createEquipmentItem(
             "oath_ring",
             "盟約指輪.webp"
+        ),
+
+        createEquipmentItem(
+            "kyoki_ring",
+            "狂気指輪.webp"
         )
 
     ]
@@ -6136,3 +6161,1551 @@ onAuthStateChanged(
 createTacticEditButtons();
 
 createPlayerTacticModal();
+
+// =====================================================
+// BOSS STATUS 計算シート
+// =====================================================
+
+let calculatorBossLevel = 1;
+
+let calculatorCharacters = [];
+
+
+// =====================================================
+// Lv.1～30ボタンを作成
+// =====================================================
+
+function createCalculatorLevelButtons() {
+
+    const levelGrid =
+        document.getElementById(
+            "calculatorLevelGrid"
+        );
+
+    if (!levelGrid) {
+        return;
+    }
+
+    levelGrid.innerHTML = "";
+
+
+    for (
+        let level = 1;
+        level <= 30;
+        level++
+    ) {
+
+        const button =
+            document.createElement(
+                "button"
+            );
+
+
+        button.type = "button";
+
+        button.className =
+            "calculator-level-button";
+
+        button.textContent =
+            level;
+
+        button.dataset.level =
+            level;
+
+
+        if (
+            level ===
+            calculatorBossLevel
+        ) {
+
+            button.classList.add(
+                "active"
+            );
+
+        }
+
+
+        button.addEventListener(
+            "click",
+            () => {
+
+                calculatorBossLevel =
+                    level;
+
+
+                document
+                    .querySelectorAll(
+                        ".calculator-level-button"
+                    )
+                    .forEach(
+                        levelButton => {
+
+                            levelButton
+                                .classList
+                                .remove(
+                                    "active"
+                                );
+
+                        }
+                    );
+
+
+                button.classList.add(
+                    "active"
+                );
+
+
+                const levelDisplay =
+                    document.getElementById(
+                        "calculatorSelectedLevel"
+                    );
+
+
+                if (levelDisplay) {
+
+                    levelDisplay.textContent =
+                        `Lv.${level}`;
+
+                }
+
+                // =========================================
+                // 統計タブの同じLvを選択
+                // =========================================
+
+                const bossLevelButton =
+                    document.querySelector(
+                        `.boss-level-button[data-level="${level}"]`
+                    );
+
+
+                if (bossLevelButton) {
+
+                    bossLevelButton.click();
+
+                }
+
+
+                // 統計画面の値が変更されたあと再計算
+                requestAnimationFrame(
+                    () => {
+
+                        updateCalculatorTotals();
+
+                    }
+                );
+
+
+                console.log(
+                    "計算シート アクムLv:",
+                    level
+                );
+
+            }
+        );
+
+
+        levelGrid.appendChild(
+            button
+        );
+
+    }
+
+}
+
+
+// =====================================================
+// キャラクター選択モーダル作成
+// =====================================================
+
+function createCalculatorCharacterModal() {
+
+    if (
+        document.getElementById(
+            "calculatorCharacterModal"
+        )
+    ) {
+        return;
+    }
+
+
+    const modal =
+        document.createElement(
+            "div"
+        );
+
+
+    modal.id =
+        "calculatorCharacterModal";
+
+    modal.className =
+        "calculator-character-modal";
+
+    modal.hidden =
+        true;
+
+
+    modal.innerHTML = `
+
+        <div
+            class="calculator-character-backdrop">
+        </div>
+
+        <div
+            class="calculator-character-panel">
+
+            <div
+                class="calculator-character-modal-header">
+
+                <h3>
+                    キャラクターを選択
+                </h3>
+
+                <button
+                    type="button"
+                    class="calculator-character-modal-close"
+                    id="calculatorCharacterModalClose">
+                    ×
+                </button>
+
+            </div>
+
+            <div class="calculator-custom-character">
+
+    <div class="calculator-custom-character-title">
+        自由記述で追加
+    </div>
+
+    <div class="calculator-custom-character-row">
+
+        <input
+            type="text"
+            id="calculatorCustomCharacterName"
+            placeholder="例：○○魔導書">
+
+        <button
+            type="button"
+            id="calculatorCustomCharacterAdd">
+            追加
+        </button>
+
+    </div>
+
+</div>
+            
+            <div
+                class="calculator-character-grid"
+                id="calculatorCharacterGrid">
+            </div>
+
+        </div>
+
+    `;
+
+
+    document.body.appendChild(
+        modal
+    );
+
+
+    // 閉じるボタン
+    document
+        .getElementById(
+            "calculatorCharacterModalClose"
+        )
+        .addEventListener(
+            "click",
+            closeCalculatorCharacterModal
+        );
+
+
+    // 背景クリック
+    modal
+        .querySelector(
+            ".calculator-character-backdrop"
+        )
+        .addEventListener(
+            "click",
+            closeCalculatorCharacterModal
+        );
+
+        // =========================================
+// 自由記述キャラクター追加
+// =========================================
+
+const customAddButton =
+    document.getElementById(
+        "calculatorCustomCharacterAdd"
+    );
+
+const customNameInput =
+    document.getElementById(
+        "calculatorCustomCharacterName"
+    );
+
+if (
+    customAddButton &&
+    customNameInput
+) {
+
+    customAddButton.addEventListener(
+        "click",
+        () => {
+
+            const name =
+                customNameInput.value.trim();
+
+            if (!name) {
+                return;
+            }
+
+            addCustomCalculatorCharacter(
+                name
+            );
+
+            customNameInput.value = "";
+
+            closeCalculatorCharacterModal();
+
+        }
+    );
+
+
+    // Enterキーでも追加
+    customNameInput.addEventListener(
+        "keydown",
+        event => {
+
+            if (event.key !== "Enter") {
+                return;
+            }
+
+            const name =
+                customNameInput.value.trim();
+
+            if (!name) {
+                return;
+            }
+
+            addCustomCalculatorCharacter(
+                name
+            );
+
+            customNameInput.value = "";
+
+            closeCalculatorCharacterModal();
+
+        }
+    );
+
+}
+
+}
+
+
+// =====================================================
+// キャラクター選択画面を開く
+// =====================================================
+
+function openCalculatorCharacterModal() {
+
+    const modal =
+        document.getElementById(
+            "calculatorCharacterModal"
+        );
+
+    const grid =
+        document.getElementById(
+            "calculatorCharacterGrid"
+        );
+
+
+    if (
+        !modal ||
+        !grid
+    ) {
+        return;
+    }
+
+
+    grid.innerHTML = "";
+
+
+    characterMaster.forEach(
+        character => {
+
+            const button =
+                document.createElement(
+                    "button"
+                );
+
+
+            button.type =
+                "button";
+
+            button.className =
+                "calculator-character-option";
+
+
+            button.innerHTML = `
+
+                <img
+                    src="${character.image}"
+                    alt="${character.name}">
+
+                <span>
+                    ${character.name}
+                </span>
+
+            `;
+
+
+            button.addEventListener(
+                "click",
+                () => {
+
+                    addCalculatorCharacter(
+                        character
+                    );
+
+                    closeCalculatorCharacterModal();
+
+                }
+            );
+
+
+            grid.appendChild(
+                button
+            );
+
+        }
+    );
+
+
+    modal.hidden =
+        false;
+
+}
+
+
+// =====================================================
+// キャラクター選択画面を閉じる
+// =====================================================
+
+function closeCalculatorCharacterModal() {
+
+    const modal =
+        document.getElementById(
+            "calculatorCharacterModal"
+        );
+
+
+    if (modal) {
+
+        modal.hidden =
+            true;
+
+    }
+
+}
+
+
+// =====================================================
+// キャラクター追加
+// =====================================================
+
+function addCalculatorCharacter(
+    character
+) {
+
+    calculatorCharacters.push({
+
+        instanceId:
+            `${character.id}_${Date.now()}_${Math.random()}`,
+
+        id:
+            character.id,
+
+        name:
+            character.name,
+
+        image:
+            character.image,
+
+        defenseDown: 0,
+
+        criticalResistanceDown: 0,
+
+        criticalDefenseDown: 0,
+
+        baseResistanceDown: 0,
+
+        elementResistance1Type: "炎",
+        elementResistance1Down: 0,
+
+        elementResistance2Type: "闇",
+        elementResistance2Down: 0
+
+    });
+
+
+    renderCalculatorCharacters();
+
+}
+
+// =====================================================
+// 自由記述キャラクター追加
+// =====================================================
+
+function addCustomCalculatorCharacter(
+    name
+) {
+
+    calculatorCharacters.push({
+
+        instanceId:
+            `custom_${Date.now()}_${Math.random()}`,
+
+        id:
+            `custom_${Date.now()}`,
+
+        name:
+            name,
+
+        // 自由記述なので画像なし
+        image:
+            "",
+
+        defenseDown:
+            0,
+
+        criticalResistanceDown:
+            0,
+
+        criticalDefenseDown:
+            0,
+
+        baseResistanceDown:
+            0,
+
+        elementResistance1Type:
+            "炎",
+
+        elementResistance1Down:
+            0,
+
+        elementResistance2Type:
+            "闇",
+
+        elementResistance2Down:
+            0
+
+    });
+
+
+    renderCalculatorCharacters();
+
+}
+
+// =====================================================
+// キャラクター削除
+// =====================================================
+
+function removeCalculatorCharacter(
+    instanceId
+) {
+
+    calculatorCharacters =
+        calculatorCharacters.filter(
+            character =>
+                character.instanceId !==
+                instanceId
+        );
+
+
+    renderCalculatorCharacters();
+
+}
+
+
+// =====================================================
+// 選択キャラクター表示
+// =====================================================
+
+function renderCalculatorCharacters() {
+
+    const list =
+        document.getElementById(
+            "calculatorCharacterList"
+        );
+
+
+    if (!list) {
+        return;
+    }
+
+
+    list.innerHTML = "";
+
+
+    if (
+        calculatorCharacters.length ===
+        0
+    ) {
+
+        const empty =
+            document.createElement(
+                "div"
+            );
+
+
+        empty.className =
+            "calculator-empty";
+
+        empty.id =
+            "calculatorEmpty";
+
+        empty.textContent =
+            "キャラクターがまだ追加されていません。";
+
+
+        list.appendChild(
+            empty
+        );
+
+
+        updateCalculatorTotals();
+
+        return;
+
+    }
+
+
+    calculatorCharacters.forEach(
+        (
+            character,
+            index
+        ) => {
+
+            const row =
+                document.createElement(
+                    "div"
+                );
+
+
+            row.className =
+                "calculator-character-row";
+
+
+            row.innerHTML = `
+
+                <div class="calculator-character-top">
+
+                    <div
+                        class="calculator-character-main">
+
+                        <div
+                            class="calculator-character-image">
+
+                            ${character.image
+    ? `
+        <img
+            src="${character.image}"
+            alt="${character.name}">
+      `
+    : `
+        <div class="calculator-character-free">
+            FREE
+        </div>
+      `
+}
+
+                        </div>
+
+                        <div>
+
+                            <div
+                                class="calculator-character-name">
+
+                                ${character.name}
+
+                            </div>
+
+                            <div
+                                class="calculator-character-number">
+
+                                CHARACTER ${index + 1}
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="calculator-character-remove">
+
+                        削除
+
+                    </button>
+
+                </div>
+
+
+                <div class="calculator-debuff-grid">
+
+                    <label class="calculator-debuff-field">
+
+                        <span>
+                            防御力低下
+                        </span>
+
+                        <div class="calculator-percent-input">
+
+                            <input
+                                type="number"
+                                min="0"
+                                step="0.1"
+                                value="${character.defenseDown || 0}"
+                                data-debuff="defenseDown">
+
+                            <span>%</span>
+
+                        </div>
+
+                    </label>
+
+
+                    <label class="calculator-debuff-field">
+
+                        <span>
+                            クリティカル耐性低下
+                        </span>
+
+                        <div class="calculator-percent-input">
+
+                            <input
+                                type="number"
+                                min="0"
+                                step="0.1"
+                                value="${character.criticalResistanceDown || 0}"
+                                data-debuff="criticalResistanceDown">
+
+                            <span>%</span>
+
+                        </div>
+
+                    </label>
+
+
+                    <label class="calculator-debuff-field">
+
+                        <span>
+                            クリティカル防御低下
+                        </span>
+
+                        <div class="calculator-percent-input">
+
+                            <input
+                                type="number"
+                                min="0"
+                                step="0.1"
+                                value="${character.criticalDefenseDown || 0}"
+                                data-debuff="criticalDefenseDown">
+
+                            <span>%</span>
+
+                        </div>
+
+                    </label>
+
+
+                    <label class="calculator-debuff-field">
+
+                        <span>
+                            基礎属性耐性低下
+                        </span>
+
+                        <div class="calculator-percent-input">
+
+                            <input
+                                type="number"
+                                min="0"
+                                step="0.1"
+                                value="${character.baseResistanceDown || 0}"
+                                data-debuff="baseResistanceDown">
+
+                            <span>%</span>
+
+                        </div>
+
+                    </label>
+
+
+                    <label class="calculator-debuff-field">
+
+    <span>
+        属性耐性①低下
+    </span>
+
+    <div class="calculator-element-input">
+
+        <select
+            data-element-type="elementResistance1Type">
+
+            <option value="氷">氷</option>
+            <option value="闇">闇</option>
+            <option value="炎">炎</option>
+            <option value="神聖">神聖</option>
+            <option value="風">風</option>
+            <option value="大地">大地</option>
+            <option value="物理">物理</option>
+            <option value="雷">雷</option>
+
+        </select>
+
+        <div class="calculator-percent-input">
+
+            <input
+                type="number"
+                min="0"
+                step="0.1"
+                value="${character.elementResistance1Down || 0}"
+                data-debuff="elementResistance1Down">
+
+            <span>%</span>
+
+        </div>
+
+    </div>
+
+</label>
+
+
+                    <label class="calculator-debuff-field">
+
+    <span>
+        属性耐性②低下
+    </span>
+
+    <div class="calculator-element-input">
+
+        <select
+            data-element-type="elementResistance2Type">
+
+            <option value="氷">氷</option>
+            <option value="闇">闇</option>
+            <option value="炎">炎</option>
+            <option value="神聖">神聖</option>
+            <option value="風">風</option>
+            <option value="大地">大地</option>
+            <option value="物理">物理</option>
+            <option value="雷">雷</option>
+
+        </select>
+
+        <div class="calculator-percent-input">
+
+            <input
+                type="number"
+                min="0"
+                step="0.1"
+                value="${character.elementResistance2Down || 0}"
+                data-debuff="elementResistance2Down">
+
+            <span>%</span>
+
+        </div>
+
+    </div>
+
+</label>
+
+                </div>
+
+            `;
+
+
+            // =========================================
+            // 属性選択の現在値を反映
+            // =========================================
+
+            const elementSelect1 =
+                row.querySelector(
+                    '[data-element-type="elementResistance1Type"]'
+                );
+
+            const elementSelect2 =
+                row.querySelector(
+                    '[data-element-type="elementResistance2Type"]'
+                );
+
+
+            if (elementSelect1) {
+
+                elementSelect1.value =
+                    character.elementResistance1Type || "炎";
+
+
+                elementSelect1.addEventListener(
+                    "change",
+                    () => {
+
+                        character.elementResistance1Type =
+                            elementSelect1.value;
+
+                        updateCalculatorTotals();
+
+                    }
+                );
+
+            }
+
+
+            if (elementSelect2) {
+
+                elementSelect2.value =
+                    character.elementResistance2Type || "闇";
+
+
+                elementSelect2.addEventListener(
+                    "change",
+                    () => {
+
+                        character.elementResistance2Type =
+                            elementSelect2.value;
+
+                        updateCalculatorTotals();
+
+                    }
+                );
+
+            }
+
+            // 削除
+            const removeButton =
+                row.querySelector(
+                    ".calculator-character-remove"
+                );
+
+
+            removeButton.addEventListener(
+                "click",
+                () => {
+
+                    removeCalculatorCharacter(
+                        character.instanceId
+                    );
+
+                }
+            );
+
+
+            // 入力値変更
+            const inputs =
+                row.querySelectorAll(
+                    ".calculator-percent-input input"
+                );
+
+
+            inputs.forEach(
+                input => {
+
+                    input.addEventListener(
+                        "input",
+                        () => {
+
+                            const key =
+                                input.dataset.debuff;
+
+                            let value =
+                                Number(
+                                    input.value
+                                );
+
+
+                            if (
+                                Number.isNaN(
+                                    value
+                                ) ||
+                                value < 0
+                            ) {
+                                value = 0;
+                            }
+
+
+                            character[key] =
+                                value;
+
+
+                            updateCalculatorTotals();
+
+                        }
+                    );
+
+                }
+            );
+
+
+            list.appendChild(
+                row
+            );
+
+        }
+    );
+
+
+    updateCalculatorTotals();
+
+}
+
+
+// =====================================================
+// キャラクター追加ボタン
+// =====================================================
+
+function setupCalculatorAddCharacterButton() {
+
+    const button =
+        document.getElementById(
+            "calculatorAddCharacter"
+        );
+
+
+    if (!button) {
+        return;
+    }
+
+
+    button.addEventListener(
+        "click",
+        openCalculatorCharacterModal
+    );
+
+}
+
+
+// =====================================================
+// 計算シート初期化
+// =====================================================
+
+createCalculatorLevelButtons();
+
+createCalculatorCharacterModal();
+
+setupCalculatorAddCharacterButton();
+
+// ページを開いた直後に初期値を計算
+updateCalculatorTotals();
+
+// =====================================================
+// 計算シート デバフ合計
+// =====================================================
+
+function updateCalculatorTotals() {
+
+    const totals = {
+
+        defenseDown: 0,
+
+        criticalResistanceDown: 0,
+
+        criticalDefenseDown: 0,
+
+        baseResistanceDown: 0,
+
+        elementResistance1Down: 0,
+
+        elementResistance2Down: 0
+
+    };
+
+    const elementTotals = {
+
+        "氷": 0,
+        "闇": 0,
+        "炎": 0,
+        "神聖": 0,
+        "風": 0,
+        "大地": 0,
+        "物理": 0,
+        "雷": 0
+
+    };
+
+
+    calculatorCharacters.forEach(
+        character => {
+
+            totals.defenseDown +=
+                Number(
+                    character.defenseDown || 0
+                );
+
+            totals.criticalResistanceDown +=
+                Number(
+                    character.criticalResistanceDown || 0
+                );
+
+            totals.criticalDefenseDown +=
+                Number(
+                    character.criticalDefenseDown || 0
+                );
+
+            totals.baseResistanceDown +=
+                Number(
+                    character.baseResistanceDown || 0
+                );
+
+            totals.elementResistance1Down +=
+                Number(
+                    character.elementResistance1Down || 0
+                );
+
+            totals.elementResistance2Down +=
+                Number(
+                    character.elementResistance2Down || 0
+                );
+
+            // =========================================
+            // 属性耐性①
+            // =========================================
+
+            const elementType1 =
+                character.elementResistance1Type;
+
+            const elementDown1 =
+                Number(
+                    character.elementResistance1Down || 0
+                );
+
+
+            if (
+                elementTotals[
+                elementType1
+                ] !== undefined
+            ) {
+
+                elementTotals[
+                    elementType1
+                ] += elementDown1;
+
+            }
+
+
+            // =========================================
+            // 属性耐性②
+            // =========================================
+
+            const elementType2 =
+                character.elementResistance2Type;
+
+            const elementDown2 =
+                Number(
+                    character.elementResistance2Down || 0
+                );
+
+
+            if (
+                elementTotals[
+                elementType2
+                ] !== undefined
+            ) {
+
+                elementTotals[
+                    elementType2
+                ] += elementDown2;
+
+            }
+
+        }
+    );
+
+
+    setCalculatorTotalValue(
+        "totalDefenseDown",
+        totals.defenseDown
+    );
+
+    setCalculatorTotalValue(
+        "totalCriticalResistanceDown",
+        totals.criticalResistanceDown
+    );
+
+    setCalculatorTotalValue(
+        "totalCriticalDefenseDown",
+        totals.criticalDefenseDown
+    );
+
+    setCalculatorTotalValue(
+        "totalBaseResistanceDown",
+        totals.baseResistanceDown
+    );
+
+    setCalculatorTotalValue(
+        "totalElementIceDown",
+        elementTotals["氷"]
+    );
+
+    setCalculatorTotalValue(
+        "totalElementDarkDown",
+        elementTotals["闇"]
+    );
+
+    setCalculatorTotalValue(
+        "totalElementFireDown",
+        elementTotals["炎"]
+    );
+
+    setCalculatorTotalValue(
+        "totalElementHolyDown",
+        elementTotals["神聖"]
+    );
+
+    setCalculatorTotalValue(
+        "totalElementWindDown",
+        elementTotals["風"]
+    );
+
+    setCalculatorTotalValue(
+        "totalElementEarthDown",
+        elementTotals["大地"]
+    );
+
+    setCalculatorTotalValue(
+        "totalElementPhysicalDown",
+        elementTotals["物理"]
+    );
+
+    setCalculatorTotalValue(
+        "totalElementThunderDown",
+        elementTotals["雷"]
+    );
+
+    updateCalculatorFinalStats(
+        totals,
+        elementTotals
+    );
+
+}
+
+// =====================================================
+// 「20%」などの文字から数字だけ取得
+// =====================================================
+
+function parsePercentValue(
+    text
+) {
+
+    if (!text) {
+        return 0;
+    }
+
+
+    const value =
+        Number(
+            String(text)
+                .replace("%", "")
+                .trim()
+        );
+
+
+    if (
+        Number.isNaN(
+            value
+        )
+    ) {
+        return 0;
+    }
+
+
+    return value;
+
+}
+
+// =====================================================
+// デバフ適用後ステータス
+// =====================================================
+
+function updateCalculatorFinalStats(
+    totals,
+    elementTotals = {}
+) {
+
+    // =========================================
+    // アクムの元ステータス
+    // =========================================
+
+    // 防御力は全Lv共通で100%
+    const baseDefense = 100;
+
+
+    // 現在選択しているLvの値を統計タブから取得
+    const criticalResistanceElement =
+        document.getElementById(
+            "bossCriticalResistance"
+        );
+
+    const criticalDefenseElement =
+        document.getElementById(
+            "bossCriticalDefense"
+        );
+
+    const baseResistanceElement =
+        document.querySelector(
+            ".base-resistance-value"
+        );
+
+
+    const baseCriticalResistance =
+        parsePercentValue(
+            criticalResistanceElement?.textContent
+        );
+
+    const baseCriticalDefense =
+        parsePercentValue(
+            criticalDefenseElement?.textContent
+        );
+
+    const baseResistance =
+        parsePercentValue(
+            baseResistanceElement?.textContent
+        );
+
+
+    // =========================================
+    // 通常ステータスのデバフ適用後
+    // =========================================
+
+    const finalDefense =
+        Math.max(
+            0,
+            baseDefense -
+            Number(totals.defenseDown || 0)
+        );
+
+    const finalCriticalResistance =
+        Math.max(
+            0,
+            baseCriticalResistance -
+            Number(
+                totals.criticalResistanceDown || 0
+            )
+        );
+
+    const finalCriticalDefense =
+        Math.max(
+            0,
+            baseCriticalDefense -
+            Number(
+                totals.criticalDefenseDown || 0
+            )
+        );
+
+    const finalBaseResistance =
+        Math.max(
+            0,
+            baseResistance -
+            Number(
+                totals.baseResistanceDown || 0
+            )
+        );
+
+
+    // =========================================
+    // 属性耐性
+    // アクムは全Lv・全属性30%固定
+    // =========================================
+
+    const baseElementResistance = 30;
+
+
+    const finalElementResistances = {
+
+        "氷": Math.max(
+            0,
+            baseElementResistance -
+            Number(elementTotals["氷"] || 0)
+        ),
+
+        "闇": Math.max(
+            0,
+            baseElementResistance -
+            Number(elementTotals["闇"] || 0)
+        ),
+
+        "炎": Math.max(
+            0,
+            baseElementResistance -
+            Number(elementTotals["炎"] || 0)
+        ),
+
+        "神聖": Math.max(
+            0,
+            baseElementResistance -
+            Number(elementTotals["神聖"] || 0)
+        ),
+
+        "風": Math.max(
+            0,
+            baseElementResistance -
+            Number(elementTotals["風"] || 0)
+        ),
+
+        "大地": Math.max(
+            0,
+            baseElementResistance -
+            Number(elementTotals["大地"] || 0)
+        ),
+
+        "物理": Math.max(
+            0,
+            baseElementResistance -
+            Number(elementTotals["物理"] || 0)
+        ),
+
+        "雷": Math.max(
+            0,
+            baseElementResistance -
+            Number(elementTotals["雷"] || 0)
+        )
+
+    };
+
+
+    // =========================================
+    // 画面へ表示
+    // =========================================
+
+    setCalculatorFinalValue(
+        "calculatorFinalDefense",
+        finalDefense
+    );
+
+    setCalculatorFinalValue(
+        "calculatorFinalCriticalResistance",
+        finalCriticalResistance
+    );
+
+    setCalculatorFinalValue(
+        "calculatorFinalCriticalDefense",
+        finalCriticalDefense
+    );
+
+    setCalculatorFinalValue(
+        "calculatorFinalBaseResistance",
+        finalBaseResistance
+    );
+
+
+    // 属性耐性
+
+    setCalculatorFinalValue(
+        "calculatorFinalIce",
+        finalElementResistances["氷"]
+    );
+
+    setCalculatorFinalValue(
+        "calculatorFinalDark",
+        finalElementResistances["闇"]
+    );
+
+    setCalculatorFinalValue(
+        "calculatorFinalFire",
+        finalElementResistances["炎"]
+    );
+
+    setCalculatorFinalValue(
+        "calculatorFinalHoly",
+        finalElementResistances["神聖"]
+    );
+
+    setCalculatorFinalValue(
+        "calculatorFinalWind",
+        finalElementResistances["風"]
+    );
+
+    setCalculatorFinalValue(
+        "calculatorFinalEarth",
+        finalElementResistances["大地"]
+    );
+
+    setCalculatorFinalValue(
+        "calculatorFinalPhysical",
+        finalElementResistances["物理"]
+    );
+
+    setCalculatorFinalValue(
+        "calculatorFinalThunder",
+        finalElementResistances["雷"]
+    );
+
+}
+
+
+
+// =====================================================
+// 最終ステータス表示
+// =====================================================
+
+function setCalculatorFinalValue(
+    elementId,
+    value
+) {
+
+    const element =
+        document.getElementById(
+            elementId
+        );
+
+
+    if (!element) {
+        return;
+    }
+
+
+    const rounded =
+        Math.round(
+            value * 10
+        ) / 10;
+
+
+    element.textContent =
+        `${rounded}%`;
+
+}
+
+
+// =====================================================
+// 合計値表示
+// =====================================================
+
+function setCalculatorTotalValue(
+    elementId,
+    value
+) {
+
+    const element =
+        document.getElementById(
+            elementId
+        );
+
+
+    if (!element) {
+        return;
+    }
+
+
+    const rounded =
+        Math.round(
+            value * 10
+        ) / 10;
+
+
+    element.textContent =
+        `${rounded}%`;
+
+}
+
+updateCalculatorTotals();

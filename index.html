@@ -2166,484 +2166,793 @@
             </div>
 
 
-            <div class="akum-status-panel">
+            <!-- BOSS STATUS タブ -->
+            <div class="boss-status-tabs">
+
+                <button type="button" class="boss-status-tab active" data-boss-tab="stats">
+                    統計
+                </button>
+
+                <button type="button" class="boss-status-tab" data-boss-tab="calculator">
+                    計算シート
+                </button>
+
+            </div>
+
+            <!-- 統計タブ -->
+            <div class="boss-tab-content active" id="bossStatsTab">
+
+                <div class="akum-status-panel">
 
 
-                <!-- ===============================
+                    <!-- ===============================
                      左側
                 ================================ -->
-                <div class="akum-status-main">
+                    <div class="akum-status-main">
 
 
-                    <div class="akum-status-title">
+                        <div class="akum-status-title">
 
-                        <span class="gold-line"></span>
+                            <span class="gold-line"></span>
 
-                        統計
+                            統計
 
-                    </div>
-
-
-                    <div class="boss-level-label">
-                        ボスレベル
-                    </div>
+                        </div>
 
 
-                    <div class="boss-level-grid">
-
-                        <button class="boss-level-button active" data-level="1">1</button>
-                        <button class="boss-level-button" data-level="2">2</button>
-                        <button class="boss-level-button" data-level="3">3</button>
-                        <button class="boss-level-button" data-level="4">4</button>
-                        <button class="boss-level-button" data-level="5">5</button>
-                        <button class="boss-level-button" data-level="6">6</button>
-                        <button class="boss-level-button" data-level="7">7</button>
-                        <button class="boss-level-button" data-level="8">8</button>
-                        <button class="boss-level-button" data-level="9">9</button>
-                        <button class="boss-level-button" data-level="10">10</button>
-
-                        <button class="boss-level-button" data-level="11">11</button>
-                        <button class="boss-level-button" data-level="12">12</button>
-                        <button class="boss-level-button" data-level="13">13</button>
-                        <button class="boss-level-button" data-level="14">14</button>
-                        <button class="boss-level-button" data-level="15">15</button>
-                        <button class="boss-level-button" data-level="16">16</button>
-                        <button class="boss-level-button" data-level="17">17</button>
-                        <button class="boss-level-button" data-level="18">18</button>
-                        <button class="boss-level-button" data-level="19">19</button>
-                        <button class="boss-level-button" data-level="20">20</button>
-
-                        <button class="boss-level-button" data-level="21">21</button>
-                        <button class="boss-level-button" data-level="22">22</button>
-                        <button class="boss-level-button" data-level="23">23</button>
-                        <button class="boss-level-button" data-level="24">24</button>
-                        <button class="boss-level-button" data-level="25">25</button>
-                        <button class="boss-level-button" data-level="26">26</button>
-                        <button class="boss-level-button" data-level="27">27</button>
-                        <button class="boss-level-button" data-level="28">28</button>
-                        <button class="boss-level-button" data-level="29">29</button>
-                        <button class="boss-level-button" data-level="30">30</button>
-
-                    </div>
+                        <div class="boss-level-label">
+                            ボスレベル
+                        </div>
 
 
-                    <!-- ステータス -->
-                    <div class="akum-stat-columns">
+                        <div class="boss-level-grid">
+
+                            <button class="boss-level-button active" data-level="1">1</button>
+                            <button class="boss-level-button" data-level="2">2</button>
+                            <button class="boss-level-button" data-level="3">3</button>
+                            <button class="boss-level-button" data-level="4">4</button>
+                            <button class="boss-level-button" data-level="5">5</button>
+                            <button class="boss-level-button" data-level="6">6</button>
+                            <button class="boss-level-button" data-level="7">7</button>
+                            <button class="boss-level-button" data-level="8">8</button>
+                            <button class="boss-level-button" data-level="9">9</button>
+                            <button class="boss-level-button" data-level="10">10</button>
+
+                            <button class="boss-level-button" data-level="11">11</button>
+                            <button class="boss-level-button" data-level="12">12</button>
+                            <button class="boss-level-button" data-level="13">13</button>
+                            <button class="boss-level-button" data-level="14">14</button>
+                            <button class="boss-level-button" data-level="15">15</button>
+                            <button class="boss-level-button" data-level="16">16</button>
+                            <button class="boss-level-button" data-level="17">17</button>
+                            <button class="boss-level-button" data-level="18">18</button>
+                            <button class="boss-level-button" data-level="19">19</button>
+                            <button class="boss-level-button" data-level="20">20</button>
+
+                            <button class="boss-level-button" data-level="21">21</button>
+                            <button class="boss-level-button" data-level="22">22</button>
+                            <button class="boss-level-button" data-level="23">23</button>
+                            <button class="boss-level-button" data-level="24">24</button>
+                            <button class="boss-level-button" data-level="25">25</button>
+                            <button class="boss-level-button" data-level="26">26</button>
+                            <button class="boss-level-button" data-level="27">27</button>
+                            <button class="boss-level-button" data-level="28">28</button>
+                            <button class="boss-level-button" data-level="29">29</button>
+                            <button class="boss-level-button" data-level="30">30</button>
+
+                        </div>
 
 
-                        <!-- 左列 -->
-                        <div class="akum-stat-column">
+                        <!-- ステータス -->
+                        <div class="akum-stat-columns">
 
 
-                            <div class="akum-stat-row">
+                            <!-- 左列 -->
+                            <div class="akum-stat-column">
 
-                                <span class="akum-stat-name">
-                                    最大HP
-                                </span>
 
-                                <div class="akum-stat-bar">
+                                <div class="akum-stat-row">
 
-                                    <div class="akum-bar-fill hp" id="hpBar"></div>
+                                    <span class="akum-stat-name">
+                                        最大HP
+                                    </span>
 
-                                    <div class="akum-bar-dot" id="hpDot"></div>
+                                    <div class="akum-stat-bar">
+
+                                        <div class="akum-bar-fill hp" id="hpBar"></div>
+
+                                        <div class="akum-bar-dot" id="hpDot"></div>
+
+                                    </div>
+
+                                    <strong id="bossHp">
+                                        2,090,121
+                                    </strong>
 
                                 </div>
 
-                                <strong id="bossHp">
-                                    2,090,121
-                                </strong>
+
+                                <div class="akum-stat-row">
+
+                                    <span class="akum-stat-name">
+                                        攻撃力
+                                    </span>
+
+                                    <div class="akum-stat-bar">
+
+                                        <div class="akum-bar-fill attack" id="attackBar"></div>
+
+                                        <div class="akum-bar-dot" id="attackDot"></div>
+
+                                    </div>
+
+                                    <strong id="bossAttack">
+                                        8,795
+                                    </strong>
+
+                                </div>
+
+
+                                <div class="akum-stat-row">
+
+                                    <span class="akum-stat-name">
+                                        防御力
+                                    </span>
+
+                                    <div class="akum-stat-bar">
+
+                                        <div class="akum-bar-fill defense" id="defenseBar"></div>
+
+                                        <div class="akum-bar-dot" id="defenseDot"></div>
+
+                                    </div>
+
+                                    <strong id="bossDefense">
+                                        3,454
+                                    </strong>
+
+                                </div>
+
+
+                                <div class="akum-stat-row">
+
+                                    <span class="akum-stat-name">
+                                        クリティカル確率
+                                    </span>
+
+                                    <div class="akum-stat-bar">
+
+                                        <div class="akum-bar-fill critical" id="criticalRateBar"></div>
+
+                                        <div class="akum-bar-dot" id="criticalRateDot"></div>
+
+                                    </div>
+
+                                    <strong id="bossCriticalRate">
+                                        29.78%
+                                    </strong>
+
+                                </div>
+
+
+                                <div class="akum-stat-row">
+
+                                    <span class="akum-stat-name">
+                                        クリティカルダメージ
+                                    </span>
+
+                                    <div class="akum-stat-bar">
+
+                                        <div class="akum-bar-fill critical" id="criticalDamageBar"></div>
+
+                                        <div class="akum-bar-dot" id="criticalDamageDot"></div>
+
+                                    </div>
+
+                                    <strong id="bossCriticalDamage">
+                                        86.1%
+                                    </strong>
+
+                                </div>
+
+
+                                <div class="akum-stat-row">
+
+                                    <span class="akum-stat-name">
+                                        貫通
+                                    </span>
+
+                                    <div class="akum-stat-bar">
+
+                                        <div class="akum-bar-fill normal" id="penetrationBar"></div>
+
+                                        <div class="akum-bar-dot" id="penetrationDot"></div>
+
+                                    </div>
+
+                                    <strong id="bossPenetration">
+                                        8%
+                                    </strong>
+
+                                </div>
+
+
+                                <div class="akum-stat-row">
+
+                                    <span class="akum-stat-name">
+                                        忍耐
+                                    </span>
+
+                                    <div class="akum-stat-bar">
+
+                                        <div class="akum-bar-fill normal" id="enduranceBar"></div>
+
+                                        <div class="akum-bar-dot" id="enduranceDot"></div>
+
+                                    </div>
+
+                                    <strong id="bossEndurance">
+                                        9%
+                                    </strong>
+
+                                </div>
 
                             </div>
 
 
-                            <div class="akum-stat-row">
-
-                                <span class="akum-stat-name">
-                                    攻撃力
-                                </span>
-
-                                <div class="akum-stat-bar">
-
-                                    <div class="akum-bar-fill attack" id="attackBar"></div>
-
-                                    <div class="akum-bar-dot" id="attackDot"></div>
-
-                                </div>
-
-                                <strong id="bossAttack">
-                                    8,795
-                                </strong>
-
-                            </div>
+                            <!-- 右列 -->
+                            <div class="akum-stat-column second">
 
 
-                            <div class="akum-stat-row">
+                                <div class="akum-simple-row">
 
-                                <span class="akum-stat-name">
-                                    防御力
-                                </span>
+                                    <span>
+                                        クリティカル耐性
+                                    </span>
 
-                                <div class="akum-stat-bar">
-
-                                    <div class="akum-bar-fill defense" id="defenseBar"></div>
-
-                                    <div class="akum-bar-dot" id="defenseDot"></div>
+                                    <strong id="bossCriticalResistance">
+                                        20%
+                                    </strong>
 
                                 </div>
 
-                                <strong id="bossDefense">
-                                    3,454
-                                </strong>
 
-                            </div>
+                                <div class="akum-simple-row">
 
+                                    <span>
+                                        クリティカル防御
+                                    </span>
 
-                            <div class="akum-stat-row">
-
-                                <span class="akum-stat-name">
-                                    クリティカル確率
-                                </span>
-
-                                <div class="akum-stat-bar">
-
-                                    <div class="akum-bar-fill critical" id="criticalRateBar"></div>
-
-                                    <div class="akum-bar-dot" id="criticalRateDot"></div>
+                                    <strong id="bossCriticalDefense">
+                                        50%
+                                    </strong>
 
                                 </div>
 
-                                <strong id="bossCriticalRate">
-                                    29.78%
-                                </strong>
 
-                            </div>
+                                <div class="akum-simple-row">
 
+                                    <span>
+                                        無視耐性
+                                    </span>
 
-                            <div class="akum-stat-row">
-
-                                <span class="akum-stat-name">
-                                    クリティカルダメージ
-                                </span>
-
-                                <div class="akum-stat-bar">
-
-                                    <div class="akum-bar-fill critical" id="criticalDamageBar"></div>
-
-                                    <div class="akum-bar-dot" id="criticalDamageDot"></div>
+                                    <strong id="bossIgnoreResistance">
+                                        20%
+                                    </strong>
 
                                 </div>
 
-                                <strong id="bossCriticalDamage">
-                                    86.1%
-                                </strong>
 
-                            </div>
+                                <div class="akum-simple-row">
 
+                                    <span>
+                                        バーストゲージ
+                                    </span>
 
-                            <div class="akum-stat-row">
-
-                                <span class="akum-stat-name">
-                                    貫通
-                                </span>
-
-                                <div class="akum-stat-bar">
-
-                                    <div class="akum-bar-fill normal" id="penetrationBar"></div>
-
-                                    <div class="akum-bar-dot" id="penetrationDot"></div>
+                                    <strong id="bossBurstGauge">
+                                        1,500
+                                    </strong>
 
                                 </div>
 
-                                <strong id="bossPenetration">
-                                    8%
-                                </strong>
 
-                            </div>
+                                <div class="akum-simple-row">
 
+                                    <span>
+                                        移動速度
+                                    </span>
 
-                            <div class="akum-stat-row">
-
-                                <span class="akum-stat-name">
-                                    忍耐
-                                </span>
-
-                                <div class="akum-stat-bar">
-
-                                    <div class="akum-bar-fill normal" id="enduranceBar"></div>
-
-                                    <div class="akum-bar-dot" id="enduranceDot"></div>
+                                    <strong id="bossMoveSpeed">
+                                        500
+                                    </strong>
 
                                 </div>
-
-                                <strong id="bossEndurance">
-                                    9%
-                                </strong>
 
                             </div>
 
                         </div>
 
 
-                        <!-- 右列 -->
-                        <div class="akum-stat-column second">
+                        <!-- 基礎属性耐性 -->
+                        <div class="base-resistance">
 
+                            <div class="base-resistance-left">
 
-                            <div class="akum-simple-row">
-
-                                <span>
-                                    クリティカル耐性
+                                <span class="warning-icon">
+                                    <span>!</span>
                                 </span>
 
-                                <strong id="bossCriticalResistance">
-                                    20%
+                                <strong>
+                                    基礎属性耐性
                                 </strong>
+
+                                <span class="info-icon">
+                                    i
+                                </span>
 
                             </div>
 
-
-                            <div class="akum-simple-row">
-
-                                <span>
-                                    クリティカル防御
-                                </span>
-
-                                <strong id="bossCriticalDefense">
-                                    50%
-                                </strong>
-
-                            </div>
-
-
-                            <div class="akum-simple-row">
-
-                                <span>
-                                    無視耐性
-                                </span>
-
-                                <strong id="bossIgnoreResistance">
-                                    20%
-                                </strong>
-
-                            </div>
-
-
-                            <div class="akum-simple-row">
-
-                                <span>
-                                    バーストゲージ
-                                </span>
-
-                                <strong id="bossBurstGauge">
-                                    1,500
-                                </strong>
-
-                            </div>
-
-
-                            <div class="akum-simple-row">
-
-                                <span>
-                                    移動速度
-                                </span>
-
-                                <strong id="bossMoveSpeed">
-                                    500
-                                </strong>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-                    <!-- 基礎属性耐性 -->
-                    <div class="base-resistance">
-
-                        <div class="base-resistance-left">
-
-                            <span class="warning-icon">
-                                <span>!</span>
-                            </span>
-
-                            <strong>
-                                基礎属性耐性
+                            <strong class="base-resistance-value">
+                                50%
                             </strong>
 
-                            <span class="info-icon">
-                                i
-                            </span>
-
                         </div>
 
-                        <strong class="base-resistance-value">
-                            50%
-                        </strong>
 
                     </div>
 
 
-                </div>
-
-
-                <!-- ===============================
+                    <!-- ===============================
                      右側 耐性
                 ================================ -->
-                <div class="akum-resistance-panel">
+                    <div class="akum-resistance-panel">
 
 
-                    <div class="akum-status-title">
+                        <div class="akum-status-title">
 
-                        <span class="gold-line"></span>
+                            <span class="gold-line"></span>
 
-                        耐性
+                            耐性
+
+                        </div>
+
+
+                        <div class="resistance-list">
+
+
+                            <div class="resistance-row">
+
+                                <span class="element-icon ice">
+                                    ❄
+                                </span>
+
+                                <span>
+                                    氷
+                                </span>
+
+                                <strong>
+                                    30%
+                                </strong>
+
+                            </div>
+
+
+                            <div class="resistance-row">
+
+                                <span class="element-icon dark">
+                                    ◉
+                                </span>
+
+                                <span>
+                                    闇
+                                </span>
+
+                                <strong>
+                                    30%
+                                </strong>
+
+                            </div>
+
+
+                            <div class="resistance-row">
+
+                                <span class="element-icon fire">
+                                    ♨
+                                </span>
+
+                                <span>
+                                    炎
+                                </span>
+
+                                <strong>
+                                    30%
+                                </strong>
+
+                            </div>
+
+
+                            <div class="resistance-row">
+
+                                <span class="element-icon holy">
+                                    ☼
+                                </span>
+
+                                <span>
+                                    神聖
+                                </span>
+
+                                <strong>
+                                    30%
+                                </strong>
+
+                            </div>
+
+
+                            <div class="resistance-row">
+
+                                <span class="element-icon wind">
+                                    ◌
+                                </span>
+
+                                <span>
+                                    風
+                                </span>
+
+                                <strong>
+                                    30%
+                                </strong>
+
+                            </div>
+
+
+                            <div class="resistance-row">
+
+                                <span class="element-icon earth">
+                                    ◆
+                                </span>
+
+                                <span>
+                                    大地
+                                </span>
+
+                                <strong>
+                                    30%
+                                </strong>
+
+                            </div>
+
+
+                            <div class="resistance-row">
+
+                                <span class="element-icon physical">
+                                    ⚙
+                                </span>
+
+                                <span>
+                                    物理
+                                </span>
+
+                                <strong>
+                                    30%
+                                </strong>
+
+                            </div>
+
+
+                            <div class="resistance-row">
+
+                                <span class="element-icon lightning">
+                                    ϟ
+                                </span>
+
+                                <span>
+                                    雷
+                                </span>
+
+                                <strong>
+                                    30%
+                                </strong>
+
+                            </div>
+
+
+                        </div>
 
                     </div>
 
 
-                    <div class="resistance-list">
+                </div>
+
+            </div>
+            <!-- =========================================
+     統計タブここまで
+========================================= -->
+            </div>
 
 
-                        <div class="resistance-row">
+            <!-- =========================================
+     計算シートタブ
+========================================= -->
+            <div class="boss-tab-content" id="bossCalculatorTab">
 
-                            <span class="element-icon ice">
-                                ❄
-                            </span>
+                <div class="boss-calculator">
+
+                    <div class="calculator-header">
+
+                        <div class="akum-status-title">
+
+                            <span class="gold-line"></span>
+
+                            計算シート
+
+                        </div>
+
+                        <p class="calculator-description">
+                            キャラクターのデバフ効果を入力し、
+                            アクムの最終ステータスを計算します。
+                        </p>
+
+                    </div>
+
+
+                    <!-- =============================
+             アクムレベル
+        ============================== -->
+                    <div class="calculator-section">
+
+                        <div class="calculator-section-title">
+                            アクムのレベル
+                        </div>
+
+                        <div class="calculator-level-display">
 
                             <span>
-                                氷
+                                選択中
                             </span>
 
-                            <strong>
-                                30%
+                            <strong id="calculatorSelectedLevel">
+                                Lv.1
                             </strong>
 
                         </div>
 
+                        <div class="calculator-level-grid" id="calculatorLevelGrid">
+                        </div>
 
-                        <div class="resistance-row">
+                    </div>
 
-                            <span class="element-icon dark">
-                                ◉
-                            </span>
 
-                            <span>
-                                闇
-                            </span>
+                    <!-- =============================
+             使用キャラクター
+        ============================== -->
+                    <div class="calculator-section">
 
-                            <strong>
-                                30%
-                            </strong>
+                        <div class="calculator-character-header">
+
+                            <div>
+
+                                <div class="calculator-section-title">
+                                    使用キャラクター
+                                </div>
+
+                                <p class="calculator-section-description">
+                                    必要な人数だけキャラクターを追加できます。
+                                </p>
+
+                            </div>
+
+                            <button type="button" class="calculator-add-character" id="calculatorAddCharacter">
+
+                                ＋ キャラクターを追加
+
+                            </button>
 
                         </div>
 
 
-                        <div class="resistance-row">
+                        <!-- 選択したキャラクター一覧 -->
+                        <div class="calculator-character-list" id="calculatorCharacterList">
 
-                            <span class="element-icon fire">
-                                ♨
-                            </span>
-
-                            <span>
-                                炎
-                            </span>
-
-                            <strong>
-                                30%
-                            </strong>
+                            <div class="calculator-empty">
+                                キャラクターがまだ追加されていません。
+                            </div>
 
                         </div>
 
 
-                        <div class="resistance-row">
+                        <!-- =============================
+                 デバフ合計
+            ============================== -->
+                        <div class="calculator-total-box">
 
-                            <span class="element-icon holy">
-                                ☼
-                            </span>
+                            <div class="calculator-section-title">
+                                デバフ合計
+                            </div>
 
-                            <span>
-                                神聖
-                            </span>
+                            <div class="calculator-total-grid">
 
-                            <strong>
-                                30%
-                            </strong>
+                                <div class="calculator-total-item">
+
+                                    <span>
+                                        防御力
+                                    </span>
+
+                                    <strong id="totalDefenseDown">
+                                        0%
+                                    </strong>
+
+                                </div>
+
+
+                                <div class="calculator-total-item">
+
+                                    <span>
+                                        クリティカル耐性
+                                    </span>
+
+                                    <strong id="totalCriticalResistanceDown">
+                                        0%
+                                    </strong>
+
+                                </div>
+
+
+                                <div class="calculator-total-item">
+
+                                    <span>
+                                        クリティカル防御
+                                    </span>
+
+                                    <strong id="totalCriticalDefenseDown">
+                                        0%
+                                    </strong>
+
+                                </div>
+
+
+                                <div class="calculator-total-item">
+
+                                    <span>
+                                        基礎属性耐性
+                                    </span>
+
+                                    <strong id="totalBaseResistanceDown">
+                                        0%
+                                    </strong>
+
+                                </div>
+
+
+                                <div class="calculator-total-item">
+    <span>氷耐性</span>
+    <strong id="totalElementIceDown">0%</strong>
+</div>
+
+<div class="calculator-total-item">
+    <span>闇耐性</span>
+    <strong id="totalElementDarkDown">0%</strong>
+</div>
+
+<div class="calculator-total-item">
+    <span>炎耐性</span>
+    <strong id="totalElementFireDown">0%</strong>
+</div>
+
+<div class="calculator-total-item">
+    <span>神聖耐性</span>
+    <strong id="totalElementHolyDown">0%</strong>
+</div>
+
+<div class="calculator-total-item">
+    <span>風耐性</span>
+    <strong id="totalElementWindDown">0%</strong>
+</div>
+
+<div class="calculator-total-item">
+    <span>大地耐性</span>
+    <strong id="totalElementEarthDown">0%</strong>
+</div>
+
+<div class="calculator-total-item">
+    <span>物理耐性</span>
+    <strong id="totalElementPhysicalDown">0%</strong>
+</div>
+
+<div class="calculator-total-item">
+    <span>雷耐性</span>
+    <strong id="totalElementThunderDown">0%</strong>
+</div>
+
+                            </div>
 
                         </div>
 
+                        <!-- =====================================
+     デバフ適用後
+====================================== -->
+                        <div class="calculator-final-box">
 
-                        <div class="resistance-row">
+                            <div class="calculator-section-title">
+                                デバフ適用後
+                            </div>
 
-                            <span class="element-icon wind">
-                                ◌
-                            </span>
+                            <div class="calculator-final-grid">
 
-                            <span>
-                                風
-                            </span>
+                                <div class="calculator-final-item">
+                                    <span>防御力</span>
+                                    <strong id="calculatorFinalDefense">
+                                        100%
+                                    </strong>
+                                </div>
 
-                            <strong>
-                                30%
-                            </strong>
+                                <div class="calculator-final-item">
+                                    <span>クリティカル耐性</span>
+                                    <strong id="calculatorFinalCriticalResistance">
+                                        20%
+                                    </strong>
+                                </div>
+
+                                <div class="calculator-final-item">
+                                    <span>クリティカル防御</span>
+                                    <strong id="calculatorFinalCriticalDefense">
+                                        50%
+                                    </strong>
+                                </div>
+
+                                <div class="calculator-final-item">
+                                    <span>基礎属性耐性</span>
+                                    <strong id="calculatorFinalBaseResistance">
+                                        50%
+                                    </strong>
+                                </div>
+
+                                <div class="calculator-final-item">
+    <span>氷耐性</span>
+    <strong id="calculatorFinalIce">30%</strong>
+</div>
+
+<div class="calculator-final-item">
+    <span>闇耐性</span>
+    <strong id="calculatorFinalDark">30%</strong>
+</div>
+
+<div class="calculator-final-item">
+    <span>炎耐性</span>
+    <strong id="calculatorFinalFire">30%</strong>
+</div>
+
+<div class="calculator-final-item">
+    <span>神聖耐性</span>
+    <strong id="calculatorFinalHoly">30%</strong>
+</div>
+
+<div class="calculator-final-item">
+    <span>風耐性</span>
+    <strong id="calculatorFinalWind">30%</strong>
+</div>
+
+<div class="calculator-final-item">
+    <span>大地耐性</span>
+    <strong id="calculatorFinalEarth">30%</strong>
+</div>
+
+<div class="calculator-final-item">
+    <span>物理耐性</span>
+    <strong id="calculatorFinalPhysical">30%</strong>
+</div>
+
+<div class="calculator-final-item">
+    <span>雷耐性</span>
+    <strong id="calculatorFinalThunder">30%</strong>
+</div>
+
+                            </div>
 
                         </div>
-
-
-                        <div class="resistance-row">
-
-                            <span class="element-icon earth">
-                                ◆
-                            </span>
-
-                            <span>
-                                大地
-                            </span>
-
-                            <strong>
-                                30%
-                            </strong>
-
-                        </div>
-
-
-                        <div class="resistance-row">
-
-                            <span class="element-icon physical">
-                                ⚙
-                            </span>
-
-                            <span>
-                                物理
-                            </span>
-
-                            <strong>
-                                30%
-                            </strong>
-
-                        </div>
-
-
-                        <div class="resistance-row">
-
-                            <span class="element-icon lightning">
-                                ϟ
-                            </span>
-
-                            <span>
-                                雷
-                            </span>
-
-                            <strong>
-                                30%
-                            </strong>
-
-                        </div>
-
 
                     </div>
 
                 </div>
-
 
             </div>
 
@@ -2754,9 +3063,9 @@
 
                     <div class="video-player">
 
-                        <iframe src="https://medal.tv/clip/nu9fmucUOgANihVNG"
-                            title="騎士団ボス攻略動画3" loading="lazy" scrolling="no"
-                            allow="autoplay; encrypted-media; fullscreen; picture-in-picture" allowfullscreen>
+                        <iframe src="https://medal.tv/clip/nu9fmucUOgANihVNG" title="騎士団ボス攻略動画3" loading="lazy"
+                            scrolling="no" allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
+                            allowfullscreen>
                         </iframe>
 
                     </div>
